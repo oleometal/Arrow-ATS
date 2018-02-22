@@ -1,0 +1,30 @@
+#com-chilipeppr-widget-shuttlexpress .panel-body {
+    padding-right: 30%;
+    background-image: url('http://chilipeppr.com/img/icons/shuttlexpress.jpg');
+    background-position-x: -50%;
+    background-position-y: 28%;
+    background-size: 150%;
+    overflow: auto;
+    max-height: 230px;
+    color: white;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+#com-chilipeppr-widget-shuttlexpress h1 {
+    font-size:18px;
+}
+#com-chilipeppr-widget-shuttlexpress .panel-body ol {
+    padding-left: 20px;
+}
+#com-chilipeppr-widget-shuttlexpress .panel-footer {
+    font-size:11px;
+    padding:0;
+    margin:0;
+}
+#com-chilipeppr-widget-shuttlexpress-status {
+    //overflow: auto;
+    //max-height:30px;
+    background:none;
+    background-color:#f5f5f5;
+    border:none;
+}

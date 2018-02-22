@@ -1,0 +1,42 @@
+#com-chilipeppr-widget-tinyg-body {
+    /* padding:0; */
+}
+.com-chilipeppr-interface-cnccontroller-stat .col {
+    padding:0 10px 0 0;
+}
+.com-chilipeppr-interface-cnccontroller-stat .col:last-child {
+    padding:0;
+}
+.com-chilipeppr-interface-cnccontroller-stat .progress {
+    margin-bottom:0;
+}
+.com-chilipeppr-interface-cnccontroller-stat .stat-row {
+    padding-top:2px;
+}
+.com-chilipeppr-interface-cnccontroller-stat div.col.lblpad {
+    padding-left:10px;
+}
+.com-chilipeppr-interface-cnccontroller-stat .stat-unit {
+    font-size:9px;
+    display:none;
+}
+.com-chilipeppr-interface-cnccontroller-stat div.col.well {
+    margin-bottom:0px;
+    padding-left:5px;
+}
+.com-chilipeppr-interface-cnccontroller-stat .stat-sm {
+    font-size:10px;
+}
+.com-chilipeppr-widget-tinyg-fro-val {
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    width:50px;
+    padding-left:6px;
+    
+}
+.com-chilipeppr-widget-tinyg-fro-val-preview {
+    color:silver;
+}

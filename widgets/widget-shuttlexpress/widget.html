@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title><!--(auto-fill by runme.js--></title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <!--Put HTML Contents of Widget Here-->
+    <div id="com-chilipeppr-widget-shuttlexpress" class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn-toolbar pull-right" role="toolbar">
+                <div class="btn-group">
+                    <span xstyle="font-size:9px;" class="shuttlexpress-axis badge">-</span> <span xstyle="font-size:9px;" class="shuttlexpress-moveby badge">-</span>
+                </div>
+                <div class="btn-group">
+
+                    <button type="button" class="btn btn-xs btn-default hidebody"><span class="glyphicon glyphicon-chevron-up"></span>
+
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
+
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                    </div>
+                </div>
+
+            </div> <span class="panel-title" data-toggle="popover">ShuttleXpress Jog Dial</span>
+
+        </div>
+        <div class="panel-body">
+            <p>By <a href="https://plus.google.com/+FrankGraffagnino/posts">Frank Graffagnino</a>
+            </p>
+            <p>This code is meant to allow button, jog, and shuttle events from a Contour ShuttleXpress controller to flow to the Serial Port JSON server typically used with ChiliPeppr driven CNC machines.</p>
+            <p>Interface to Shuttle Contour Xpress based on "Contour ShuttlePro v2 interface" by Eric Messick.</p>
+
+            <p>Purchase online
+                <br/>
+                <a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=shuttlexpress">Amazon.com</a>
+                <br/>
+                <a target="_blank" href="https://www.google.com/shopping/product/12384235750096464291?q=shuttlexpress">Google Shopping</a>
+            </p>
+            <h1>Build Instructions</h1>
+            <p>(Written for Raspbian, but should work for others)</p>
+
+            <ol>
+                <li>
+                    Ensure openssl dev libraries are installed:
+                    <pre>sudo apt-get install libssl-dev build-essential</pre>
+
+                </li>
+                <li>
+                    Download the nopoll library from here: <a href="http://www.aspl.es/nopoll/downloads/">http://www.aspl.es/nopoll/downloads/</a> (I'm currently using version 0.2.7.b164 because I got a strange linking error when I tried to compile 0.2.8.b184
+                    for some odd reason. Feel free to try both. 0.2.9.b194 worked for jlauer.).
+                    <pre>wget http://www.aspl.es/nopoll/downloads/nopoll-0.2.9.b194.tar.gz</pre> Extract and change into the extracted directory
+                    <pre>tar -xzvf nopoll-0.2.9.b194.tar.gz
+cd nopoll-0.2.9.b19</pre> Configure, make, and install the nopoll library with the usual:
+                    <pre> ./configure
+ make
+ sudo make install</pre>
+                </li>
+                <li>
+                    Take a git clone of the wiringPi utility and use their included build script to build and install the library. Instructions are here: <a href="http://wiringpi.com/download-and-install/">http://wiringpi.com/download-and-install/</a>
+                    <p>Change directory back to your home directory or wherever you were working from</p>
+                    <pre>cd ~</pre> A quick version of the wiringPi instructions
+                    <pre>git clone git://git.drogon.net/wiringPi</pre>
+                    <pre>cd wiringPi
+./build</pre>
+                </li>
+                <li>
+                    Download ShuttleCP from Github at <a href="https://github.com/lordmundi/shuttleCP">https://github.com/lordmundi/shuttleCP</a>.
+                    <p>Change directory back to your home directory or wherever you were working from</p>
+                    <pre>cd ~</pre>
+                    <pre>git clone https://github.com/lordmundi/shuttleCP</pre> Change into the shuttleCP directory
+                    <pre>cd shuttleCP</pre>
+                </li>
+                <li>
+                    Edit shuttlecp.c and update the following items at the top of the file if you need to. You can likely just leave them alone:
+
+                    <pre>#define SPJS_HOST     "localhost"        // Hostname where SPJS is running
+#define SPJS_PORT     "8989"             // Port for SPJS
+#define CYCLE_TIME_MICROSECONDS 100000   // time of each main loop iteration
+#define MAX_FEED_RATE 1500.0   // (unit per minute - initially tested with millimeters)
+#define OVERSHOOT     1.06     // amount of overshoot for shuttle wheel
+                </pre>
+                </li>
+                <li>
+                    Build the shuttleCP binary by running make in the shuttleCP directory.
+                    <pre>make</pre>
+                </li>
+            </ol>
+            <h1>Running</h1>
+            <ol>
+                <li>
+                    First, make sure SPJS is already running and ChiliPeppr has already opened a connection to your machine. I run SPJS on the same raspberryPi that I run the ShuttleCP utility on.
+                </li>
+                <li>
+                    Start up shuttlecp with an argument that is the device interface for your ShuttleXpress. Mine is /dev/input/by-id/usb-Contour_Design_ShuttleXpress-event-if00 Use sudo so that wiringPi has access to GPIO pins:
+
+                    <pre> sudo ./shuttlecp /dev/input/by-id/usb-Contour_Design_ShuttleXpress-event-if00</pre>
+                </li>
+                <li>
+                    Or, you can use the "./shuttle" script, which effectively does the same thing.
+                </li>
+            </ol>
+
+            <p>Demo by Frank</p>
+            <iframe style="width:100%;height:200px;" class="" src="https://www.youtube.com/embed/7LP4he22kKk" frameborder="0" allowfullscreen></iframe>
+
+            <p>Walk-Through and Build of the Code</p>
+            <iframe style="width:100%;height:200px;" class="" src="https://www.youtube.com/embed/cQpw2chvjzM" frameborder="0" allowfullscreen></iframe>
+
+
+        </div>
+        <div class="panel-footer hidden">
+            <textarea id="com-chilipeppr-widget-shuttlexpress-status" class="widget-status form-control" rows="3"></textarea>
+        </div>
+    </div>
+
+</body>
+
+</html>

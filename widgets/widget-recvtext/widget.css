@@ -1,0 +1,85 @@
+#com-chilipeppr-widget-recvtext .recvtext-runnng {
+    color: #3c763d;
+    background-color: #dff0d8;
+    /* background-color: #3c763d; */
+}
+#com-chilipeppr-widget-recvtext .panel-body {
+    /*padding:0;*/
+}
+#com-chilipeppr-widget-recvtext .panel-footer {
+    cursor:pointer;
+    font-size:10px;
+}
+#com-chilipeppr-widget-recvtext .panel-heading .btn-tiny {
+    font-size:9px;
+    height:22px;
+}
+.recvtext-bg {
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    /* opacity: 0.9; */
+    background-image: url('http://ftp.zipwhip.com/public/dashboard/ctiapartyforchilipeppr.png');
+    background-size: contain;
+    background-repeat: repeat;
+}
+.recvtext-identity {
+    /* margin:-16px .-16px 0 -16px; */
+    /*background-color:#ddd;*/
+    /*zoom:2;*/
+}
+.recvtext-calltoaction {
+    /*background-color:#ddd;*/
+    padding:0 6px 6px 6px;
+    /*zoom:2;*/
+}
+.recvtext-identity .zw-dashboardcard {
+    padding-left:4px;
+    pointer-events:none;
+}
+.recvtext-identity .zw-contactcard-name {
+    /*width:200%;*/
+    /*line-height:20px;*/
+}
+.recvtext-identity .zw-contactcard-phone {
+    /*width:200%;*/
+}
+
+.zw-contactcard {
+    pointer-events:none;
+}
+.zw-contactcard-menu {
+    display:none;
+}
+.recvtext-vendingfor {
+    /* padding:0 10px; */
+    max-height: 250px;
+    overflow: auto;
+}
+.recvtext-vendingfor-item {
+    padding:2px 10px 6px 10px;
+    /*background-color: #D0F9FF;*/
+    background-color: #eee;
+    border-radius: 6px;
+    margin: 10px;
+}
+.recvtext-vendingfor-item.recvtext-busy {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    /*background-color: #eee;*/
+    border-color: #faebcc;
+}
+.recvtext-huge {
+    zoom:1;
+    position:absolute;
+    left:50%;
+    top:10%;
+    /*left:30px;*/
+    /*right:30px;*/
+    /*top:30px;*/
+    /*bottom:30px;*/
+}
+
+div,p,input,button {
+    /*font: 15px "Segoe UI", calibri, arial, helvetica, sans-serif;*/
+}

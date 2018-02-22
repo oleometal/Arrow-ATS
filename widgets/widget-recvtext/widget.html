@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>
+        <!--(auto-fill by runme.js-->
+    </title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <div id="com-chilipeppr-widget-recvtext" class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn-toolbar pull-right " role="toolbar">
+
+                <div class="btn-group" xstyle="margin-right:6px;">
+                    <button type="button" class="btn btn-xs btn-default recvtext-run btn-tiny" 
+                    data-container="body" data-toggle="popover" data-placement="auto" data-content="Run the action that happens on inbound text." data-trigger="hover" data-delay="800"> Run <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-default recvtext-logout-btn btn-tiny hidden" 
+                    data-container="body" data-toggle="popover" data-placement="auto" 
+                    data-content="Logout" data-trigger="hover" data-delay="800"> Logout <span class="glyphicon glyphicon-log-out hidden"></span>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-default recvtext-toggleshortpoll  btn-tiny" 
+                    data-container="body" data-toggle="popover" data-placement="auto" 
+                    data-content="Toggle Short Polling" data-trigger="hover" data-delay="800"> <span class="recvtext-toggleshortpoll-txt">Off</span> <span class="glyphicon glyphicon-off"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-xs btn-default hidebody"><span class="glyphicon glyphicon-chevron-up"></span>
+                    </button>
+                </div>
+                
+                <div class="btn-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" 
+                        data-toggle="dropdown"><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <span class="panel-title " data-toggle="popover" style="font-size:11px;">Zipwhip Receive Text</span>
+            
+        </div>
+        <div class="panel-body">
+            
+            <div id="com-chilipeppr-widget-zipwhiploginform-instance" class="login hidden">
+                Login form here.
+            </div>
+            
+            <div class="post-login-region hidden">
+                <div id="recvtext-identity-instantiation" class="recvtext-identity">
+                    Incoming Texts to (844) 564-6528
+                </div>
+                <div class="recvtext-calltoaction">Text the word "go" to start your Gcode job.</div>
+    
+                <div class="recvtext-vendingfor">
+    
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-footer xhidden">
+            Short polling off. Not checking for inbound texts.
+        </div>
+    </div>
+
+
+</body>
+
+</html>
