@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title><!--(auto-fill by runme.js--></title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <!--Put HTML Contents of Widget Here-->
+    <div id="com-chilipeppr-widget-programmer" class="modal fade ">
+        <div class="modal-dialog modal-lg zhigh">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="btn-toolbar pull-right" role="toolbar">
+                        <div class="btn-group">
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span>
+
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                            </div>
+                        </div>
+                    </div> <span class="modal-title" data-toggle="popover">Arduino/Atmel Programmer</span> <span style="font-size:9px;" class="fb-build"></span>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="alert alert-danger hidden">
+                        Serial Port JSON Server 1.83 or higher is needed for this Arduino / Atmel Firmware Programmer to operate.
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programmer-serialport">Serial Port</label>
+                        <div class="programmer-serialport-staticname hidden well">asfsdf</div>
+                        <select class="form-control programmer-serialport hidden">
+                            <!--<option>Serial port list unknown</option>-->
+                            <!--<option value="COM9">Arduino Due Programming Port (COM9)</option>
+                        <option value="arduino:avr:yun">Arduino Yún</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>-->
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programmer-device-dropdown">Device Type</label>
+                        <div class="programmer-device-static hidden well"><img class="programmer-brdicon  programmer-device-static-img" src="http://chilipeppr.com/img/boards/due.jpg" /> <span class="programmer-device-static-name">-</span></div>
+                        <div class="programmer-device-dropdown dropdown xhidden">
+                            <button type="button" class="btn btn-default dropdown-toggle programmer-device-dd programmer-device-btn" data-toggle="dropdown">
+                                <!-- Select Device --><img class="programmer-brdicon programmer-device-btn-img hidden" xsrc="http://chilipeppr.com/img/boards/tinygv9.jpg" /> <span class="programmer-device-btn-name">(Choose your device type)</span> <span class="caret pull-right"
+                                style="margin-top:8px;"></span>
+
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#"><img class="programmer-brdicon" src="http://chilipeppr.com/img/boards/uno.jpg" /> Arduino Uno</a>
+                                </li>
+                                <li>
+                                    <a href="#"><img class="programmer-brdicon" src="http://chilipeppr.com/img/boards/yun.jpg" /> Arduino Yun</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="programmer-url">URL</label>
+                        <div class="programmer-url-shortcuts">
+                            <a href="javascript:">Latest TinyG 440.14</a>
+                        </div>
+                        <input type="url" class="form-control" id="programmer-url" placeholder="Enter URL of bin/hex file" />
+                    </div>
+
+                    <div class="form-group">
+                        <button xstyle="margin-top:20px;" type="button" class="btn btn-primary programmer-doit" data-delay="500" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Program" data-content="Program your device"><span class="">Program</span>
+                        </button>
+                    </div>
+
+                    <div class="myline" style="border-top: solid silver 1px; height:1px;margin:20px 0px">
+                    </div>
+
+                    <label>Progress</label>
+
+                    <div class="progress" style="margin-bottom:3px;">
+                        <div class="progress-bar programmer-progbar-dl" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                            <!-- Download 0% -->
+                            <span class="programmer-progbar-lbl programmer-progbar-lbl-dl programmer-progbar-greyedout">Download&nbsp;0%</span>
+                        </div>
+                    </div>
+                    <div class="progress" style="margin-bottom:3px;">
+                        <div class="progress-bar programmer-progbar-program" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                            <!-- Program 0% -->
+                            <span class="programmer-progbar-lbl programmer-progbar-lbl-program programmer-progbar-greyedout">Program&nbsp;0%</span>
+                        </div>
+                    </div>
+
+                    <!-- <div>
+                    <span class="right-caret"></span>
+                    Output
+                </div> -->
+
+                    <pre class="programmer-output-pre"><span class="programmer-output-lbl programmer-progbar-lbl-output programmer-progbar-greyedout">Output</span></pre>
+
+                    <button type="button" class="btn btn-primary programmer-kill " disabled data-delay="500" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Kill" data-content="Kill the programming process"><span class="">Kill</span>
+                    </button>
+
+                </div>
+                <div class="modal-footer hidden">
+
+                    <button type="button" class="btn btn-default" data-delay="500" data-animation="true" data-placement="auto" data-container="body" data-trigger="hover" data-title="Close" data-content="Close the dialog"><span class="">Close</span>
+
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="com-chilipeppr-serialport-spselector" /> -->
+
+
+</body>
+
+</html>

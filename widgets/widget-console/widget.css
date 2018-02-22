@@ -1,0 +1,76 @@
+/*html,body {
+    height:100%;
+    overflow:hidden;
+}*/
+.cmd-checkmark {
+    font-size:9px;
+}
+.cmd-send {
+    color: #999999;
+}
+.cmd-queued {
+    color: yellow;
+}
+.cmd-write {
+    color: green;
+}
+span.cmd-complete {
+    color: black;
+}
+
+.com-chilipeppr-widget-spconsole-console-log pre {
+    margin:0;
+    padding:0;
+    background: none;
+    border: none;
+}
+.com-chilipeppr-widget-spconsole .out {
+    color: blue;
+    /* margin-left:-5px; */
+}
+.panel.com-chilipeppr-widget-spconsole {
+    /* height:100%; */
+    /* min-height:250px; */
+    /* position:relative; */
+    margin:0;
+    padding:0;
+    /* height:60px; */
+}
+.com-chilipeppr-widget-spconsole .com-chilipeppr-widget-spconsole-body {
+    padding:0;
+    overflow: auto;
+    overflow-x: hidden;
+    width:100%;
+    /* height:100%; */
+    /* top:0; */
+    /* bottom:0; */
+    /* position:absolute; */
+    position:relative;
+}
+.com-chilipeppr-widget-spconsole .com-chilipeppr-widget-spconsole-console-log {
+    overflow: auto;
+    /* margin:0; */
+    margin-bottom:35px;
+    /* padding: 0 0 40px 16px; */
+    padding-left:12px;
+    padding-bottom:4px;
+    padding-right:12px;
+    /* position:absolute; */
+    width:100%;
+    height:40px;
+    /* top:44px; */
+    /* bottom:36px; */
+    /* height:100%; */
+}
+.com-chilipeppr-widget-spconsole-consoleinput {
+    position: absolute;
+    width:100%;
+    left:0;
+    bottom:0;
+    /* padding-top:2px; */
+    /* margin-top:1px; */
+    /* background-color:silver; */
+}
+.com-chilipeppr-widget-spconsole .subtitle {
+    font-size:9px;
+}

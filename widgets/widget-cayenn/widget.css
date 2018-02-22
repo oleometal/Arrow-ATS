@@ -1,0 +1,173 @@
+/* CSS for ChiliPeppr Widget */
+
+#com-chilipeppr-widget-cayenn {
+   
+}
+
+#com-chilipeppr-widget-cayenn .nav-tabs>li>a {
+    padding: 2px 6px;
+}
+
+#com-chilipeppr-widget-cayenn .panel-body {
+    /*padding:8px 14px;*/
+    padding:0;
+    height:200px;
+    position:relative;
+    width:100%;
+    overflow:auto;
+}
+
+#com-chilipeppr-widget-cayenn .panel-body.device-showing {
+    /*padding:8px 14px;*/
+    /*padding:0;*/
+    height:250px;
+    /*position:relative;*/
+    /*width: 100%;*/
+    overflow: visible;
+}
+.cayenn-icons {
+    margin-top: 15px;
+}
+.cayenn-icon-list {
+    padding: 0 0 0 15px;
+}
+.cayenn-icon {
+    /*width:100px;*/
+    width:88px;
+    margin:0px 15px 15px 0px;
+    float:left;
+    cursor: pointer;
+    background-color: transparent;
+}
+.cayenn-deviceimg {
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    /*width: 100px;*/
+    width: 88px;
+    height: 80px;
+    background-size: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    /*margin: 6px 3px;*/
+    background-position: center;
+    position: relative;
+}
+
+.cayenn-name {
+    background-color: #ddd;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding: 4px 6px;
+    white-space: nowrap;
+    /*width: 100px;*/
+    width: 88px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    font-size:12px;
+    /*position:relative;*/
+}
+.cayenn-name:hover {
+    overflow: visible;
+    position: relative;
+    text-shadow: 0 0 1px #fff, 0 0 3px #fff, 0 0 6px #fff, 0 0 10px #fff, 0 0 15px #000;
+}
+.cayenn-icon-small {
+    zoom:0.5;
+    padding:0;
+    margin:0 16px 0 0;
+}
+
+.cayenn-icon-small .cayenn-icon {
+    margin:0;
+}
+.cayenn-cmdlist .btn {
+    margin-right:2px;
+    margin-bottom: 2px;
+}
+.cayenn-entercmd {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+}
+.cayenn-onedevice {
+    overflow: auto;
+    height: 215px;
+    padding: 10px;
+    width: 100%;
+}
+.dropdown-cayenn-cmds {
+    margin-top: 3px;
+}
+.dropdown-cayenn-cmds-abs {
+    position:absolute;
+    top: 36px;
+}
+#com-chilipeppr-widget-cayenn .table-log {
+    font-size:10px;
+    margin-top:3px
+}
+#com-chilipeppr-widget-cayenn .table-log.table-when-dropdown {
+    margin-top:28px
+}
+.cayenn-checkProgress {
+    color: rgb(221, 221, 221);
+    padding: 4px;
+    margin: -4px;
+}
+.cayenn-checkProgress.cayenn-checkProgressSent {
+    color: #E6D8BB;
+    background-color: #fcf8e3;
+}
+.cayenn-checkProgress.cayenn-checkProgressDone {
+    color: #000000;
+    background-color: transparent;
+}
+#com-chilipeppr-widget-cayenn-modal-uploadprogress .cayenn-icon {
+    margin: 0 15px 15px 0px;
+    float: left;
+    cursor: initial;
+    background-color: transparent;
+}
+#com-chilipeppr-widget-cayenn-modal-uploadprogress .table-cayenn-upload {
+    font-size:10px;
+}
+.progress-bar.active, .progress.active .progress-bar {
+    animation: progress-bar-stripes 2s linear infinite;
+}
+.progress-bar-striped, .progress-striped .progress-bar {
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: 40px 40px;
+}
+@keyframes progress-bar-stripes {
+0% {
+    background-position: 40px 0;
+}
+100% {
+    background-position: 0 0;
+}
+}
+
+#com-chilipeppr-widget-cayenn .progress {
+    cursor: pointer;
+}
+#com-chilipeppr-widget-cayenn .progress:hover {
+    border:1px solid blue;
+}
+#com-chilipeppr-widget-cayenn .progress:active {
+    border:1px solid black;
+}
+#com-chilipeppr-widget-cayenn .upload-text {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    font-size:11px;
+    line-height:20px;
+    text-align:center;
+}
+.msg-device-name {
+    background-color: #ddd;
+    border-radius: 18px;
+    padding: 4px 10px;
+}

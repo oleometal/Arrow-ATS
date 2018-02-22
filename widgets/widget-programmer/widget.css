@@ -1,0 +1,30 @@
+#com-chilipeppr-widget-programmer .programmer-progbar-lbl {
+    /* color: #999999; */
+    margin-left:10px;
+}
+#com-chilipeppr-widget-programmer .programmer-output-lbl {
+    /* color: #999999; */
+}
+#com-chilipeppr-widget-programmer .programmer-output-pre {
+    max-height: 230px;
+}
+.programmer-progbar-greyedout {
+    color: #999999;
+}
+.programmer-progbar-black {
+    color: #000000;
+}
+.programmer-brdicon {
+    /* margin:10px; */
+    width:50px;
+    border-radius:6px;
+    margin-right:10px;
+}
+.programmer-device-dd {
+    width:100%;
+    text-align: left;
+}
+
+#com-chilipeppr-widget-programmer .well {
+    padding:6px 10px;
+}

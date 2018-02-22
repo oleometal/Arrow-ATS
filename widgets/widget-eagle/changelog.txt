@@ -1,0 +1,90 @@
+Version 5.4
+**************************************************
+Auther: Ameen Nihad
+Release date: 17 FEB 2017
+
+- Bug: Board renders incorrectly if mirror option is checked before drag/drop new board file.
+  fixed by rendering board dimensions first becasue mirror feature currently rely on dimension boundries.
+- Bug: If a layer has no signals it will not be populated in (Board Layer) drop down list, even if layer has elements.
+  Example of that is Adafruit PCB Reference Ruler.brd which has no signals on top layer.
+  fixed by looping through elements and check if they are on Top or Bottom layer based on mirror value.
+- All via Shapes are now supported, previously all vias were assumed to be round.
+- Pad "Offset" shape is now supported, previously it was rendered as round pad.
+- Resting paramenters are now used to caclulate vias & pads diameters, previously vias were caclculates using default hadrcoded values, and pads were assumed to be twice the drill size.
+- Support layer 46-Milling.
+- Support for open paths in board dimensions.
+- Support for multiple tools to mill board dimansions, tool size is linked to wire width.
+- Curved board dimensions are rendered as G2/G3 commands.
+- Tabs functionality is fully impelmented.
+- Gcode tab is seperated to multiple tabs (Taces, Drilling, Milling, Tabs & Gocde).
+- Circles as board dimensions are now supported.
+- Bug: Pads not connected to signals were considered as same signal, therefore adjacent pads will be merged if inflate value is high enough.
+  Fixed by assigning pad name to pad signal name.
+- Top/Bottom layers are always listed in Board Layer dropdown list.
+- Blank FR4 diemension and Registration Holes features are fully implemented, useful for milling boards with multiple layers.
+
+Version 5.3
+**************************************************
+Auther: Ameen Nihad
+Release date: 19 JAN 2017
+
+New features:
+- Support for Curves in boarder dimension and signal wires is added, in V5.2 this feature was limited to board dimension only and to +/-90 degrees.
+- Support for slots and inner dimensions is added.
+- Support for Panelizing is added, multiple boards or multiple copies of same board can be placed in single .brd file then imported to the widget.
+- A new feature added to avoid tracing board dimensions, this will eliminate job time.
+- A new feature added to correct paths orientation, to give the user a choice to do conventional or climb milling.
+- Curves resolution can now be adjusted by the user for the UI (Under Render tab).
+- Tab settings added to UI (under Gcode tab), implementation to be done in Version 5.4
+
+Enhancements
+- Optimized how board boundaries are calculated.
+- Optimized draw3dDimension function - use clipDimensions not wires.
+- Render button changed to refresh all board data, this is important for new added features.
+- Gcode comments with M6 (Tool change) - Issue #17.
+- Function draw3dSignalPoly updated to support curved polygons.
+- Removed auto refresh form Mirror settings, refresh to be done manually by user by hitting Render button.
+
+Bus fixed:
+- Fixed a bug in curves with angle > 180
+- Fixed a bug in dimension milling which caused a gap between plunge and retract positions.
+- Fixed a bug in drill holes, vias holes were not mirrored correctly.
+- Fixed a bug in position of dimensions within an element, previously dimensions were taken from packages without considering element location.
+
+
+Version 5.2 Quick Fix
+**************************************************
+Auther: Ameen Nihad
+Release date: 19 JAN 2017
+
+In exportGcodeMillHoles function, G0 is used by mistake to plunge the cutting tool, G0 changed to G1.
+Update stamp: V5.2QUICKFIX
+
+Versoin 5.2
+**************************************************
+Auther: Ameen Nihad
+Release date: 05 JAN 2017
+
+- Changed how holes are handled, now holes for Pads, Vias, packages and Plains are treated exactly the same.
+- Now holes are either drilled or milled, that depending on diameter of tools used, i.e. values of:
+    - Maximum hole diameter to drill
+    - Diameter of tool for cutting dimension
+- Fix the bug of "Board dimensions rendered incorrectly", Eagle don't care about order of wires and previous code assumes they are in right order,
+  bug fixed by sorting the wires and correct their direction.
+- Support for Curves in board dimensions is added.
+
+Update stamp: V5.2D20170105 (this can be used to locate the updated/added code)
+
+Versoin 5.1
+**************************************************
+Auther: Ameen Nihad
+Release date: 29 DEC 2016
+
+- Fix a bug in rendering Vias
+Bug: Previous code uses Via Drill Size to render the via, which causes vias to render smaller than actual size.
+Solution: Calulate Via diameter and use it for rendering.
+Update stamp: V5.1D20161227 (this can be used to locate the updated/added code)
+Note: When via Diameter is set to auto in Eagle, the Diameter is removed from the .brd file, so we need to calculate it from Drill size.
+
+- Implement board mirror feature
+Update stamp: V5.1D20161229 (this can be used to locate the updated/added code)

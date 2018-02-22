@@ -1,0 +1,20 @@
+/* CSS for ChiliPeppr Widget */
+
+#com-zipwhip-widget-font2gcode .panel-body {
+   max-height:350px;
+   overflow:auto;
+}
+
+#com-zipwhip-widget-font2gcode .nav-tabs>li>a {
+    padding: 2px 6px;
+}
+
+#com-zipwhip-widget-font2gcode .tab-pane {
+    padding-top:10px;
+}
+
+.btn-render {
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border:0;
+}

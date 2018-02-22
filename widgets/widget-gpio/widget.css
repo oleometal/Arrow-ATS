@@ -1,0 +1,44 @@
+#net-delarre-widget-gpio.hidebody .panel-body {
+    display: none
+}
+#net-delarre-widget-gpio.hidebody .hidebody {
+    display: none
+}
+#net-delarre-widget-gpio.hidebody .showbody {
+    display: block;
+}
+#net-delarre-widget-gpio .showbody {
+    display: none
+}
+#net-delarre-widget-gpio .connected-body {
+    display: none;
+}
+#net-delarre-widget-gpio.connected .connected-body {
+    display: block;
+}
+#net-delarre-widget-gpio.connected .install-body {
+    display: none;
+}
+#net-delarre-widget-gpio-body {
+    overflow: auto;
+    overflow-x: hidden;
+}
+#net-delarre-widget-gpio .net-delarre-widget-gpio-pins-area {
+}
+#net-delarre-widget-gpio .nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+#net-delarre-widget-gpio #editPinForm {
+    margin: 10px;
+}
+#net-delarre-widget-gpio #editPinForm .form-group {
+    margin-bottom: 3px;
+}
+#net-delarre-widget-gpio .pin-controls .control-label {
+    text-align: right;
+    line-height: 33px;
+}
+#net-delarre-widget-gpio input[type=range] {
+    padding: 6px 12px;
+}

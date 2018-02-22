@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>
+        <!--(auto-fill by runme.js-->
+    </title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <div id="com-chilipeppr-widget-macro" class="panel panel-default">
+        <div class="panel-heading">
+
+            <span class="panel-title" data-toggle="popover" data-original-title="" title="">Macros</span>
+
+            <div class="btn-group pull-right" style="margin-right:0;">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-original-title="" title=""><span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-main xdropdown-menu-right" role="menu">
+                        <li role="presentation" class="dropdown-header recent-files">Recent Macros</li>
+                        <li><a href="javascript:" class="recent-file-delete"><span class="glyphicon glyphicon-trash"></span> Clear Macros</a></li>
+
+                        <!--<li class="divider"></li>-->
+                        <!--<li role="presentation" class="dropdown-header fork-name">com-chilipeppr-widget-macro</li>-->
+                        <!--<li><a href="javascript:" class="pubsublink">PubSub for this Widget</a></li>-->
+                        <!--<li><a href="http://fiddle.jshell.net/chilipeppr/ZJ5vV/show/light/" target="_blank" class="standalone">View Widget Standalone</a></li>-->
+                        <!--<li><a href="http://jsfiddle.net/chilipeppr/ZJ5vV/" target="_blank" class="fork">Fork Widget</a></li>-->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-toolbar pull-right" role="toolbar" style="margin-right:6px;">
+
+                <div class="btn-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-original-title="" title="">Startup <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation" class="dropdown-header">Startup Macro (Add ?nostartup=true to URL to bypass)</li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-startup-load">Edit the Startup Macro</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-startup-save">Save the Startup Macro</a></li>
+                            <!-- <li role="presentation" class="divider com-chilipeppr-widget-macro-startup-save"></li> -->
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="btn-group">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-original-title="" title=""><span class="glyphicon glyphicon-book"></span> <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-sample-macros" role="menu">
+                            <li role="presentation" class="dropdown-header recent-files">Sample Macros</li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-alert">Alert Box</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-status">Show Status</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-flashMsg">Flash Message</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-sendpub">Send Serial</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-sendaltport">Send Serial to CNC and Arduino Simultaneously</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-sendgcode">Send Gcode</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-watch">Watch Gcode Response</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-watchOnComplete">Watch Gcode OnComplete and Control Arduino to Turn Laser On/Off</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-loopcmds">For Loop of XY Gcode Commands</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-loadgcode">Load Gcode into Workspace</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-iterateGcode">Iterate Your Gcode</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-downloadgcode">Download/Save Gcode</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-get3dobj">Get 3D Viewer Object</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-get3dobjG1FromG2G3">Get G1 Representation of G2/G3's from 3D Viewer Object</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-fadeout">Fadeout 3D Viewer User Object</a></li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-bbox">Put Bounding Box Around 3D Viewer User Object</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-injectCams">Inject MultiCam into New Right Column</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-rewritegcode">Rewrite Gcode On-the-fly as It's Sent</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-injectbtn">Inject Button Into Macro Toolbar</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-watchChiliPepprPause">Watch chilipeppr_pause Pubsub Event</a></li>
+
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-watchChiliPepprPauseSolderDispenser">Watch chilipeppr_pause to Dispense Solder Paste on 2nd Controller</a></li>
+
+                            <!-- <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-3dtext">Put Text in 3D Viewer</a></li> -->
+                            <!-- <li><a href="javascript:" class="com-chilipeppr-widget-macro-sample sample-flash">Flash Message</a></li> -->
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="btn-group hidden">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-original-title="" title=""><span class="glyphicon glyphicon-globe"></span> <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation" class="dropdown-header recent-files">Shared User Macros (Not implemented yet)</li>
+                            <li><a href="javascript:" class="com-chilipeppr-widget-macro-shared">Share This Macro</a></li>
+                            <li role="presentation" class="divider com-chilipeppr-widget-macro-shared-listhdr"></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="btn-group pull-right" style="margin-right:6px;">
+                <button type="button" id="" class="btn btn-xs btn-default com-chilipeppr-widget-macro-save" data-container="body" data-toggle="popover" data-placement="auto" data-content="Save the macro. Saved files are available in pulldown on right." data-trigger="hover"
+                data-delay="800" data-original-title="" title=""> <span class="glyphicon glyphicon-floppy-disk"></span>
+                </button>
+            </div>
+
+            <div class="btn-group pull-right" style="margin-right:6px;">
+                <button type="button" id="" class="btn btn-xs btn-default com-chilipeppr-widget-macro-run" data-container="body" data-toggle="popover" data-placement="auto" data-content="Run the macro. Ctrl+Enter is the shortcut which is quite handy." data-trigger="hover"
+                data-delay="800" data-original-title="" title=""> Run <span class="glyphicon glyphicon-play"></span>
+                </button>
+            </div>
+
+        </div>
+        <div id="com-chilipeppr-widget-macro-body" class="panel-body">
+
+            <textarea class="form-control com-chilipeppr-widget-macro-jscript" placeholder="Enter Javascript Here. Press Run in toolbar to eval Javascript. Ctrl+Enter is shortcut for run." spellcheck="false" rows="5"></textarea>
+
+
+        </div>
+        <div id="com-chilipeppr-widget-macro-ftr" class="panel-footer">
+            <textarea id="com-chilipeppr-widget-macro-status" class="widget-status form-control" rows="3">To place text here call macro.status("your text");</textarea>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title><!--(auto-fill by runme.js--></title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <!--Put HTML Contents of Widget Here-->
+    <div class="panel panel-default com-chilipeppr-widget-spconsole">
+        <div class="panel-heading">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span>
+
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <!-- <li role="presentation" class="dropdown-header fork-name"></li>
+                <li><a href="" class="standalone" target="_blank">View Widget Standalone</a></li>
+                <li><a href="" class="fork" target="_blank">Fork Widget</a></li> -->
+                </ul>
+            </div>
+            <div class="btn-group pull-right" style="margin-right:6px;">
+                <button type="button" class="btn btn-xs btn-default spconsole-clear" data-container="body" data-toggle="popover" data-placement="auto" data-content="Clear the console window." data-trigger="hover" data-delay="500">Clear</button>
+                <button type="button" class="btn btn-xs btn-default spconsole-pause " data-container="body" data-toggle="popover" data-placement="auto" data-content="Disable the serial port console from updating. This can help reduce load on your browser." data-trigger="hover"
+                data-delay="500"><span class="glyphicon glyphicon-ban-circle"></span></button>
+                <button type="button" class="hidden btn btn-xs btn-default spconsole-filter active" data-container="body" data-toggle="popover" data-placement="auto" data-content="Toggle the filter. A filter can be applied to remove lower priority information from getting logged. The filter is set by the workspace you are in."
+                data-trigger="hover" data-delay="500"><span class="glyphicon glyphicon-filter"></span></button>
+            </div>
+
+            <span class="panel-title">Serial Port Console v13 <span class="subtitle">(Multi Port Mode)</span></span>
+        </div>
+        <div class="panel-body com-chilipeppr-widget-spconsole-body">
+            <div class="com-chilipeppr-widget-spconsole-console-log">
+                <pre></pre>
+            </div>
+            <div class="com-chilipeppr-widget-spconsole-consoleinput">
+                <form id="com-chilipeppr-widget-spconsole-consoleform">
+                    <div class="input-group">
+                        <span class="input-group-btn dropup">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- <li><a href="#" id="">{"sr":""}</a>
+                            </li> -->
+                        </ul>
+
+                        </span>
+                        <input type="text" class="user-txt-input form-control" placeholder="Type serial port command" /><span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                        </span>
+
+                        <!-- /input-group -->
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

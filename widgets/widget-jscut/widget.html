@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title><!--(auto-fill by runme.js--></title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="widget.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="widget.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <!--Put HTML Contents of Widget Here-->
+    <div id="org-jscut-gcode-widget" class="panel panel-default">
+        <div class="panel-heading">
+
+            <span class="panel-title" data-toggle="popover">JSCut</span>
+
+            <div class="btn-group pull-right" style="margin-right:0;">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-main xdropdown-menu-right" role="menu">
+                        <li role="presentation" class="dropdown-header recent-files">Recent JScut Files</li>
+                        <!-- <li><a href="javascript:" class="recent-file-delete"><span class="glyphicon glyphicon-trash"></span> Clear Macros</a></li> -->
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-group pull-right" style="margin-right:6px;">
+                <button type="button" class="btn btn-xs btn-default jscut-refresh" data-container="body" data-toggle="popover" data-placement="auto" data-content="Refresh file list by querying ChiliPeppr for any JSCut files that have been placed in ChiliPeppr's cloud storage for your login ID"
+                data-trigger="hover" data-delay="800"><span class="glyphicon glyphicon-refresh"></span></button>
+            </div>
+
+            <div class="btn-group pull-right" style="margin-right:6px;">
+                <a href="http://jscut.org/jscut.html" target="_blank" class="btn btn-xs btn-default jscut-nav" data-container="body" data-toggle="popover" data-placement="auto" data-content="Visit JSCut's website" data-trigger="hover" data-delay="800"><span class="glyphicon glyphicon-link"></span> JSCut</a>
+            </div>
+
+
+        </div>
+        <div id="org-jscut-gcode-widget-body" class="panel-body">
+
+            <div class="alert alert-warning hidden"></div>
+
+            <p>JSCut files are available in upper right pull-down menu. JSCut sends files to ChiliPeppr's cloud storage for you. Click refresh if your file is not appearing.</p>
+
+            <p><a href="http://jscut.org/jscut.html">JSCut</a> is an online Gcode toolpath creator. It takes in SVG files and creates milling operations based on the specs you enter such as pocket, outline, or engraving operations.</p>
+
+            <p>JScut has graciously added the ability to save your final Gcode direct to ChiliPeppr to make your life easy. When you "Save Gcode" inside JSCut there is a ChiliPeppr button. Once you click that button, come back here and refresh this widget
+                to see the file in your list.</p>
+
+        </div>
+        <div id="org-jscut-gcode-widget-ftr" class="panel-footer hidden">
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

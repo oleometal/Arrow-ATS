@@ -1,0 +1,7 @@
+.lastModifyDate {
+    color: silver;
+}
+#org-jscut-gcode-widget-body {
+    max-height:100px;
+    overflow:auto;
+}
