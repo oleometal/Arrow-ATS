@@ -13,7 +13,7 @@
   ],
   "devDependencies": {
     "coffee-script": "1.6.2",
-    "uglify-js" :  "2.2.5"
+    "uglify-js" :  "2.6.0"
   },  
   "license": "MIT"
 }
