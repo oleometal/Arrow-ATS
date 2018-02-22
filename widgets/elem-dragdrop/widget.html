@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title>
+    <!--(auto-fill by runme.js-->
+  </title>
+
+  <!-- ChiliPeppr is based on bootstrap CSS. -->
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+  <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+  <!-- widget.css DON'T REMOVE -->
+  <style type='text/css'>
+    /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+  </style>
+  <link rel="stylesheet" type="text/css" href="widget.css">
+  <!-- DON'T REMOVE end widget.css -->
+
+  <!-- widget.js DON'T REMOVE -->
+  <script type='text/javascript'>
+    //<![CDATA[
+    /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    //]]>
+  </script>
+  <script type='text/javascript' src="widget.js"></script>
+  <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+  <div class="com-chilipeppr-elem-dragdrop well dropdown pull-left">
+    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-container="body" data-toggle="popover" data-placement="auto" data-trigger="hover" data-title="Drag and Drop" data-content="Drag a Gcode file onto your browser window to load it."><span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-share-alt" style="margin-left:-2px;color:#666666;"></span> <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+        <a href="javascript:" class="com-chilipeppr-elem-dragdrop-openfile">Open Gcode File</a>
+        <input type="file" id="com-chilipeppr-elem-dragdrop-openfile-picker" name="com-chilipeppr-elem-dragdrop-openfile-picker" title="Open Gcode File" style="display: none;" />
+      </li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-download">Download/Save Gcode File</a></li>
+      <li class="divider"></li>
+      <li role="presentation" class="dropdown-header">Sample Gcode Files</li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadlogo">ChiliPeppr Logo Gcode (mm)</a></li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadlogoinch">ChiliPeppr Logo Gcode (inch)</a></li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadcirclediamondsquare">Circle Diamond Square Calibration Gcode (mm)</a></li>
+      <li role="presentation" class="dropdown-header">Sample Eagle BRD Files</li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadeagleuno">Arduino Uno 2-Layer</a></li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadeaglemicro">Arduino Micro 4-Layer</a></li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadeagleadafruitruler">Adafruit Ruler PCB 2-Layer</a></li>
+      <li role="presentation" class="dropdown-header">Sample SVG Files</li>
+      <li><a href="javascript:" class="com-chilipeppr-elem-dragdrop-loadlogosvg">ChiliPeppr Logo SVG</a></li>
+      <li class="divider"></li>
+      
+      <li role="presentation" class="dropdown-header">Open Gcode From URL</li>
+      <li style="padding:0 20px;">
+        <div class="input-group">
+          <input type="url" class="form-control url-load" placeholder="Enter URL" style="" />
+          <span class="input-group-btn">
+                    <button class="btn btn-default url-load-go" type="button">Go!</button>
+                </span>
+        </div>
+        <!-- /input-group -->
+      </li>
+      <!-- <li class="divider"></li> -->
+      <li role="presentation" class="dropdown-header">Open Gcode From Clipboard</li>
+      <li style="padding:0 20px;">
+        <div class="input-group">
+          <textarea class="form-control paste-load" placeholder="Paste Gcode Here" style="font-size:10px;" rows="3"></textarea>
+          <span class="input-group-btn" style="vertical-align: top;">
+                    <button class="btn btn-default paste-load-go" style="" type="button">Go!</button>
+                </span>
+        </div>
+        <!-- /input-group -->
+      </li>
+      <li class="divider"></li>
+      <li role="presentation" class="dropdown-header recent-files">Recent Files</li>
+      <li><a href="javascript:" class="recent-file-delete"><span class="glyphicon glyphicon-trash"></span> Clear Recent Files</a></li>
+      <li>
+        <!-- <a href="" target="_blank" class="fork">Fork Widget</a> --></li>
+    </ul>
+  </div>
+
+  <!-- Modal for Out of Local Storage -->
+  <div id="com-chilipeppr-widget-dragdrop-outofspace" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Drag/Drop Out of Local Storage Space</h4>
+        </div>
+        <div class="modal-body">
+          <p>You are out of local storage space, so ChiliPeppr can't save your Gcode file for the next load. Please delete all of your local storage files for ChiliPeppr using the
+            <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" data-container="body" data-toggle="popover" data-placement="auto" data-trigger="hover" data-title="Drag and Drop" data-content="Drag a Gcode file onto your browser window to load it."><span class="glyphicon glyphicon-file"></span><span class="glyphicon glyphicon-share-alt" style="margin-left:-2px;color:#666666;"></span> <span class="caret"></span></button> in the workspace.</p>
+          <p>You can also ignore this error and proceed since ChiliPeppr will simply load your file into RAM and function perfectly fine. The only downside is if you reload ChiliPeppr, it won't have your most recent file loaded.</p>
+          <p>Browsers typically only allow for 5MB of local storage, which isn't much.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

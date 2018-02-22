@@ -1,0 +1,12 @@
+.lastModifyDate {
+    color: silver;
+}
+.com-chilipeppr-elem-dragdrop.well {
+    /* padding: 0px 20px; */
+    /* background-color: #428bca; */
+    padding:0;
+    margin:0;
+}
+.com-chilipeppr-elem-dragdrop.hover {
+    background-color: #428bca;
+}
