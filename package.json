@@ -1,7 +1,7 @@
 {
-  "name": "tutorial1",
+  "name": "cnc controlador",
   "version": "1.0.0",
-  "description": "prueba de node serial arduino",
+  "description": "control numerico computarizado para madera 10 ejes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,9 +10,9 @@
   "author": "oleo",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3",
-    "serialport": "^5.0.0",
-    "socket.io": "^2.0.3"
+    "express": "latest",
+    "serialport": "latest",
+    "socket.io": "latest"
   },
   "devDependencies": {},
   "keywords": []
