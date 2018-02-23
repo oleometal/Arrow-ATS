@@ -1,0 +1,137 @@
+
+
+h1
+{
+	color: #0288d1; 
+  font-size: 2em;
+  text-align: center;
+	
+}
+.area {
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #333;
+  background: #424242;
+  position: relative;
+  margin: 0 auto;
+}
+#dropzoneFileUpload {
+	background: #424242;
+  border: 2px dashed #bbb;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 50px;
+  text-align: center;
+  font: 21pt bold arial;
+  color: #bbb;
+}
+#dropzoneFileUpload span
+{
+	color: white;
+}
+.dz-details span
+{
+	color: #424242 !important;
+}
+.ondrag {
+  background: #0288d1 !important;
+}
+
+
+
+
+
+th
+{
+	position: relative;
+}
+.switch{
+  padding: 1.1em 0;
+}
+.select-wrapper
+{
+	margin-top: -1em;
+}
+.pull-right
+{
+	color: #aaa;
+	position: absolute;
+	bottom: 48px;
+	left: 50px;
+}
+
+
+.quantity {
+  position: relative;
+  margin-top: -1em;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {
+	
+  width: 80px;
+  height: 42px;
+  line-height: 1.65;
+  float: left;
+  display: block;
+  padding: 0;
+  margin: 0;
+  padding-left: 20px;
+  border-bottom: : 1px solid #aaa;
+  
+}
+
+.quantity input:focus {
+  outline: 0;
+}
+
+.quantity-nav {
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.quantity-button.quantity-up {
+	background: white;
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+	background: white;
+  position: absolute;
+  bottom: -1px;
+  height: 50%;
+}
