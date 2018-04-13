@@ -1,4 +1,4 @@
-servopack pin       rele      arduino pin
+servopack CN1      rele      arduino pin
       32 --------->  8  ---->   8
       28 --------->  7  ---->   9
       30 --------->  6  ---->   10
