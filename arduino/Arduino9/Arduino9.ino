@@ -42,7 +42,7 @@ void setup() {
   pinMode(16, INPUT_PULLUP);
   pinMode(17, INPUT_PULLUP);
   pinMode(19, INPUT);
-  pinMode(20. INPUT);
+  pinMode(20, INPUT);
   pinMode(21, INPUT_PULLUP);
   pinMode(22, INPUT_PULLUP);
   pinMode(23, INPUT_PULLUP);
