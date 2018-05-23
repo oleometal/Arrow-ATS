@@ -42,8 +42,6 @@ void setup() {
   pinMode(16, INPUT_PULLUP);
   pinMode(17, INPUT_PULLUP);
   pinMode(19, INPUT);
-  pinMode(20, INPUT);
-  pinMode(21, INPUT_PULLUP);
   pinMode(22, INPUT_PULLUP);
   pinMode(23, INPUT_PULLUP);
   pinMode(24, INPUT);
@@ -52,6 +50,7 @@ void setup() {
   pinMode(27, INPUT_PULLUP);
   pinMode(28, INPUT_PULLUP);
   pinMode(30, INPUT);
+  pinMode(31, INPUT_PULLUP);
   pinMode(32, INPUT);
   pinMode(33, INPUT_PULLUP);
   pinMode(34, INPUT_PULLUP);
@@ -60,6 +59,8 @@ void setup() {
   pinMode(38, INPUT);
   pinMode(39, INPUT);
   pinMode(40, INPUT);
+  pinMode(41, INPUT_PULLUP);
+  pinMode(42, INPUT);
   pinMode(45, INPUT);
   pinMode(46, INPUT);
   pinMode(47, INPUT);

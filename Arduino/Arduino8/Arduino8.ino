@@ -48,8 +48,6 @@ void setup() {
   pinMode(17, INPUT);
   pinMode(18, INPUT_PULLUP);
   pinMode(19, INPUT_PULLUP);
-  pinMode(20, INPUT_PULLUP);
-  pinMode(21, INPUT);
   pinMode(22, INPUT_PULLUP);
   pinMode(23, INPUT_PULLUP);
   pinMode(24, INPUT_PULLUP);
@@ -65,6 +63,7 @@ void setup() {
   pinMode(34, INPUT_PULLUP);
   pinMode(35, INPUT_PULLUP);  
   pinMode(36, INPUT);
+  pinMode(49, INPUT);
   Bridge.begin();
   
 
