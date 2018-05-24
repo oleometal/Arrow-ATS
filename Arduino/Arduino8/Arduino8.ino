@@ -24,6 +24,8 @@
   This example code is part of the public domain
 
   http://www.arduino.cc/en/Tutorial/Bridge
+  
+  MAC: C4:93:00:04:0E:FB
 
 */
 
@@ -37,9 +39,6 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup
-  pinMode(A1, INPUT);      //<- 3R13 <- 30 (UA1U1)
-  pinMode(A8, INPUT);      //<- 4R13 <- 28 (UA1U1)
-  pinMode(A15, INPUT);     //<- 5R13 <- 26 (UA1U1)
   pinMode(2, INPUT);
   pinMode(3, INPUT);
   pinMode(4, INPUT);
