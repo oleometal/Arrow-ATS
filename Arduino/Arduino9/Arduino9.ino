@@ -20,6 +20,8 @@
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
   This example code is part of the public domain
   http://www.arduino.cc/en/Tutorial/Bridge
+
+  MAC: C4:93:00:04:32:82
 */
 
 #include <Bridge.h>
