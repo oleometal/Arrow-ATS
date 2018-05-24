@@ -1,5 +1,5 @@
 /*
-  Arduino8 Yún Bridge 
+  Arduino9 Yún Bridge 
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
@@ -32,6 +32,8 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup
+  pinMode(A2, INPUT);      //<- 2R13 <- 32   (UA1U1)
+  pinMode(A11, INPUT);     //<- 6R9  <- ST12 (ST1U1)
   pinMode(3, INPUT);
   pinMode(4, INPUT_PULLUP);
   pinMode(5, INPUT_PULLUP);
@@ -55,16 +57,20 @@ void setup() {
   pinMode(33, INPUT_PULLUP);
   pinMode(34, INPUT_PULLUP);
   pinMode(35, INPUT_PULLUP);
-  pinMode(37, INPUT);
-  pinMode(38, INPUT);
+  pinMode(36, INPUT);       //<- 5R22 <- CN12 
+  pinMode(37, INPUT);       //<--------- 33 (CN1U1)
+  pinMode(38, INPUT);       //<--------- 33 (CU1U1)
   pinMode(39, INPUT);
   pinMode(40, INPUT);
-  pinMode(41, INPUT_PULLUP);
-  pinMode(42, INPUT);
+  pinMode(41, INPUT_PULLUP);//<--------- 37 (ST1U1)
+  pinMode(42, INPUT);       //<--------- 35 (ST1U1)
+  pinMode(43, OUTPUT);      //-> 6R22 -> 41 (CN1U1)
+  pinMode(44, OUTPUT);      //-> 5R21 -> 41 (CU1U1)
   pinMode(45, INPUT);
-  pinMode(46, INPUT);
+  pinMode(46, INPUT);       //<--------- 33 (UA1U1)
   pinMode(47, INPUT);
   pinMode(48, INPUT);
+  pinMode(49, OUTPUT);      //-> 4R22 -> 44 (CN1U1)
   Bridge.begin();
   
 

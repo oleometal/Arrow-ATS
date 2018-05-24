@@ -1,5 +1,5 @@
 /*
-  Arduino8 Yún Bridge 
+  Arduino3 Yún Bridge 
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
@@ -11,20 +11,15 @@
   analog pins on the board through REST calls.
   It demonstrates how you can create your own API when
   using REST style calls through the browser.
-
   Possible commands created in this shetch:
-
   "/arduino/digital/13"     -> digitalRead(13)
   "/arduino/digital/13/1"   -> digitalWrite(13, HIGH)
   "/arduino/analog/2/123"   -> analogWrite(2, 123)
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
-
   This example code is part of the public domain
-
   http://www.arduino.cc/en/Tutorial/Bridge
-
 */
 
 #include <Bridge.h>
@@ -37,36 +32,13 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup
-  pinMode(A1, INPUT);      //<- 3R13 <- 30 (UA1U1)
-  pinMode(A8, INPUT);      //<- 4R13 <- 28 (UA1U1)
-  pinMode(A15, INPUT);     //<- 5R13 <- 26 (UA1U1)
-  pinMode(2, INPUT);
-  pinMode(3, INPUT);
-  pinMode(4, INPUT);
-  pinMode(5, INPUT_PULLUP);
-  pinMode(6, INPUT_PULLUP);
-  pinMode(7, INPUT_PULLUP);
-  pinMode(15, INPUT);
-  pinMode(16, INPUT);
-  pinMode(17, INPUT);
-  pinMode(18, INPUT_PULLUP);
-  pinMode(19, INPUT_PULLUP);
-  pinMode(22, INPUT_PULLUP);
-  pinMode(23, INPUT_PULLUP);
-  pinMode(24, INPUT_PULLUP);
-  pinMode(25, INPUT);
-  pinMode(26, INPUT);
-  pinMode(27, INPUT); 
-  pinMode(28, INPUT_PULLUP);
-  pinMode(29, INPUT_PULLUP);
-  pinMode(30, INPUT_PULLUP);
-  pinMode(31, INPUT);
-  pinMode(32, INPUT);
-  pinMode(33, INPUT_PULLUP);
-  pinMode(34, INPUT_PULLUP);
-  pinMode(35, INPUT_PULLUP);  
-  pinMode(36, INPUT);
-  pinMode(49, INPUT);
+  pinMode(27, INPUT);      //<-  <- AL138
+  pinMode(28, INPUT);      //<-  <- AL137
+  pinMode(39, INPUT);      //<-  <- AR132
+  pinMode(40, INPUT);      //<-  <- AL1W16 (cafe)
+  pinMode(41, INPUT);      //<-  <- AL113
+  pinMode(42, INPUT);      //<-  <- AL115
+  pinMode(43, INPUT);      //<-  <- AL133
   Bridge.begin();
   
 
