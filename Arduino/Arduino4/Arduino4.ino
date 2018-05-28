@@ -27,7 +27,7 @@ DIRECCION MAC: C4:93:00:04:0C:FA
 */
 void setup() {
   // Bridge startup
-  pinMode(31, INPUT);      //Digital input|I.257|=A+A/621.07|31 Arduino4|BT18|RH PALLET|RH PALLET LOADING POSITION OVERLIMITS
+  pinMode(31, INPUT);      //<- 3R28 <- BT18
   pinMode(A1, INPUT);      //<-  <- VC11
   pinMode(A11, INPUT);     //<- 6R9  <- ST12 (ST1U1)
   Bridge.begin();
