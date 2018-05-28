@@ -33,7 +33,8 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup
-  pinMode(A0, INPUT);     
+  pinMode(A0, INPUT); 
+  pinMode(2, OUTPUT);    
   pinMode(A1, INPUT);     
   Bridge.begin();
   
