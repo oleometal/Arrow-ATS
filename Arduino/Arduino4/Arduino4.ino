@@ -22,27 +22,20 @@
 
 DIRECCION MAC: C4:93:00:04:0C:FA
 
-servopack-X CN1    rele      arduino pin
-      32 --------->  8  ---->   8
-      28 --------->  7  ---->   9
-      30 --------->  6  ---->   10
-      33 ------------------->   2
-      34 ------------------->   Gnd.
-      35 ------------------->   3
-      36 ------------------->   Gnd.
-      19 ------------------->   4
-      20 ------------------->   Gnd.
-      37 ------------------->   5
-      38 ------------------->   6
-      39 ------------------->   7
-      26 --------->  5  ---->   11
 
-Cable color
-azul UX1W3 ------->  4  ---->   12
-limite home X
-
-      41 <---------  3  <----   14
 
 */
+void setup() {
+  // Bridge startup
+  pinMode(31, INPUT);      //Digital input|I.257|=A+A/621.07|31 Arduino4|BT18|RH PALLET|RH PALLET LOADING POSITION OVERLIMITS
+  pinMode(A1, INPUT);      //<-  <- VC11
+  pinMode(A11, INPUT);     //<- 6R9  <- ST12 (ST1U1)
+  Bridge.begin();
+  
 
+  // Listen for incoming connection only from localhost
+  // (no one from the external network could connect)
+  server.listenOnLocalhost();
+  server.begin();
+}
 
