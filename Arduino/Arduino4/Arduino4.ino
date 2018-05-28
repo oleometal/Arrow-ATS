@@ -26,7 +26,7 @@ DIRECCION MAC: C4:93:00:04:0C:FA
 
 */
 void setup() {
-  // Bridge startup
+  // Bridge startup        Rele    Cable
   pinMode(31, INPUT); //<- 3R28 <- BT18
   pinMode(2, OUTPUT); //->      -> BB13
   pinMode(3, OUTPUT); //->      -> BF27
@@ -37,6 +37,22 @@ void setup() {
   pinMode(9, OUTPUT); //->      -> BB22
   pinMode(8, OUTPUT); //->      -> BB21
   pinMode(7, OUTPUT); //->      -> BB12
+  pinMode(6, OUTPUT); //->      -> BB11
+  pinMode(5, OUTPUT); //->      -> BF22
+  pinMode(14,OUTPUT); //->      -> BB23
+  pinMode(15,OUTPUT); //->      -> BF18
+  pinMode(16,OUTPUT); //->      -> BF17
+  pinMode(17,OUTPUT); //->      -> BF13
+  pinMode(18,OUTPUT); //->      -> BF14
+  pinMode(19,OUTPUT); //->      -> BF23
+  pinMode(49,OUTPUT); //-> 1R25 -> BF24
+  pinMode(48,OUTPUT); //-> 2R25 -> BF12
+  pinMode(47,OUTPUT); //-> 3R25 -> BF11
+  pinMode(46,OUTPUT); //-> 4R25 -> BB26
+  pinMode(45,OUTPUT); //-> 5R25 -> BB14
+  pinMode(44,OUTPUT); //-> 6R25 -> BB24
+  pinMode(43,OUTPUT); //-> 7R25 -> BT111
+  pinMode(42,OUTPUT); //-> 8R25 -> BT110
   Bridge.begin();
   
 
