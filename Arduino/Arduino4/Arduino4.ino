@@ -20,7 +20,7 @@
 
   http://www.arduino.cc/en/Tutorial/Bridge
 
-DIRECCION MAC: C4:93:00:04:0E::FB
+DIRECCION MAC: C4:93:00:04:0C:FA
 
 servopack-X CN1    rele      arduino pin
       32 --------->  8  ---->   8
