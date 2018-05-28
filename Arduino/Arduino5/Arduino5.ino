@@ -35,7 +35,6 @@ void setup() {
   // Bridge startup
   pinMode(A0, INPUT);     
   pinMode(A1, INPUT);     
-  pinMode(A11, INPUT);     
   Bridge.begin();
   
 
