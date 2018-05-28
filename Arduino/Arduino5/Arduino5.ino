@@ -34,15 +34,6 @@ BridgeServer server;
 void setup() {
   // Bridge startup
   pinMode(A0, INPUT); 
-  pinMode(2, OUTPUT);   //->    -> BB13
-  pinMode(3, OUTPUT);   //->    -> BF27
-  pinMode(4, OUTPUT);   //->    -> BF28    
-  pinMode(12,OUTPUT);   //->    -> BF21
-  pinMode(11,OUTPUT);   //->    -> BH22
-  pinMode(10,OUTPUT);   //->    -> BH21
-  pinMode(9, OUTPUT);   //->    -> BB22
-  pinMode(8, OUTPUT);   //->    -> BB21
-  pinMode(7, OUTPUT);   //->    -> BB12
   pinMode(A1, INPUT);     
   Bridge.begin();
   
