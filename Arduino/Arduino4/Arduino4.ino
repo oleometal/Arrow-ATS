@@ -28,8 +28,6 @@ DIRECCION MAC: C4:93:00:04:0C:FA
 void setup() {
   // Bridge startup
   pinMode(31, INPUT);      //<- 3R28 <- BT18
-  pinMode(A1, INPUT);      //<-  <- VC11
-  pinMode(A11, INPUT);     //<- 6R9  <- ST12 (ST1U1)
   Bridge.begin();
   
 
