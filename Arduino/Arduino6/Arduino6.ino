@@ -1,5 +1,5 @@
 /*
-  Arduino3 Yún Bridge 
+  Arduino6 Yún Bridge 
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
@@ -32,58 +32,32 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup        Rele    Cable
-  pinMode(47, INPUT); //<-      <- AL123
-  pinMode(48, INPUT); //<-      <- AL119
-  pinMode(49, INPUT); //<-      <- AL121
-  pinMode(A0, INPUT); //<-      <- AL111
-  pinMode(A1, INPUT); //<-      <- AL117
-  pinMode(27, INPUT); //<-      <- AL138
-  pinMode(28, INPUT); //<-      <- AL137
-  pinMode(39, INPUT); //<-      <- AR132
-  pinMode(40, INPUT); //<-      <- AL1W16 (cafe)
-  pinMode(41, INPUT); //<-      <- AL113
-  pinMode(42, INPUT); //<-      <- AL115
-  pinMode(A8, INPUT); //<-      <- AL144
-  pinMode(A9, INPUT); //<-      <- BB210
-  pinMode(A10,INPUT); //<-      <- BA110
-  pinMode(A11,INPUT); //<-      <- BA210
-  pinMode(A12,INPUT); //<-      <- BB110
-  pinMode(A13,INPUT); //<-      <- BC29
-  pinMode(A14,INPUT); //<-      <- BC19
-  pinMode(A15,INPUT); //<-      <- BF19
-  pinMode(A7, INPUT); //<-      <- NARANJA (AL1W16)
-  pinMode(45, INPUT); //<-      <- VERDE (AL1W16)
-  pinMode(A5, INPUT); //<-      <- NEGRO (AL1W16)
-  pinMode(40, INPUT); //<-      <- CAFE (AL1W16)
-  pinMode(A4, INPUT); //<-      <- AL129
-  pinMode(A3, INPUT); //<-      <- AL131
-  pinMode(A2, INPUT); //<-      <- AL127
-  pinMode(46, INPUT); //<-      <- AL125
-  pinMode(16, INPUT); //<-      <- AL140
-  pinMode(17, INPUT); //<-      <- AL142
-  pinMode(18, INPUT); //<-      <- AL143
-  pinMode(19, INPUT); //<-      <- AL135
-  pinMode(28, INPUT); //<-      <- AL137
-  pinMode(27, INPUT); //<-      <- AL138
-  pinMode(22, INPUT); //<-      <- AL139
-  pinMode(23, INPUT); //<-      <- AL141
-  pinMode(43, INPUT); //<-      <- AL133
-  pinMode(26,OUTPUT); //->      -> AL124
-  pinMode(14,OUTPUT); //->      -> AL110
-  pinMode(2, OUTPUT); //->      -> AL112
-  pinMode(3, OUTPUT); //->      -> AL114
-  pinMode(4, OUTPUT); //->      -> AL116
-  pinMode(5, OUTPUT); //->      -> AL118
-  pinMode(6, OUTPUT); //->      -> AL120
-  pinMode(7, OUTPUT); //->      -> AL122
-  pinMode(8, OUTPUT); //->      -> BT26,BT24
-  pinMode(9, OUTPUT); //->      -> AG1105,SU111
-  pinMode(10,OUTPUT); //->      -> BT16,BT14
-  pinMode(11,OUTPUT); //->      -> BT214
-  pinMode(12,OUTPUT); //->      -> BT114
-  pinMode(24,OUTPUT); //->      -> BT21
-  pinMode(25,OUTPUT); //->      -> BT11
-  pinMode(15,OUTPUT); //->      -> AL126
+  pinMode(29, INPUT); //<-      <- AZUL (SB1S2)
+  pinMode(30, INPUT); //<-      <- AZUL (SB1S1)
+  pinMode(19, INPUT); //<-      <- WG15
+  pinMode(2, OUTPUT); //->      -> BLANCO ROJO
+  pinMode(3, OUTPUT); //->      -> BLANCO NARANJA
+  pinMode(4, OUTPUT); //->      -> BLANCO CAFE
+  pinMode(5, OUTPUT); //->      -> ROJO
+  pinMode(6, OUTPUT); //->      -> GRIS
+  pinMode(7, OUTPUT); //->      -> AMARILLO
+  pinMode(8, OUTPUT); //->      -> CAFE
+  pinMode(9, OUTPUT); //->      -> VERDE
+  pinMode(10,OUTPUT); //->      -> SB148
+  pinMode(11,OUTPUT); //->      -> SB146
+  pinMode(12,OUTPUT); //->      -> SB144
+  pinMode(14,OUTPUT); //->      -> GRIS,NEGRO
+  pinMode(15,OUTPUT); //->      -> BLANCO,NEGRO
+  pinMode(16,OUTPUT); //->      -> AZUL
+  pinMode(17,OUTPUT); //->      -> NARANJA
+  pinMode(18,OUTPUT); //->      -> NEGRO
+  pinMode(20,OUTPUT); //->CAMBIAR-> SB145
+  pinMode(21,OUTPUT); //->CAMBIAR-> SB149
+  pinMode(22,OUTPUT); //->      -> SA113
+  pinMode(23,OUTPUT); //->      -> SB147
+  pinMode(24,OUTPUT); //->      -> SA111
+  pinMode(25,OUTPUT); //->      -> SB112
+  pinMode(26,OUTPUT); //->      -> SB111
   Bridge.begin();
   
 
