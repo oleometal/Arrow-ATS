@@ -20,7 +20,7 @@
 
   http://www.arduino.cc/en/Tutorial/Bridge
 
-DIRECCION MAC: C4:93:00:04:0C:FA
+DIRECCION MAC: 
 
 
 
