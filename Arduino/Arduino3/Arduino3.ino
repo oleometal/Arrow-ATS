@@ -31,14 +31,19 @@
 BridgeServer server;
 
 void setup() {
-  // Bridge startup
-  pinMode(27, INPUT);      //<-  <- AL138
-  pinMode(28, INPUT);      //<-  <- AL137
-  pinMode(39, INPUT);      //<-  <- AR132
-  pinMode(40, INPUT);      //<-  <- AL1W16 (cafe)
-  pinMode(41, INPUT);      //<-  <- AL113
-  pinMode(42, INPUT);      //<-  <- AL115
-  pinMode(43, INPUT);      //<-  <- AL133
+  // Bridge startup        Rele    Cable
+  pinMode(47, INPUT); //<-      <- AL123
+  pinMode(48, INPUT); //<-      <- AL119
+  pinMode(49, INPUT); //<-      <- AL121
+  pinMode(A0, INPUT); //<-      <- AL111
+  pinMode(A1, INPUT); //<-      <- AL117
+  pinMode(27, INPUT); //<-      <- AL138
+  pinMode(28, INPUT); //<-      <- AL137
+  pinMode(39, INPUT); //<-      <- AR132
+  pinMode(40, INPUT); //<-      <- AL1W16 (cafe)
+  pinMode(41, INPUT); //<-      <- AL113
+  pinMode(42, INPUT); //<-      <- AL115
+  pinMode(43, INPUT); //<-      <- AL133
   Bridge.begin();
   
 
