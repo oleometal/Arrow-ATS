@@ -43,6 +43,7 @@ void setup() {
   pinMode(40, INPUT); //<-      <- AL1W16 (cafe)
   pinMode(41, INPUT); //<-      <- AL113
   pinMode(42, INPUT); //<-      <- AL115
+  pinMode(A8, INPUT); //<-      <- AL144
   pinMode(43, INPUT); //<-      <- AL133
   Bridge.begin();
   
