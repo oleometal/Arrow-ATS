@@ -32,9 +32,48 @@
 BridgeServer server;
 
 void setup() {
-  // Bridge startup
+  // Bridge startup        Rele    Cable
   pinMode(A0, INPUT); 
-  pinMode(A1, INPUT);     
+  pinMode(A1, INPUT);
+  pinMode(A12,INPUT); //<- 1R30 <- BT222 
+  pinMode(A13,INPUT); //<- 2R30 <- BC220
+  pinMode(A15,INPUT); //<- 3R30 <- BC26
+  pinMode(49, INPUT); //<-      <- BC16?
+  pinMode(48, INPUT); //<-      <- BC16?
+  pinMode(47, INPUT); //<-      <- BC120
+  pinMode(46, INPUT); //<-      <- BT223
+  pinMode(45, INPUT); //<-      <- BA240
+  pinMode(41, INPUT); //<-      <- BT29
+  pinMode(40, INPUT); //<-      <- BT212
+  pinMode(39, INPUT); //<-      <- BT27
+  pinMode(38, INPUT); //<-      <- BT213
+  pinMode(37, INPUT); //<-      <- BT28
+  pinMode(36, INPUT); //<-      <- BA140
+  pinMode(2, OUTPUT); //->      -> BT221    
+  pinMode(3, OUTPUT); //->      -> BT220
+  pinMode(4, OUTPUT); //->      -> BH11
+  pinMode(5, OUTPUT); //->      -> BC22
+  pinMode(6, OUTPUT); //->      -> BC28
+  pinMode(7, OUTPUT); //->      -> BC27
+  pinMode(8, OUTPUT); //->      -> BC17
+  pinMode(9, OUTPUT); //->      -> BC18
+  pinMode(53,OUTPUT); //->      -> BC24
+  pinMode(16,OUTPUT); //->      -> BC23
+  pinMode(15,OUTPUT); //->      -> BA24
+  pinMode(14,OUTPUT); //->      -> BA26
+  pinMode(12,OUTPUT); //->      -> BA14
+  pinMode(11,OUTPUT); //->      -> BC14
+  pinMode(10,OUTPUT); //->      -> BC13
+  pinMode(44,OUTPUT); //->      -> BH12
+  pinMode(43,OUTPUT); //->      -> BC21
+  pinMode(35,OUTPUT); //->      -> BT211
+  pinMode(34,OUTPUT); //->      -> BT210
+  pinMode(33,OUTPUT); //->      -> BC11
+  pinMode(32,OUTPUT); //->      -> BC12
+  pinMode(31,OUTPUT); //->      -> BA21
+  pinMode(30,OUTPUT); //->      -> BA12
+  pinMode(29,OUTPUT); //->      -> BA22
+  pinMode(28,OUTPUT); //->      -> BA11
   Bridge.begin();
   
 

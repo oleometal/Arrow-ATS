@@ -1,5 +1,5 @@
 /*
-  Arduino Yún Bridge example
+  Arduino4 Yún 
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
@@ -27,6 +27,16 @@ DIRECCION MAC: C4:93:00:04:0C:FA
 */
 void setup() {
   // Bridge startup        Rele    Cable
+  pinMode(32, INPUT); //<- 2R28 <- BT19
+  pinMode(22, INPUT); //<-      <- BT17
+  pinMode(23, INPUT); //<-      <- BF26
+  pinMode(24, INPUT); //<-      <- BF16
+  pinMode(25, INPUT); //<-      <- BF120
+  pinMode(26, INPUT); //<-      <- BF16?
+  pinMode(27, INPUT); //<-      <- BB240
+  pinMode(28, INPUT); //<-      <- BB140
+  pinMode(29, INPUT); //<-      <- BT112
+  pinMode(30, INPUT); //<-      <- BT113
   pinMode(31, INPUT); //<- 3R28 <- BT18
   pinMode(2, OUTPUT); //->      -> BB13
   pinMode(3, OUTPUT); //->      -> BF27
