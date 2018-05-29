@@ -84,6 +84,7 @@ void setup() {
   pinMode(24,OUTPUT); //->      -> BT21
   pinMode(25,OUTPUT); //->      -> BT11
   pinMode(15,OUTPUT); //->      -> AL126
+  pinMode(44,OUTPUT); //-> 5R9  -> 41(ST1U1)
   Bridge.begin();
   
 

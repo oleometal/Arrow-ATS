@@ -33,46 +33,64 @@
 BridgeServer server;
 
 void setup() {
-  // Bridge startup
-  pinMode(A2, INPUT);      //<- 2R13 <- 32   (UA1U1)
-  pinMode(A11, INPUT);     //<- 6R9  <- ST12 (ST1U1)
+  // Bridge startup              Rele    Cable
+  pinMode(A0, INPUT);       //<- 2R10 <- UZ12(UZ1U1)
+  pinMode(A1, INPUT);       //<- 1R10 <- 26(ST1U1)
+  pinMode(A2, INPUT);       //<- 1R9  <- 28(ST1U1)VERIFICAR
+  pinMode(A3, INPUT);       //<- 2R9  <- 30(ST1U1)
+  pinMode(A4, INPUT);       //<- 3R9  <- 32(ST1U1)
+  pinMode(A7, INPUT);       //<- 7R9  <- 26(CU1U1)
+  pinMode(A8, INPUT);       //<- 8R9  <- 28(CU1U1)
+  pinMode(A9, INPUT);       //<- 8R21 <- 30(CU1U1)
+  pinMode(A10,INPUT);       //<- 7R21 <- 32(CU1U1)
+  pinMode(A11,INPUT);       //<- 6R9  <- ST12(ST1U1)
+  pinMode(A12,INPUT);       //<- 3R21 <- 26(CN1U1)
+  pinMode(A13,INPUT);       //<- 2R21 <- 28(CN1U1)
+  pinMode(A14,INPUT);       //<- 1R21 <- 30(CN1U1)
+  pinMode(A15,INPUT);       //<- 8R22 <- 32(CN1U1)
+  pinMode(2, OUTPUT);       //-> 1R12 -> 41(SV1U1)
   pinMode(3, INPUT);
-  pinMode(4, INPUT_PULLUP);
-  pinMode(5, INPUT_PULLUP);
-  pinMode(6, INPUT_PULLUP);
-  pinMode(8, INPUT);
+  pinMode(4, INPUT_PULLUP); //<--------- 37(UC1U1)
+  pinMode(5, INPUT_PULLUP); //<--------- 38(UC1U1)
+  pinMode(6, INPUT_PULLUP); //<--------- 39(UC1U1)
+  pinMode(7, OUTPUT);       //-> 1R11 -> 41(UC1U1)
+  pinMode(9,  INPUT);       //<- 8R10 <- 26(UZ1U1)
+  pinMode(10, INPUT);       //<- 7R10 <- 28(UZ1U1)
+  pinMode(11, INPUT);       //<- 6R10 <- 30(UZ1U1)
+  pinMode(12, INPUT);       //<- 5R10 <- 32(UZ1U1)
   pinMode(14, INPUT);
-  pinMode(15, INPUT_PULLUP);
-  pinMode(16, INPUT_PULLUP);
-  pinMode(17, INPUT_PULLUP);
-  pinMode(19, INPUT);
-  pinMode(22, INPUT_PULLUP);
-  pinMode(23, INPUT_PULLUP);
+  pinMode(15, INPUT_PULLUP); //<--------- 37(UZ1U1)
+  pinMode(16, INPUT_PULLUP); //<--------- 38(UZ1U1)
+  pinMode(17, INPUT_PULLUP); //<--------- 39(UZ1U1)
+  pinMode(18, OUTPUT);       //-> 3R10 -> 41(UZ1U1)  
+  pinMode(22, INPUT_PULLUP); //<--------- 38(ST1U1)
+  pinMode(23, INPUT_PULLUP); //<--------- 39(ST1U1)
   pinMode(24, INPUT);
   pinMode(25, INPUT);
-  pinMode(26, INPUT_PULLUP);
-  pinMode(27, INPUT_PULLUP);
-  pinMode(28, INPUT_PULLUP);
+  pinMode(26, INPUT_PULLUP); //<--------- 37(CU1U1)
+  pinMode(27, INPUT_PULLUP); //<--------- 38(CU1U1)
+  pinMode(28, INPUT_PULLUP); //<--------- 39(CU1U1)
+  pinMode(29, INPUT);        //<- 4R21 <- CU12
   pinMode(30, INPUT);
-  pinMode(31, INPUT_PULLUP);
+  pinMode(31, INPUT_PULLUP); //<--------- 39(UY1U1)
   pinMode(32, INPUT);
-  pinMode(33, INPUT_PULLUP);
-  pinMode(34, INPUT_PULLUP);
-  pinMode(35, INPUT_PULLUP);
-  pinMode(36, INPUT);       //<- 5R22 <- CN12 
-  pinMode(37, INPUT);       //<--------- 33 (CN1U1)
-  pinMode(38, INPUT);       //<--------- 33 (CU1U1)
+  pinMode(33, INPUT_PULLUP); //<--------- 37(CN1U1)
+  pinMode(34, INPUT_PULLUP); //<--------- 38(CN1U1)
+  pinMode(35, INPUT_PULLUP); //<--------- 39(CN1U1)
+  pinMode(36, INPUT);        //<- 5R22 <- CN12 
+  pinMode(37, INPUT);        //<--------- 33 (CN1U1)
+  pinMode(38, INPUT);        //<--------- 33 (CU1U1)
   pinMode(39, INPUT);
   pinMode(40, INPUT);
-  pinMode(41, INPUT_PULLUP);//<--------- 37 (ST1U1)
-  pinMode(42, INPUT);       //<--------- 35 (ST1U1)
-  pinMode(43, OUTPUT);      //-> 6R22 -> 41 (CN1U1)
-  pinMode(44, OUTPUT);      //-> 5R21 -> 41 (CU1U1)
+  pinMode(41,INPUT_PULLUP); //<--------- 37(ST1U1)
+  pinMode(42, INPUT);       //<--------- 35(ST1U1)
+  pinMode(43, OUTPUT);      //-> 6R22 -> 41(CN1U1)
+  pinMode(44, OUTPUT);      //-> 5R21 -> 41(CU1U1)
   pinMode(45, INPUT);
   pinMode(46, INPUT);       //<--------- 33 (UA1U1)
   pinMode(47, INPUT);
   pinMode(48, INPUT);
-  pinMode(49, OUTPUT);      //-> 4R22 -> 44 (CN1U1)
+  pinMode(49, OUTPUT);      //-> 4R22 -> 44(RESET)
   Bridge.begin();
   
 
