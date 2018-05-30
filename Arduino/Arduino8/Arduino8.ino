@@ -39,67 +39,66 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup        Rele    Cable
-  pinMode(A0, INPUT); //<- 2R11 <- UC12(UC1U1)
-  pinMode(A1, INPUT); //<- 3R13 <- 30(UA1U1)
-  pinMode(A2, INPUT); //<- 4R11 <- 32(UC1U1)
-  pinMode(A3, INPUT); //<- 5R11 <- 30(UC1U1)
-  pinMode(A4, INPUT); //<- 6R11 <- 28(UC1U1)
-  pinMode(A5, INPUT); //<- 7R11 <- 26(UC1U1)
-  pinMode(A8, INPUT); //<- 4R13 <- 28(UA1U1)
-  pinMode(A13,INPUT); //<- 7R12 <- UA12(UA1U1)
-  pinMode(A14,OUTPUT);//<- 8R12 <- 41(UA1U1) CAMBIAR
-  pinMode(A15,INPUT); //<- 5R13 <- 26(UA1U1)
-  pinMode(A7, INPUT); //<- 8R11 <- SV12(SV1U1)
-  pinMode(A12,INPUT); //<- 6R12 <- 26(SV1U1)
-  pinMode(A11,INPUT); //<- 5R12 <- 28(SV1U1)
-  pinMode(A10,INPUT); //<- 4R12 <- 30(SV1U1)
-  pinMode(A9, INPUT); //<- 3R12 <- 32(SV1U1)
+  pinMode(A0, INPUT); //<- 2R11 <- UC12(UC1W4)
+  pinMode(A1, INPUT); //<- 3R13 <- UC130(UA1W4)
+  pinMode(A2, INPUT); //<- 4R11 <- 32(UC1W4)
+  pinMode(A3, INPUT); //<- 5R11 <- 30(UC1W4)
+  pinMode(A4, INPUT); //<- 6R11 <- 28(UC1W4)
+  pinMode(A5, INPUT); //<- 7R11 <- UC126(UC1W4)
+  pinMode(A8, INPUT); //<- 4R13 <- 28(UA1W4)
+  pinMode(A13,INPUT); //<- 7R12 <- UA12(UA1W4)
+  pinMode(A14,OUTPUT);//<- 8R12 <- 41(UA1W4) CAMBIAR
+  pinMode(A15,INPUT); //<- 5R13 <- 26(UA1W4)
+  pinMode(A7, INPUT); //<- 8R11 <- SV12(SV1W4)
+  pinMode(A12,INPUT); //<- 6R12 <- 26(SV1W4)
+  pinMode(A11,INPUT); //<- 5R12 <- 28(SV1W4)
+  pinMode(A10,INPUT); //<- 4R12 <- 30(SV1W4)
+  pinMode(A9, INPUT); //<- 3R12 <- 32(SV1W4)
   pinMode(2,  INPUT);
   pinMode(3,  INPUT);
   pinMode(4,  INPUT);
-  pinMode(5,  INPUT_PULLUP); //<-- 37(UX1U1)
-  pinMode(6,  INPUT_PULLUP); //<-- 38(UX1U1)
-  pinMode(7,  INPUT_PULLUP); //<-- 39(UX1U1)
-  pinMode(8,  INPUT); //<- 8R15 <- 32(UX1U1)
-  pinMode(9,  INPUT); //<- 7R15 <- 28(UX1U1)
-  pinMode(10, INPUT); //<- 6R15 <- 30(UX1U1)
-  pinMode(11, INPUT); //<- 5R15 <- 26(UX1U1)
-  pinMode(12, INPUT); //<- 4R15 <- homeUX1W3(UX1U1)
-  pinMode(14,OUTPUT); //<- 3R15 <- 41(UX1U1)
+  pinMode(5,  INPUT_PULLUP); //<-- 37(UX1W4)
+  pinMode(6,  INPUT_PULLUP); //<-- 38(UX1W4)
+  pinMode(7,  INPUT_PULLUP); //<-- 39(UX1W4)
+  pinMode(8,  INPUT); //<- 8R15 <- 32(UX1W4)
+  pinMode(9,  INPUT); //<- 7R15 <- 28(UX1W4)
+  pinMode(10, INPUT); //<- 6R15 <- 30(UX1W4)
+  pinMode(11, INPUT); //<- 5R15 <- 26(UX1W4)
+  pinMode(12, INPUT); //<- 4R15 <- homeUX1W3(UX1W4)
+  pinMode(14,OUTPUT); //<- 3R15 <- 41(UX1W4)
   pinMode(15, INPUT);
   pinMode(16, INPUT);
   pinMode(17, INPUT);
-  pinMode(18, INPUT_PULLUP); //<-- 37(UY1U1)
-  pinMode(19, INPUT_PULLUP); //<-- 38(UY1U1)
-  pinMode(22, INPUT_PULLUP); //<-- 37(UY2U1)
-  pinMode(23, INPUT_PULLUP); //<-- 38(UY2U1)
-  pinMode(24, INPUT_PULLUP); //<-- 39(UY2U1)
+  pinMode(18, INPUT_PULLUP); //<-- 37(UY1W4)
+  pinMode(19, INPUT_PULLUP); //<-- 38(UY1W4)
+  pinMode(22, INPUT_PULLUP); //<-- 37(UY2W4)
+  pinMode(23, INPUT_PULLUP); //<-- 38(UY2W4)
+  pinMode(24, INPUT_PULLUP); //<-- 39(UY2W4)
   pinMode(25, INPUT);
   pinMode(26, INPUT); 
   pinMode(27, INPUT); 
-  pinMode(28, INPUT_PULLUP); //<---------- 37(UA1U1)
-  pinMode(29, INPUT_PULLUP); //<---------- 38(UA1U1)
-  pinMode(30, INPUT_PULLUP); //<---------- 39(UA1U1)
+  pinMode(28, INPUT_PULLUP); //<---------- 37(UA1W4)
+  pinMode(29, INPUT_PULLUP); //<---------- 38(UA1W4)
+  pinMode(30, INPUT_PULLUP); //<---------- 39(UA1W4)
   pinMode(31, INPUT);
   pinMode(32, INPUT);
-  pinMode(33,INPUT_PULLUP); //<---------- 37(SV1U1)
-  pinMode(34,INPUT_PULLUP); //<---------- 38(SV1U1)
-  pinMode(35,INPUT_PULLUP); //<---------- 39(SV1U1)  
+  pinMode(33,INPUT_PULLUP); //<---------- 37(SV1W4)
+  pinMode(34,INPUT_PULLUP); //<---------- 38(SV1W4)
+  pinMode(35,INPUT_PULLUP); //<---------- 39(SV1W4)  
   pinMode(36, INPUT);
-  pinMode(37, INPUT); //<- 2R15 <- 32(UY1U1)
-  pinMode(38, INPUT); //<- 1R15 <- 28(UY1U1)
-  pinMode(39, INPUT); //<- 8R14 <- 30(UY1U1)
-  pinMode(40, INPUT); //<- 7R14 <- 26(UY1U1)
-  pinMode(41, INPUT); //<- 6R14 <- homeUY1W3(UX1U1)
-  pinMode(42, INPUT); //<- 5R14 <- 41(UX1U1)
-  pinMode(43,OUTPUT); //<- 4R?  <- 41(UY2U1)
-  pinMode(44, INPUT); //<- 3R?  <- homeUY2W3(UY2U1)
-  pinMode(45, INPUT); //<- 2R?  <- 26(UY2U1)
-  pinMode(46, INPUT); //<- 1R14 <- 28(UY2U1)
-  pinMode(47, INPUT); //<- 8R13 <- 30(UY2U1)
-  pinMode(48, INPUT); //<- 7R13 <- 32(UY2U1)
+  pinMode(37, INPUT); //<- 2R15 <- 32(UY1W4)
+  pinMode(38, INPUT); //<- 1R15 <- 28(UY1W4)
+  pinMode(39, INPUT); //<- 8R14 <- 30(UY1W4)
+  pinMode(40, INPUT); //<- 7R14 <- 26(UY1W4)
+  pinMode(41, INPUT); //<- 6R14 <- homeUY1W3(UX1W4)
+  pinMode(42, INPUT); //<- 5R14 <- 41(UX1W4)
+  pinMode(43,OUTPUT); //<- 4R?  <- 41(UY2W4)
+  pinMode(44, INPUT); //<- 3R?  <- homeUY2W3(UY2W4)
+  pinMode(45, INPUT); //<- 2R?  <- 26(UY2W4)
+  pinMode(46, INPUT); //<- 1R14 <- 28(UY2W4)
+  pinMode(47, INPUT); //<- 8R13 <- 30(UY2W4)
+  pinMode(48, INPUT); //<- 7R13 <- 32(UY2W4)
   pinMode(49, INPUT);
-  
   Bridge.begin();
   
 
