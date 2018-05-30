@@ -35,7 +35,7 @@ BridgeServer server;
 void setup() {
   // Bridge startup              Rele    Cable
   pinMode(A0, INPUT);       //<- 2R10 <- UZ12(UZ1W4)
-  pinMode(A1, INPUT);       //<- 1R10 <- 26(ST1W4)
+  pinMode(A1, INPUT);       //<- 1R10 <- ST126(ST1W4)
   pinMode(A2, INPUT);       //<- 1R9  <- 28(ST1W4)VERIFICAR
   pinMode(A3, INPUT);       //<- 2R9  <- 30(ST1W4)
   pinMode(A4, INPUT);       //<- 3R9  <- 32(ST1W4)
