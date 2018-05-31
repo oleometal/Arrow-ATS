@@ -65,7 +65,7 @@ void setup() {
   pinMode(10, INPUT); //<- 6R15 <- 30(UX1W4)
   pinMode(11, INPUT); //<- 5R15 <- 26(UX1W4)
   pinMode(12, INPUT); //<- 4R15 <- homeUX1W3(UX1W4)
-  pinMode(14,OUTPUT); //<- 3R15 <- 41(UX1W4)
+  pinMode(14,OUTPUT); //-> 3R15 -> UX141(UX1W4)
   pinMode(15, INPUT);
   pinMode(16, INPUT);
   pinMode(17, INPUT);
@@ -89,7 +89,7 @@ void setup() {
   pinMode(37, INPUT); //<- 2R15 <- 32(UY1W4)
   pinMode(38, INPUT); //<- 1R15 <- 28(UY1W4)
   pinMode(39, INPUT); //<- 8R14 <- 30(UY1W4)
-  pinMode(40, INPUT); //<- 7R14 <- 26(UY1W4)
+  pinMode(40, INPUT); //<- 7R14 <- UY126(UY1W4)
   pinMode(41, INPUT); //<- 6R14 <- UY12(UX1W4)
   pinMode(42, INPUT); //<- 5R14 <- 41(UX1W4)
   pinMode(43,OUTPUT); //<- 4R?  <- 41(UY2W4)
