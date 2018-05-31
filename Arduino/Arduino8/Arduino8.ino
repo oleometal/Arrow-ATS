@@ -90,7 +90,7 @@ void setup() {
   pinMode(38, INPUT); //<- 1R15 <- 28(UY1W4)
   pinMode(39, INPUT); //<- 8R14 <- 30(UY1W4)
   pinMode(40, INPUT); //<- 7R14 <- 26(UY1W4)
-  pinMode(41, INPUT); //<- 6R14 <- homeUY1W3(UX1W4)
+  pinMode(41, INPUT); //<- 6R14 <- UY12(UX1W4)
   pinMode(42, INPUT); //<- 5R14 <- 41(UX1W4)
   pinMode(43,OUTPUT); //<- 4R?  <- 41(UY2W4)
   pinMode(44, INPUT); //<- 3R?  <- homeUY2W3(UY2W4)
