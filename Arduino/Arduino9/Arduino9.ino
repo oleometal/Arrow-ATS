@@ -56,10 +56,10 @@ void setup() {
   pinMode(7, OUTPUT);       //-> 1R11 -> 41(UC1W4)
   pinMode(9,  INPUT);       //<- 8R10 <- UZ126(UZ1W4)
   pinMode(10, INPUT);       //<- 7R10 <- UZ17(UZ1W4) ELIMINAR
-  pinMode(11, INPUT);       //<- 6R10 <- 30(UZ1W4)
-  pinMode(12, INPUT);       //<- 5R10 <- 32(UZ1W4)
+  pinMode(11, INPUT);       //<- 6R10 <- UZ130(UZ1W4)
+  pinMode(12, INPUT);       //<- 5R10 <- UZ132(UZ1W4)
   pinMode(14, INPUT);
-  pinMode(15, INPUT_PULLUP); //<-------- 37(UZ1W4)
+  pinMode(15, INPUT_PULLUP); //<-------- UZ137(UZ1W4)
   pinMode(16, INPUT_PULLUP); //<-------- UZ138(UZ1W4)
   pinMode(17, INPUT_PULLUP); //<-------- UZ139(UZ1W4)
   pinMode(18, OUTPUT);       //-> 3R10 -> UZ141(UZ1W4)  
