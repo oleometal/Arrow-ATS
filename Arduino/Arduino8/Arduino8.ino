@@ -61,7 +61,7 @@ void setup() {
   pinMode(6,  INPUT_PULLUP); //<-- 38(UX1W4)
   pinMode(7,  INPUT_PULLUP); //<-- 39(UX1W4)
   pinMode(8,  INPUT); //<- 8R15 <- 32(UX1W4)
-  pinMode(9,  INPUT); //<- 7R15 <- 28(UX1W4)
+  pinMode(9,  INPUT); //<- 7R15 <- UX128(UX1W4)
   pinMode(10, INPUT); //<- 6R15 <- 30(UX1W4)
   pinMode(11, INPUT); //<- 5R15 <- UX126(UX1W4)
   pinMode(12, INPUT); //<- 4R15 <- homeUX1W3(UX1W4)
