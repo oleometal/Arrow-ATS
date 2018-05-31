@@ -90,7 +90,7 @@ void setup() {
   pinMode(46, INPUT);       //<--------- UA133(UA1W4)
   pinMode(47, INPUT);
   pinMode(48, INPUT);
-  pinMode(49, OUTPUT);      //-> 4R22 -> 44(RESET)
+  pinMode(49, OUTPUT);      //-> 4R22 -> WQ12(RESET)
   Bridge.begin();
   
 
