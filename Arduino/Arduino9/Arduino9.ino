@@ -60,7 +60,7 @@ void setup() {
   pinMode(12, INPUT);       //<- 5R10 <- 32(UZ1W4)
   pinMode(14, INPUT);
   pinMode(15, INPUT_PULLUP); //<-------- 37(UZ1W4)
-  pinMode(16, INPUT_PULLUP); //<-------- 38(UZ1W4)
+  pinMode(16, INPUT_PULLUP); //<-------- UZ138(UZ1W4)
   pinMode(17, INPUT_PULLUP); //<-------- UZ139(UZ1W4)
   pinMode(18, OUTPUT);       //-> 3R10 -> UZ141(UZ1W4)  
   pinMode(22, INPUT_PULLUP); //<--------- 38(ST1W4)
