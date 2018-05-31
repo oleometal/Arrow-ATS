@@ -70,7 +70,7 @@ void setup() {
   pinMode(16, INPUT);
   pinMode(17, INPUT);
   pinMode(18, INPUT_PULLUP); //<-- 37(UY1W4)
-  pinMode(19, INPUT_PULLUP); //<-- 38(UY1W4)
+  pinMode(19, INPUT_PULLUP); //<-- UY138(UY1W4)
   pinMode(22, INPUT_PULLUP); //<-- 37(UY2W4)
   pinMode(23, INPUT_PULLUP); //<-- 38(UY2W4)
   pinMode(24, INPUT_PULLUP); //<-- 39(UY2W4)
