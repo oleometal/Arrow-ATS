@@ -33,57 +33,57 @@
 BridgeServer server;
 
 void setup() {
-  // Bridge startup       Rele    Cable
-  pinMode(A0, INPUT);//<- 2R10 <- UZ12(UZ1W4)
-  pinMode(A1, INPUT);//<- 1R10 <- ST126(ST1W4)
-  pinMode(A2, INPUT);       //<- 1R9  <- 28(ST1W4)VERIFICAR
-  pinMode(A3, INPUT);       //<- 2R9  <- 30(ST1W4)
-  pinMode(A4, INPUT);       //<- 3R9  <- 32(ST1W4)
-  pinMode(A5, INPUT);       //<- 2R13 <- UA132(UA1W4)
-  pinMode(A7, INPUT);       //<- 7R9  <- 26(CU1W4)
-  pinMode(A8, INPUT);       //<- 8R9  <- 28(CU1W4)
-  pinMode(A9, INPUT);       //<- 8R21 <- 30(CU1W4)
-  pinMode(A10,INPUT);       //<- 7R21 <- 32(CU1W4)
-  pinMode(A11,INPUT);       //<- 6R9  <- ST12
-  pinMode(A12,INPUT);       //<- 3R21 <- 26(CN1W4)
-  pinMode(A13,INPUT);       //<- 2R21 <- 28(CN1W4)
-  pinMode(A14,INPUT);       //<- 1R21 <- 30(CN1W4)
-  pinMode(A15,INPUT);       //<- 8R22 <- 32(CN1W4)
-  pinMode(2, OUTPUT);       //-> 1R12 -> 41(SV1W4)
+  // Bridge startup        Rele    Cable
+  pinMode(A0, INPUT); //<- 2R10 <- UZ12(UZ1W4)
+  pinMode(A1, INPUT); //<- 1R10 <- ST126(ST1W4)
+  pinMode(A2, INPUT); //<- 1R9  <- ST17(ST1W5) QUITAR PORQUE ES EL FRENO DEL EJE Z1
+  pinMode(A3, INPUT); //<- 2R9  <- ST130(ST1W4)
+  pinMode(A4, INPUT); //<- 3R9  <- ST132(ST1W4)
+  pinMode(A5, INPUT); //<- 2R13 <- UA132(UA1W4)
+  pinMode(A7, INPUT); //<- 7R9  <- CU126(CU1W4)
+  pinMode(A8, INPUT); //<- 8R9  <- CU128(CU1W4)
+  pinMode(A9, INPUT); //<- 8R21 <- CU130(CU1W4)
+  pinMode(A10,INPUT); //<- 7R21 <- CU132(CU1W4)
+  pinMode(A11,INPUT); //<- 6R9  <- ST12
+  pinMode(A12,INPUT); //<- 3R21 <- CN126(CN1W4)
+  pinMode(A13,INPUT); //<- 2R21 <- CN128(CN1W4)
+  pinMode(A14,INPUT); //<- 1R21 <- CN130(CN1W4)
+  pinMode(A15,INPUT); //<- 8R22 <- CN132(CN1W4)
+  pinMode(2, OUTPUT); //-> 1R12 -> SV141(SV1W4)
   pinMode(3, INPUT);
-  pinMode(4, INPUT_PULLUP); //<--------- 37(UC1W4)
-  pinMode(5, INPUT_PULLUP); //<--------- 38(UC1W4)
-  pinMode(6, INPUT_PULLUP); //<--------- 39(UC1W4)
-  pinMode(7, OUTPUT);       //-> 1R11 -> 41(UC1W4)
-  pinMode(9,  INPUT);       //<- 8R10 <- UZ126(UZ1W4)
-  pinMode(10, INPUT);       //<- 7R10 <- UZ17(UZ1W4) ELIMINAR
-  pinMode(11, INPUT);       //<- 6R10 <- UZ130(UZ1W4)
-  pinMode(12, INPUT);       //<- 5R10 <- UZ132(UZ1W4)
+  pinMode(4, INPUT_PULLUP); //<--- UC137(UC1W4)
+  pinMode(5, INPUT_PULLUP); //<--- UC138(UC1W4)
+  pinMode(6, INPUT_PULLUP); //<--- UC139(UC1W4)
+  pinMode(7, OUTPUT); //-> 1R11 -> UC141(UC1W4)
+  pinMode(9,  INPUT); //<- 8R10 <- UZ126(UZ1W4)
+  pinMode(10, INPUT); //<- 7R10 <- UZ17(UZ1W4) ELIMINAR PORQUE ES EL FRENO DEL EJE Z
+  pinMode(11, INPUT); //<- 6R10 <- UZ130(UZ1W4)
+  pinMode(12, INPUT); //<- 5R10 <- UZ132(UZ1W4)
   pinMode(14, INPUT);
-  pinMode(15, INPUT_PULLUP); //<-------- UZ137(UZ1W4)
-  pinMode(16, INPUT_PULLUP); //<-------- UZ138(UZ1W4)
-  pinMode(17, INPUT_PULLUP); //<-------- UZ139(UZ1W4)
-  pinMode(18, OUTPUT);       //-> 3R10 -> UZ141(UZ1W4)  
-  pinMode(22, INPUT_PULLUP); //<--------- 38(ST1W4)
-  pinMode(23, INPUT_PULLUP); //<--------- 39(ST1W4)
+  pinMode(15, INPUT_PULLUP); //<-- UZ137(UZ1W4)
+  pinMode(16, INPUT_PULLUP); //<-- UZ138(UZ1W4)
+  pinMode(17, INPUT_PULLUP); //<-- UZ139(UZ1W4)
+  pinMode(18,OUTPUT); //-> 3R10 -> UZ141(UZ1W4)  
+  pinMode(22, INPUT_PULLUP); //<-- ST138(ST1W4)
+  pinMode(23, INPUT_PULLUP); //<-- ST139(ST1W4)
   pinMode(24, INPUT);
   pinMode(25, INPUT);
-  pinMode(26, INPUT_PULLUP); //<--------- 37(CU1W4)
-  pinMode(27, INPUT_PULLUP); //<--------- 38(CU1W4)
-  pinMode(28, INPUT_PULLUP); //<--------- 39(CU1W4)
-  pinMode(29, INPUT);        //<- 4R21 <- CU12(CU1W4)
+  pinMode(26, INPUT_PULLUP); //<-- CU137(CU1W4)
+  pinMode(27, INPUT_PULLUP); //<-- CU138(CU1W4)
+  pinMode(28, INPUT_PULLUP); //<-- CU139(CU1W4)
+  pinMode(29, INPUT); //<- 4R21 <- CU12(CU1W4)
   pinMode(30, INPUT);
-  pinMode(31, INPUT_PULLUP); //<--------- UY139(UY1W4)
+  pinMode(31, INPUT_PULLUP); //<-- UY139(UY1W4)
   pinMode(32, INPUT);
-  pinMode(33, INPUT_PULLUP); //<--------- 37(CN1W4)
-  pinMode(34, INPUT_PULLUP); //<--------- 38(CN1W4)
-  pinMode(35, INPUT_PULLUP); //<--------- 39(CN1W4)
-  pinMode(36, INPUT);        //<- 5R22 <- CN12 
-  pinMode(37, INPUT);        //<--------- 33 (CN1W4)
-  pinMode(38, INPUT);        //<--------- 33 (CU1W4)
+  pinMode(33, INPUT_PULLUP); //<-- CN137(CN1W4)
+  pinMode(34, INPUT_PULLUP); //<-- CN138(CN1W4)
+  pinMode(35, INPUT_PULLUP); //<-- CN139(CN1W4)
+  pinMode(36, INPUT); //<- 5R22 <- CN12 
+  pinMode(37, INPUT); 
+  pinMode(38, INPUT); 
   pinMode(39, INPUT);
   pinMode(40, INPUT);
-  pinMode(41,INPUT_PULLUP); //<--------- ST137(ST1W4)
+  pinMode(41, INPUT_PULLUP); //<-- ST137(ST1W4)
   pinMode(42, INPUT);       //<--------- ST135(ST1W4)
   pinMode(43, OUTPUT);      //-> 6R22 -> ST141(CN1W4)
   pinMode(44, OUTPUT);      //-> 5R21 -> CU141(CU1W4)
