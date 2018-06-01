@@ -39,7 +39,7 @@ BridgeServer server;
 
 void setup() {
   // Bridge startup        Rele    Cable
-  pinMode(A0, INPUT); //<- 2R11 <- UC12(UC1W4)
+  pinMode(A0, INPUT); //<- 2R11 <- UC12
   pinMode(A1, INPUT); //<- 3R13 <- UC130(UA1W4)
   pinMode(A2, INPUT); //<- 4R11 <- 32(UC1W4)
   pinMode(A3, INPUT); //<- 5R11 <- 30(UC1W4)
@@ -49,7 +49,7 @@ void setup() {
   pinMode(A13,INPUT); //<- 7R12 <- UA12
   pinMode(A14,OUTPUT);//-> 8R12 -> UA141(UA1W4)(1CN.41)
   pinMode(A15,INPUT); //<- 5R13 <- 26(UA1W4)
-  pinMode(A7, INPUT); //<- 8R11 <- SV12(SV1W4)
+  pinMode(A7, INPUT); //<- 8R11 <- SV12
   pinMode(A12,INPUT); //<- 6R12 <- 26(SV1W4)
   pinMode(A11,INPUT); //<- 5R12 <- 28(SV1W4)
   pinMode(A10,INPUT); //<- 4R12 <- 30(SV1W4)
@@ -90,7 +90,7 @@ void setup() {
   pinMode(38, INPUT); //<- 1R15 <- UY128(UY1W4)
   pinMode(39, INPUT); //<- 8R14 <- UY130(UY1W4)
   pinMode(40, INPUT); //<- 7R14 <- UY126(UY1W4)
-  pinMode(41, INPUT); //<- 6R14 <- UY12(UX1W4)
+  pinMode(41, INPUT); //<- 6R14 <- UY12
   pinMode(42, INPUT); //<- 5R14 <- UX141(UX1W4)
   pinMode(43,OUTPUT); //<- 4R?  <- UY241(UY2W4)
   pinMode(44, INPUT); //<- 3R?  <- homeUY2W3(UY2W4)
