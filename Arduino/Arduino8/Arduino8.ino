@@ -41,19 +41,19 @@ void setup() {
   // Bridge startup        Rele    Cable
   pinMode(A0, INPUT); //<- 2R11 <- UC12
   pinMode(A1, INPUT); //<- 3R13 <- UC130(UA1W4)
-  pinMode(A2, INPUT); //<- 4R11 <- 32(UC1W4)
-  pinMode(A3, INPUT); //<- 5R11 <- 30(UC1W4)
-  pinMode(A4, INPUT); //<- 6R11 <- 28(UC1W4)
+  pinMode(A2, INPUT); //<- 4R11 <- UC132(UC1W4)
+  pinMode(A3, INPUT); //<- 5R11 <- UC130(UC1W4)
+  pinMode(A4, INPUT); //<- 6R11 <- UC128(UC1W4)
   pinMode(A5, INPUT); //<- 7R11 <- UC126(UC1W4)
   pinMode(A8, INPUT); //<- 4R13 <- UA128(UA1W4)
   pinMode(A13,INPUT); //<- 7R12 <- UA12
   pinMode(A14,OUTPUT);//-> 8R12 -> UA141(UA1W4)(1CN.41)
   pinMode(A15,INPUT); //<- 5R13 <- UA126(UA1W4)
   pinMode(A7, INPUT); //<- 8R11 <- SV12
-  pinMode(A12,INPUT); //<- 6R12 <- 26(SV1W4)
-  pinMode(A11,INPUT); //<- 5R12 <- 28(SV1W4)
-  pinMode(A10,INPUT); //<- 4R12 <- 30(SV1W4)
-  pinMode(A9, INPUT); //<- 3R12 <- 32(SV1W4)
+  pinMode(A12,INPUT); //<- 6R12 <- SV126(SV1W4)
+  pinMode(A11,INPUT); //<- 5R12 <- SV128(SV1W4)
+  pinMode(A10,INPUT); //<- 4R12 <- SV130(SV1W4)
+  pinMode(A9, INPUT); //<- 3R12 <- SV132(SV1W4)
   pinMode(2,  INPUT);
   pinMode(3,  INPUT);
   pinMode(4,  INPUT);
@@ -71,9 +71,9 @@ void setup() {
   pinMode(17, INPUT);
   pinMode(18, INPUT_PULLUP); //<-- UY137(UY1W4)
   pinMode(19, INPUT_PULLUP); //<-- UY138(UY1W4)
-  pinMode(22, INPUT_PULLUP); //<-- 37(UY2W4)
-  pinMode(23, INPUT_PULLUP); //<-- 38(UY2W4)
-  pinMode(24, INPUT_PULLUP); //<-- 39(UY2W4)
+  pinMode(22, INPUT_PULLUP); //<-- UY237(UY2W4)
+  pinMode(23, INPUT_PULLUP); //<-- UY238(UY2W4)
+  pinMode(24, INPUT_PULLUP); //<-- UY239(UY2W4)
   pinMode(25, INPUT);
   pinMode(26, INPUT); 
   pinMode(27, INPUT); 
