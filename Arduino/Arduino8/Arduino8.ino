@@ -77,14 +77,14 @@ void setup() {
   pinMode(25, INPUT);
   pinMode(26, INPUT); 
   pinMode(27, INPUT); 
-  pinMode(28, INPUT_PULLUP); //<---------- 37(UA1W4)
-  pinMode(29, INPUT_PULLUP); //<---------- 38(UA1W4)
-  pinMode(30, INPUT_PULLUP); //<---------- 39(UA1W4)
+  pinMode(28, INPUT_PULLUP); //<-- UA137(UA1W4)
+  pinMode(29, INPUT_PULLUP); //<-- UA138(UA1W4)
+  pinMode(30, INPUT_PULLUP); //<-- UA139(UA1W4)
   pinMode(31, INPUT);
   pinMode(32, INPUT);
-  pinMode(33,INPUT_PULLUP); //<---------- 37(SV1W4)
-  pinMode(34,INPUT_PULLUP); //<---------- 38(SV1W4)
-  pinMode(35,INPUT_PULLUP); //<---------- 39(SV1W4)  
+  pinMode(33,INPUT_PULLUP); //<--- SV137(SV1W4)
+  pinMode(34,INPUT_PULLUP); //<--- SV138(SV1W4)
+  pinMode(35,INPUT_PULLUP); //<--- SV139(SV1W4)  
   pinMode(36, INPUT);
   pinMode(37, INPUT); //<- 2R15 <- UY132(UY1W4)
   pinMode(38, INPUT); //<- 1R15 <- UY128(UY1W4)
