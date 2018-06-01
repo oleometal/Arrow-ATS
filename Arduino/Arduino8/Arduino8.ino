@@ -46,7 +46,7 @@ void setup() {
   pinMode(A4, INPUT); //<- 6R11 <- 28(UC1W4)
   pinMode(A5, INPUT); //<- 7R11 <- UC126(UC1W4)
   pinMode(A8, INPUT); //<- 4R13 <- 28(UA1W4)
-  pinMode(A13,INPUT); //<- 7R12 <- UA12(UA1W4)
+  pinMode(A13,INPUT); //<- 7R12 <- UA12
   pinMode(A14,OUTPUT);//-> 8R12 -> UA141(UA1W4)(1CN.41)
   pinMode(A15,INPUT); //<- 5R13 <- 26(UA1W4)
   pinMode(A7, INPUT); //<- 8R11 <- SV12(SV1W4)
