@@ -39,8 +39,8 @@ void setup() {
   pinMode(17, INPUT); //<-      <- SC126
   pinMode(18, INPUT); //<-      <- CN114
   pinMode(19,OUTPUT); //->      -> CN121
-  pinMode(20,OUTPUT); //->CAMBIAR      -> SA122
-  pinMode(21,OUTPUT); //->cAMBIAR      -> CN122    
+  pinMode(27,OUTPUT); //-> 7R38 -> SA122
+  pinMode(28,OUTPUT); //-> 6R38 -> CN122    
   pinMode(22,OUTPUT); //->      -> SA121
   pinMode(23,OUTPUT); //->      -> CU112
   pinMode(2, OUTPUT); //->      -> CU111
