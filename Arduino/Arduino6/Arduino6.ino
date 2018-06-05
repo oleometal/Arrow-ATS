@@ -51,8 +51,8 @@ void setup() {
   pinMode(16,OUTPUT); //->      -> AZUL
   pinMode(17,OUTPUT); //->      -> NARANJA
   pinMode(18,OUTPUT); //->      -> NEGRO
-  pinMode(20,OUTPUT); //->CAMBIAR-> SB145
-  pinMode(21,OUTPUT); //->CAMBIAR-> SB149
+  pinMode(27,OUTPUT); //-> 1R37 -> SB145
+  pinMode(28,OUTPUT); //-> 2R37 -> SB149
   pinMode(22,OUTPUT); //->      -> SA113
   pinMode(23,OUTPUT); //->      -> SB147
   pinMode(24,OUTPUT); //->      -> SA111
