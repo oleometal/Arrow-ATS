@@ -22,6 +22,7 @@
   http://www.arduino.cc/en/Tutorial/Bridge
   
   MAC: C4:93:00:04:0E:74
+  IP: 192.168.1.88
 */
 
 #include <Bridge.h>
