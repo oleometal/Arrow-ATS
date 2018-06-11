@@ -26,6 +26,7 @@
   http://www.arduino.cc/en/Tutorial/Bridge
   
   MAC: C4:93:00:04:0E:FB
+  IP: 192.168.1.86
 
 */
 
