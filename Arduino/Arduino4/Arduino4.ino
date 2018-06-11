@@ -20,7 +20,8 @@
 
   http://www.arduino.cc/en/Tutorial/Bridge
 
-DIRECCION MAC: C4:93:00:04:0C:FA
+MAC: C4:93:00:04:2D:C1
+IP: 192.168.1.89
 
 
 
