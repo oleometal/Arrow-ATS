@@ -19,8 +19,9 @@
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
-  This example code is part of the public domain
-  http://www.arduino.cc/en/Tutorial/Bridge
+  
+  MAC: C4:93:00:04:16:DB
+  IP: 192.168.1.84
 */
 
 #include <Bridge.h>
