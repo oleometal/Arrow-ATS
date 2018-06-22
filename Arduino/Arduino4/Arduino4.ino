@@ -26,6 +26,15 @@ IP: 192.168.1.89
 
 
 */
+#include <Bridge.h>
+#include <BridgeServer.h>
+#include <BridgeClient.h>
+
+// Listen to the default port 5555, the Yún webserver
+// will forward there all the HTTP requests you send
+
+BridgeServer server;
+
 void setup() {
   // Bridge startup        Rele    Cable
   pinMode(32, INPUT); //<- 2R28 <- BT19

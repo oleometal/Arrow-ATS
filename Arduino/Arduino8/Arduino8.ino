@@ -105,7 +105,7 @@ void setup() {
 
   // Listen for incoming connection only from localhost
   // (no one from the external network could connect)
-  server.listenOnLocalhost();
+  //server.listenOnLocalhost();
   server.begin();
 }
 
@@ -128,6 +128,13 @@ void loop() {
 void process(BridgeClient client) {
   // read the command
   String command = client.readStringUntil('/');
+
+  client.println("Status: 200");
+  client.println("Access-Control-Allow-Origin: *");   
+  client.println("Access-Control-Allow-Methods: GET");
+  client.println("Content-Type: text/html");
+  client.println("Connection: close");
+  client.println();
 
   // is "digital" command?
   if (command == "digital") {
