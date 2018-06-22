@@ -1,5 +1,6 @@
 /*
   Arduino4 Yún 
+  Ubicacion +F Mesa Derecha
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
