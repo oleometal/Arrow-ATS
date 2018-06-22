@@ -1,5 +1,6 @@
 /*
   Arduino6 Yún Bridge 
+  Ubicacion carro +E parte Derecha
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
