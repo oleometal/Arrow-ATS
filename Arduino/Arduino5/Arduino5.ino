@@ -1,5 +1,8 @@
 /*
   Arduino5 Yún Bridge 
+  Ubicación : +G Mesa Izquierda 
+  MAC : C4:93:00:03:EA:FE
+  IP: 192.168.1.82
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
@@ -18,9 +21,7 @@
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
-  This example code is part of the public domain
-  http://www.arduino.cc/en/Tutorial/Bridge
-  MAC : C4:93:00:03:EA:FE
+  
 */
 
 #include <Bridge.h>
