@@ -1,5 +1,6 @@
 /*
   Arduino7 Yún 
+  Ubicacion carro +E parte izquierda
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
