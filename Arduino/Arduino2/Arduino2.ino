@@ -1,6 +1,8 @@
 /*
   Arduino2 Yún Bridge 
   Ubicacion +A Armario
+  MAC: C4:93:00:04:0E:74
+  IP: 192.168.1.88
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
@@ -22,8 +24,6 @@
   This example code is part of the public domain
   http://www.arduino.cc/en/Tutorial/Bridge
   
-  MAC: C4:93:00:04:0E:74
-  IP: 192.168.1.88
 */
 
 #include <Bridge.h>
