@@ -1,6 +1,8 @@
 /*
   Arduino7 Yún 
   Ubicacion carro +E parte izquierda
+  MAC: C4:93:00:04:2D:C1
+  IP: 192.168.1.89
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
@@ -16,14 +18,6 @@
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
-
-  This example code is part of the public domain
-
-  http://www.arduino.cc/en/Tutorial/Bridge
-
-DIRECCION MAC: 
-
-
 
 */
 void setup() {
