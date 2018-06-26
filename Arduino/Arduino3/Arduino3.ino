@@ -43,6 +43,11 @@ void setup() {
   pinMode(A1, INPUT); //<-      <- AL117
   pinMode(27, INPUT); //<-      <- AL138
   pinMode(28, INPUT); //<-      <- AL137
+  pinMode(34, INPUT); //<- 5R41 <- AP170
+  pinMode(35, INPUT); //<- 4R41 <- AP180
+  pinMode(36, INPUT); //<- 3R41 <- AG113
+  pinMode(37, INPUT); //<- 2R41 <- AP1310
+  pinMode(38, INPUT); //<- 1R41 <- AP164
   pinMode(39, INPUT); //<-      <- AR132
   pinMode(40, INPUT); //<-      <- AL1W16 (cafe)
   pinMode(41, INPUT); //<-      <- AL113
