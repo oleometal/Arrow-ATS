@@ -1,7 +1,10 @@
 //HTTP
 var http = require('http');
+// File System para abrir ficheros
 var fs = require('fs');
+// Creamos el servidor
 http.createServer(function (req, res) {
+    //contenido html
  var content = '';
  var type = '';
  if(req.url === '/') {
