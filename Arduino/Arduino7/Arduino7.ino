@@ -1,7 +1,7 @@
 /*
   Arduino7 Yún 
   Ubicacion carro +E parte izquierda
-  MAC: C4:93:00:04:2D:C1
+  MAC: C4:93:00:04:32:59
   IP: 192.168.1.89
 
   This example for the YunShield/Yún shows how 
