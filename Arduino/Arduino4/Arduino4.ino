@@ -2,7 +2,7 @@
   Arduino4 Yún 
   Ubicacion +F Mesa Derecha
   MAC: C4:93:00:04:0C:FA
-  IP: 192.168.1.83
+  IP: 192.168.0.83
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
