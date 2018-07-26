@@ -2,7 +2,7 @@
   Arduino3 Yún Bridge 
   Ubicacion +A Armario
   MAC: C4:93:00:03:E9:B1
-  IP: 192.168.1.85
+  IP: 192.168.0.85
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
