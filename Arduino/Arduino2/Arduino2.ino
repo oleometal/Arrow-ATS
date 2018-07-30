@@ -94,7 +94,7 @@ void setup() {
 
   // Listen for incoming connection only from localhost
   // (no one from the external network could connect)
-  server.listenOnLocalhost();
+  server.noListenOnLocalhost();
   server.begin();
 }
 
