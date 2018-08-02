@@ -2,7 +2,7 @@
   Arduino7 Yún 
   Ubicacion carro +E parte izquierda
   MAC: C4:93:00:04:32:59
-  IP: 192.168.1.89
+  IP: 192.168.0.89
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
@@ -60,7 +60,7 @@ void setup() {
 
   // Listen for incoming connection only from localhost
   // (no one from the external network could connect)
-  //server.listenOnLocalhost();
+  server.listenOnLocalhost();
   server.begin();
 }
 void loop() {
