@@ -2,7 +2,7 @@
   Arduino5 Yún Bridge 
   Ubicación : +G Mesa Izquierda 
   MAC : C4:93:00:03:EA:FE
-  IP: 192.168.1.82
+  IP: 192.168.0.82
   
   Los pines descritos en el setup deben ser siempre declarados como inputs
   porque hay un voltaje permanente que viene de los encoders
@@ -80,7 +80,7 @@ void setup() {
 
   // Listen for incoming connection only from localhost
   // (no one from the external network could connect)
-  //server.listenOnLocalhost();
+  server.listenOnLocalhost();
   server.begin();
 }
 
