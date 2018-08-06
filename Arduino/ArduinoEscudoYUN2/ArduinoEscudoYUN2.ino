@@ -87,6 +87,7 @@ void setup() {
   pinMode(16,OUTPUT); //->      -> AL134
   pinMode(14,OUTPUT); //->      -> AL136
   pinMode(15,OUTPUT); //->      -> VB14
+  pinMode(22,OUTPUT); //-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
   pinMode(34,OUTPUT); //->      -> RUN SERVOPACKS
   pinMode(35,OUTPUT); //->      -> BA211
   Bridge.begin();
