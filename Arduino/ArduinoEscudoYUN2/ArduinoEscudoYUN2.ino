@@ -84,6 +84,7 @@ void setup() {
   pinMode(12,OUTPUT); //->      -> AL128
   pinMode(17,OUTPUT); //->      -> AL130
   pinMode(18,OUTPUT); //->      -> AL132
+  pinMode(19,OUTPUT); //->  -   -> PIN 13 DE VARIADOR Master speed frequence reference.
   pinMode(16,OUTPUT); //->      -> AL134
   pinMode(14,OUTPUT); //->      -> AL136
   pinMode(15,OUTPUT); //->      -> VB14
