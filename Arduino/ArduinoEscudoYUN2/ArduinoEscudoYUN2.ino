@@ -30,13 +30,19 @@
 #include <BridgeServer.h>
 #include <BridgeClient.h>
 
+//ID de Sensores
+const int I85 = A0;  //<-      <- AR141
+int ValorSensor_I85 = 0;    //Variable para almacenar el valor del sensor.
+int Estado_I85 = 0;        // Estado Actual del Sensor
+
+
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
 
 void setup() {
-  // Bridge startup
-  pinMode(A0, INPUT); //<-      <- AR141
+  // declarar pines como input y output.
+  pinMode(I85, INPUT); 
   pinMode(A1, INPUT); //<-      <- VC11
   pinMode(38, INPUT); //<-      <- BF29
   pinMode(37, INPUT); //<-      <- AP1100
@@ -91,6 +97,7 @@ void setup() {
   pinMode(22,OUTPUT); //-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
   pinMode(34,OUTPUT); //->      -> RUN SERVOPACKS
   pinMode(35,OUTPUT); //->      -> BA211
+  // Bridge startup
   Bridge.begin();
   
 
@@ -112,6 +119,20 @@ void loop() {
     // Close connection and free resources.
     client.stop();
   }
+  // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
+  ValorSensor_I85 = analogRead(I85);
+  //este evento solo sucede una vez, solo si el valor del sensor cambia.
+  if (ValorSensor_I85 > 500 && Estado_I85 == 1) {
+    //comando que empuje el valor del sensor hacia el cliente.
+    Estado_I85 = 0;
+  }
+  else {
+    if (ValorSensor_I85 < 500 && Estado_I85 == 0){
+      //comando que empuje el valor del sensor hacia el cliente.
+      Estado_I85 = 1;
+    }
+  }
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   delay(50); // Poll every 50ms
 }
