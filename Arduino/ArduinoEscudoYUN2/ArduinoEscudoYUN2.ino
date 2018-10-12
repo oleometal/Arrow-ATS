@@ -42,7 +42,6 @@ BridgeServer server;
 
 void setup() {
   // declarar pines como input y output.
-  pinMode(I85, INPUT); 
   pinMode(A1, INPUT); //<-      <- VC11
   pinMode(38, INPUT); //<-      <- BF29
   pinMode(37, INPUT); //<-      <- AP1100
@@ -119,21 +118,8 @@ void loop() {
     // Close connection and free resources.
     client.stop();
   }
-  // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
-  ValorSensor_I85 = analogRead(I85);
-  //este evento solo sucede una vez, solo si el valor del sensor cambia.
-  if (ValorSensor_I85 > 500 && Estado_I85 == 1) {
-    //comando que empuje el valor del sensor hacia el cliente.
-    Estado_I85 = 0;
-  }
-  else {
-    if (ValorSensor_I85 < 500 && Estado_I85 == 0){
-      //comando que empuje el valor del sensor hacia el cliente.
-      Estado_I85 = 1;
-    }
-  }
-  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+  Leer_Sensores();
+  
   delay(50); // Poll every 50ms
 }
 
@@ -265,4 +251,25 @@ void modeCommand(BridgeClient client) {
 
   client.print(F("error: invalid mode "));
   client.print(mode);
+}
+void Leer_Sensores();{
+  // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
+  ValorSensor_I85 = analogRead(I85);
+  //este evento solo sucede una vez, solo si el valor del sensor cambia.
+  if (ValorSensor_I85 > 500 && Estado_I85 == 0) {
+    //el estado del sensor cambio a HIGH
+    Estado_I85 = 1;
+    //comando que empuje el valor del sensor hacia el cliente.
+    
+  }
+  else {
+    if (ValorSensor_I85 < 500 && Estado_I85 == 1){
+      //el estado del sensor cambio a LOW
+      Estado_I85 = 0;
+      //comando que empuje el valor del sensor hacia el cliente.
+      
+    }
+  }
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 }
