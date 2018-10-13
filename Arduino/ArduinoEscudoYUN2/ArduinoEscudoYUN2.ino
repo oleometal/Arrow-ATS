@@ -4,16 +4,6 @@
   MAC: C4:93:00:04:2D:C1
   IP: 192.168.0.88
   
-  Los pines descritos en el setup deben ser siempre declarados como inputs
-  porque hay un voltaje permanente que viene de los encoders
-  no debe permitir que se cambien desde la aplicacion web;
-  El motivo Principal es porque se calienta la tarjeta.
-  
-  This example for the YunShield/Yún shows how 
-  to use the Bridge library to access the digital and
-  analog pins on the board through REST calls.
-  It demonstrates how you can create your own API when
-  using REST style calls through the browser.
   Possible commands created in this shetch:
   "/arduino/digital/13"     -> digitalRead(13)
   "/arduino/digital/13/1"   -> digitalWrite(13, HIGH)
@@ -21,9 +11,14 @@
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
-  This example code is part of the public domain
-  http://www.arduino.cc/en/Tutorial/Bridge
-  
+
+  "/data" is used to access to the internal key/value storage. The available calls are:
+
+    /put/KEY/VALUE : stores a value inside the storage
+    /get/KEY : obtains the value of the requested key in JSON
+    /get : obtains the entire storage list in JSON.
+    /delete : deletes the internal storage
+    
 */
 
 #include <Bridge.h>
@@ -34,13 +29,15 @@
 const int I85 = A0;  //<-      <- AR141
 int ValorSensor_I85 = 0;    //Variable para almacenar el valor del sensor.
 int Estado_I85 = 0;        // Estado Actual del Sensor
-
+String key1 = "I85";
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
 
 void setup() {
+  
+  Bridge.put(key1, String(Estado_I85)); // imprime estado de sensor en memoria.
   // declarar pines como input y output.
   pinMode(A1, INPUT); //<-      <- VC11
   pinMode(38, INPUT); //<-      <- BF29
@@ -119,6 +116,7 @@ void loop() {
     client.stop();
   }
   Leer_Sensores();
+  Activar_Sensores();
   
   delay(50); // Poll every 50ms
 }
@@ -252,24 +250,62 @@ void modeCommand(BridgeClient client) {
   client.print(F("error: invalid mode "));
   client.print(mode);
 }
-void Leer_Sensores();{
-  // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
+// +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
+void Leer_Sensores(){
+  
+  
+  Process p;
+  
+  
   ValorSensor_I85 = analogRead(I85);
-  //este evento solo sucede una vez, solo si el valor del sensor cambia.
+  
+  //este evento sucede una vez, solo si el valor del sensor cambia.
   if (ValorSensor_I85 > 500 && Estado_I85 == 0) {
     //el estado del sensor cambio a HIGH
     Estado_I85 = 1;
-    //comando que empuje el valor del sensor hacia el cliente.
+    //comando que empuje el valor del sensor hacia el cliente (este es un ejemplo).
+    p.begin("curl");
+    p.addParameter("-X"); // use POST instead of default GET
+    p.addParameter("POST");
+    p.addParameter("-d");
+    p.addParameter('{"name":"Nick"}');
+    
+    
+    p.addParameter("http://192.168.0.98:1880/hello-form");
+    p.runAsynchronously();
+    Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
+
     
   }
-  else {
-    if (ValorSensor_I85 < 500 && Estado_I85 == 1){
-      //el estado del sensor cambio a LOW
-      Estado_I85 = 0;
-      //comando que empuje el valor del sensor hacia el cliente.
+  else if (ValorSensor_I85 < 500 && Estado_I85 == 1){
+    //el estado del sensor cambio a LOW
+    Estado_I85 = 0;
+    //comando que empuje el valor del sensor hacia el cliente.
+    Bridge.put(key1, String(Estado_I85));
       
     }
-  }
+
+
+  
+
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 }
+void Activar_Sensores(){
+  
+  String command;
+  char buf[3];
+  Bridge.get("O343", buf, 3);
+  command = buf[0];
+  if (command.toInt() == 1){
+    digitalWrite(13, HIGH);
+  }
+  else if (command.toInt() == 0){
+    digitalWrite(13, LOW);
+  }
+  Bridge.put("hola",command );
+
+
+
+}
+
