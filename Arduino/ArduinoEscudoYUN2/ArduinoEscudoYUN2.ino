@@ -268,10 +268,10 @@ void Leer_Sensores(){
     p.addParameter("-X"); // use POST instead of default GET
     p.addParameter("POST");
     p.addParameter("-d");
-    p.addParameter('{"name":"Nick"}');
-    
-    
-    p.addParameter("http://192.168.0.98:1880/hello-form");
+    p.addParameter("{\"name\":\"Nick\"}");
+    p.addParameter("-H"); 
+    p.addParameter("Content-type: application/json");
+    p.addParameter("http://192.168.0.120:3000/");
     p.runAsynchronously();
     Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
 
