@@ -1,13 +1,10 @@
 var express = require('express');
 var path = require('path');
-var Client = require('node-rest-client').Client;
 var mime = require('mime');
 var fs = require('fs');
 var router = express.Router();
-var client = new Client();
 let file_path;
 var json = [];
-var chunkSize = 6;
 const pockets = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 const T = "T";
 const M6 = "M6";
@@ -30,6 +27,45 @@ router.get('/', function(req, res, next) {
 });
 
 
+router.get('/delete/:id', function(req, res, next){
+  var tool = req.params.id;
+  if(tool > 0){
+    var json = JSON.parse(fs.readFileSync('offset.json').toString());
+    for (var i = 0; i < json.length; i++) {
+      if(json[i].id == tool) {
+        json.splice(i, 1);
+        break;
+      }
+    }
+    json = orderDescendingJson(json);
+    json = JSON.stringify(json, null, "\t"); 
+    fs.writeFile('offset.json', json, 'utf8');
+  }
+  return res.redirect("/");
+});
+
+router.post('/tool', function(req, res, next){
+  var tool = req.body;
+  if(tool.id){
+    var json = JSON.parse(fs.readFileSync('offset.json').toString());
+
+    for (var i = 0; i < json.length; i++) {
+      if(json[i].id == tool.id) return res.redirect('/');
+    }
+
+    json.push(tool);
+    
+    json = orderDescendingJson(json);
+    
+    json = JSON.stringify(json, null, '\t');
+
+    fs.writeFile('offset.json', json, 'utf8');
+
+    return res.redirect('/');
+  }
+  return res.send(tool);
+});
+
 router.post('/upload', function(req, res, next){
   
    if (!req.files)
@@ -50,9 +86,10 @@ router.post('/upload', function(req, res, next){
       return res.status(500).send(err);
 
     var array = fs.readFileSync(file_path).toString().split('\n');
+    
     if(checkToolChangesCommands(array)){
       var tools = getTools(array);
-      console.log(tools);
+      
       var result = checkIfToolsAreReady(tools);
       
       if(result.valid){
@@ -60,7 +97,7 @@ router.post('/upload', function(req, res, next){
         newGcode = newGcode.toString().replace(/,/g, '');
         newGcode = newGcode.toString().replace(/  +/g, ' ');
         newGcode = newGcode.toString().replace(/\r/g, '\n');
-        console.log(newGcode);
+        
         fs.writeFile(file_path, newGcode, function(err) {
           if(err)console.log('error al generar el archivo');
           else res.send(file_path);
@@ -109,7 +146,7 @@ router.post('/update', function(req, res, next){
       }
     }
   }
-  console.log(repeat);
+  
   if(repeat) res.send({error: true});
   else{
     json = JSON.stringify(data, null, "\t"); 
@@ -128,18 +165,18 @@ router.post('/update', function(req, res, next){
 
 });
 
-router.get('/update-pocket', function(req, res, next){
+router.get('/update-or-get-log', function(req, res, next){
 
-  var pocket = req.query.pocket;
+  var tool = req.query.tool;
   var msg = req.query.msg;
   
 
   var result = {};
-  if(pocket > 0){
+  if(tool > 0){
     var json = JSON.parse(fs.readFileSync('offset.json').toString());
     
     var result = checkSpindleTool(json);
-    var currentTool = getToolFromPocket(json, pocket);
+    var currentTool = getToolFromId(json, tool);
 
     json = makeToolChange(json, result.tool, currentTool);
     
@@ -150,7 +187,7 @@ router.get('/update-pocket', function(req, res, next){
     if(global.io) {
       global.io.emit('reload'); 
     }
-    return res.send({status: true});
+    return res.send({status: true, tools: json});
   }
 
   else if(msg){
@@ -158,6 +195,24 @@ router.get('/update-pocket', function(req, res, next){
     return res.send({status: true, msg: getLog(msg)});
   }
   return res.send({status: false});
+});
+
+router.post('/update-control', function(req, res, next){
+  var data = req.body;
+  console.log(data);
+  if(data){
+    var json = JSON.parse(fs.readFileSync('controls.json').toString());
+
+    for (var i = 0; i < json.length; i++) {
+      if(json[i].id == data.id){
+        json[i].value = parseInt(data.value);
+      }
+    }
+    json = JSON.stringify(json, null, "\t"); 
+    fs.writeFile('controls.json', json, 'utf8');
+    return {saved: true}
+  }
+  return {saved: false}
 });
 
 router.get('/check', function(req, res, next){
@@ -171,13 +226,13 @@ router.get('/check', function(req, res, next){
       for(var j = 0; j < json.length; j++){
         if(tools[i] == json[j].id && parseInt(json[j].status) != 1){
           array.push(json[j].id);
-          console.log({status: false});
+          
         }
       }
     }
-    console.log(array.toString());
+    
     if(array.length > 0) return res.send({status: false, tools: array.toString()});
-    else return res.send({status: true});
+    else return res.send({status: true, tools: json});
     
   }
   return res.send({status: false});
@@ -193,46 +248,46 @@ function checkSpindleTool(data){
   return {status: false};
 }
 
-function getToolFromPocket(data, pocket){
+function getToolFromId(data, id){
 
   for (var i = 0; i < data.length; i++) {
-    if(data[i].pocket == pocket){
+    if(data[i].id == id){
       console.log("herramienta: " + data[i].id);
       return data[i];
 
     }
   }
   
-  return {pocket: pocket, notool: true};
+  return {id: id, notool: true};
 
 }
 
 function makeToolChange(data, spindleTool, current){
   // si no hay herramienta en el pocket seleccionado y hay una herramienta en el husillo
-  if(current.notool && spindleTool){
-      console.log('no habia herramienta en el pocket');
-      for (var i = 0; i < data.length; i++) {
-        if(data[i].pocket == 0){
-          data[i].pocket = current.pocket;
-        }
-      }
+  if(spindleTool && (current.id == spindleTool.id)){ //falta validacion
+      
+      console.log('LA HERRAMIENTA YA SE ENCUENTRA EN EL HUSILLO');
   }
   // si hay herramienta en el pocket seleccionado
   else{
     var currentPocket = current.pocket;
+    var currentTool = current.id;
     console.log('si habia herramienta en el pocket');
     for (var i = 0; i < data.length; i++) {
       if(spindleTool){
         if(data[i].id == spindleTool.id){
           data[i].pocket = currentPocket;
+          console.log('La herramienta ' + data[i].id + ' esta en el home');
         }
         if(data[i].id == current.id){
          data[i].pocket = 0; 
+         console.log('La herramienta ' + data[i].id + ' esta en el husillo');
         }  
       }
       else{
         if(data[i].id == current.id){
           console.log('No habia herramienta en el husillo');
+     
          data[i].pocket = 0; 
         } 
       }
@@ -249,12 +304,15 @@ function getOffsetData(){
   if(json){
     
     var data = [];
+    var chunkSize = Math.ceil(json.length/3);
     for (i = 0; i < json.length; i += chunkSize) {
-          data.push(json.slice(i, i + chunkSize));              
+          data.push(json.slice(i, (i + chunkSize)));              
     }
-    var spindleTool = getSpindleTool(json);
 
-    return {data: data, spindleTool: spindleTool, pockets: pockets}
+    var spindleTool = getSpindleTool(json);
+    var availablePockets = getAvailablePockets(json);
+    var availableTools = getAvailableTools(json);
+    return {data: data, spindleTool: spindleTool, pockets: pockets, availablePockets: availablePockets, availableTools: availableTools}
   }
   else{
     return null;
@@ -297,16 +355,17 @@ function checkIfItemExists(array, item)
 }
 
 function checkIfToolsAreReady(test){
-  
+  console.log(test);
   var json = JSON.parse(fs.readFileSync('offset.json').toString());
   
   var errors = [];
   var items = [];
   for (i = 0; i < test.length; i++) {
+    var found = false;
     for (j = 0; j < json.length; j++) {
 
         if(parseInt(test[i]) == parseInt(json[j].id)){
-          
+          found = true;
           if(parseInt(json[j].status) != 1){
             errors = checkIfItemExists(errors, json[j]);
           }
@@ -314,8 +373,10 @@ function checkIfToolsAreReady(test){
           {
             items = checkIfItemExists(items, json[j]);
           }
+          break;
         }
-    }     
+    }
+    if(!found)  errors.push({description: "La Herramienta T" + test[i] + " no existe"});
   }
 
   if(errors.length > 0) {
@@ -340,6 +401,7 @@ function generateNewGCode(data, gcode, tools){
   var positions = [];
   var found = 0;
   for(var i = 0; i < gcode.length; i++){
+    gcode[i] += '\n';
     if(gcode[i].indexOf(M6) > -1){
       positions.push(i + found);
       found++;
@@ -349,7 +411,6 @@ function generateNewGCode(data, gcode, tools){
           if(position > -1){
             var offset = (parseFloat(data[j].length) + parseFloat(data[j].offset));  
             var output = [gcode[i].slice(0, position + 2 ), offset, gcode[i].slice(position + 2)].join(' ');
-            output = changeToolIdForPocket(output, data[j].pocket);
             gcode[i] = output;
           }
           
@@ -364,10 +425,10 @@ function generateNewGCode(data, gcode, tools){
   }
 
   gcode.splice(0, 0, "(chilipeppr_pause chequeo de herramientas)\n");  
-
+  // agregar las herramientas que se utilizaran
   var string = ';' + tools.join(';');
   gcode.splice(0, 0,  string + '\n');  
-  
+  gcode.push("(chilipeppr_pause habilitar controles)\n");
   return gcode;
 }
 
@@ -426,6 +487,55 @@ function getSpindleTool(data){
   }
   return null;
 }
+
+function getAvailablePockets(data){
+  var pockets = [];
+  for (var i = 0; i < 18; i++) {
+    var found = false;
+    for (var j = 0; j < data.length; j++) {
+      if((i + 1) == parseInt(data[j].pocket)){
+        found = true;
+        break;
+      }
+    }
+    if(!found) pockets.push((i + 1));
+  }
+
+  return pockets;
+}
+
+function getAvailableTools(data) {
+  var tools = [];
+  for (var i = 0; i < 18; i++) {
+    var found = false;
+    for (var j = 0; j < data.length; j++) {
+      if((i + 1) == parseInt(data[j].id)){
+        found = true;
+        break;
+      }
+    }
+    if(!found) tools.push((i + 1));
+  }
+
+  return tools;
+}
+
+function orderDescendingJson(data){
+  for (var i = 0; i < data.length; i++) {
+    for (var j = (i + 1); j < data.length; j++) {
+      console.log("i: " + data[i].id);
+      console.log("j: " + data[j].id);
+      if(parseInt(data[i].id) > parseInt(data[j].id)){
+        var temp = data[j];
+        data[j] = data[i];
+        data[i] = temp;
+      }
+    }
+  }
+  
+  return data;
+}
+
 function getCurrentDate()
 {
   var dateObj = new Date();
@@ -437,3 +547,4 @@ function getCurrentDate()
   return newdate;
 }
 module.exports = router;
+
