@@ -20,7 +20,7 @@ $(function(){
 		    url: "/upload",
 		    paramName: "file",
 		    maxFilesize: 2,
-		    acceptedFiles: ".txt, .nc",
+		    acceptedFiles: ".txt, .nc, .tap",
 		    init: function() {
 		        this.on("success", function(file, response) {
 		        	if(file.name){
