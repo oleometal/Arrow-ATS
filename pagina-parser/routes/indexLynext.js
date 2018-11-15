@@ -9,7 +9,6 @@ const pockets = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 const T = "T";
 const M6 = "M6";
 const M7 = "M7";
-const M3 = "M3";
 const HOME = "M6 a\n";
 const _TINYG = "_tinyg";
 
@@ -418,9 +417,6 @@ function generateNewGCode(data, gcode, tools){
         }
       }
     }
-      
-      
-    
   }
 
   for( var i = 0; i < positions.length; i++ ){
