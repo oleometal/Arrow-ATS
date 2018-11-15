@@ -10,6 +10,7 @@ const T = "T";
 const M6 = "M6";
 const M7 = "M7";
 const M3 = "M3";
+const M5 = "M5";
 const HOME = "M6 a\n";
 const _TINYG = "_tinyg";
 
@@ -403,7 +404,7 @@ function generateNewGCode(data, gcode, tools){
   var found = 0;
   for(var i = 0; i < gcode.length; i++){
     gcode[i] += '\n';
-    if(gcode[i].indexOf(M6) > -1){
+    if(gcode[i].indexOf(M6) > -1 || gcode[i].indexOf(M3) > -1 || gcode[i].indexOf(M5) > -1){
       positions.push(i + found);
       found++;
       for(var j = 0; j < data.length; j++){
