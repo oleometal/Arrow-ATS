@@ -1,7 +1,7 @@
 [
 	{
 		"id": "1",
-		"pocket": "11",
+		"pocket": "12",
 		"name": "Herramienta 1",
 		"status": "1",
 		"length": "70.00",
@@ -10,7 +10,7 @@
 	},
 	{
 		"id": "2",
-		"pocket": "2",
+		"pocket": 0,
 		"name": "Perfil de bola",
 		"status": "1",
 		"length": "60.00",
@@ -18,11 +18,20 @@
 		"diameter": "220"
 	},
 	{
+		"id": "3",
+		"pocket": "16",
+		"name": "Herramienta de 5/8",
+		"status": "1",
+		"length": "50.00",
+		"offset": "-2.5",
+		"diameter": "320"
+	},
+	{
 		"id": "4",
-		"pocket": "3",
+		"pocket": "2",
 		"name": "Herramienta de 1/4",
 		"status": "1",
-		"length": "100",
+		"length": "70.00",
 		"offset": "-1.5",
 		"diameter": "120"
 	},
@@ -37,10 +46,10 @@
 	},
 	{
 		"id": "6",
-		"pocket": 0,
+		"pocket": "13",
 		"name": "Herramienta 6",
 		"status": "1",
-		"length": "120",
+		"length": "70.00",
 		"offset": "-1.5",
 		"diameter": "120"
 	},
@@ -55,7 +64,7 @@
 	},
 	{
 		"id": "8",
-		"pocket": "5",
+		"pocket": "11",
 		"name": "Herramienta 8",
 		"status": "1",
 		"length": "60.00",
@@ -64,7 +73,7 @@
 	},
 	{
 		"id": "9",
-		"pocket": "18",
+		"pocket": "10",
 		"name": "Herramienta 9",
 		"status": "1",
 		"length": "75.00",
@@ -73,12 +82,12 @@
 	},
 	{
 		"id": "10",
-		"pocket": "10",
-		"name": "Herramienta 1/2",
+		"pocket": "9",
+		"name": "Herramienta 10",
 		"status": "1",
-		"length": "100",
+		"length": "50.00",
 		"offset": "-1.4",
-		"diameter": "12.7"
+		"diameter": "120"
 	},
 	{
 		"id": "11",
@@ -109,7 +118,7 @@
 	},
 	{
 		"id": "14",
-		"pocket": "13",
+		"pocket": "5",
 		"name": "Herramienta 14",
 		"status": "2",
 		"length": "70.00",
@@ -121,13 +130,13 @@
 		"pocket": "4",
 		"name": "Herramienta 15",
 		"status": "1",
-		"length": "120",
+		"length": "70.00",
 		"offset": "-1.5",
 		"diameter": "120"
 	},
 	{
 		"id": "16",
-		"pocket": "16",
+		"pocket": "3",
 		"name": "Herramienta 16",
 		"status": "1",
 		"length": "70.00",
@@ -139,6 +148,15 @@
 		"pocket": "15",
 		"name": "Herramienta 17",
 		"status": "2",
+		"length": "70.00",
+		"offset": "-1.5",
+		"diameter": "120"
+	},
+	{
+		"id": "18",
+		"pocket": "18",
+		"name": "Herramienta 18",
+		"status": "1",
 		"length": "70.00",
 		"offset": "-1.5",
 		"diameter": "120"

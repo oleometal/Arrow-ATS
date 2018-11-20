@@ -1,0 +1,18 @@
+;12;2;8;16
+(chilipeppr_pause chequeo de herramientas)
+G0 X0 Y0 Z0
+(chilipeppr_pause cambio herramienta)
+T7 M7 68.5 M6 
+G1 X10
+(chilipeppr_pause cambio herramienta)
+T17 M7 61.5 M6 
+G1 X20
+G0 X0
+G0 X0 Y0 Z0
+(chilipeppr_pause cambio herramienta)
+T11 M7 61.5 M6 
+G1 X10
+(chilipeppr_pause cambio herramienta)
+T3 M7 68.5 M6 
+G1 X20
+G0 X0
