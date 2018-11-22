@@ -7,8 +7,6 @@ let file_path;
 var json = [];
 const pockets = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 const T = "T";
-const M3 = "M3";
-const M5 = "M5";
 const M6 = "M6";
 const M7 = "M7";
 const HOME = "M6 a\n";
@@ -453,11 +451,6 @@ function generateNewGCode(data, gcode, tools){
           
         }
       }
-    }
-    if(gcode[i].indexOf(M3) > -1 || gcode[i].indexOf(M5) > -1){
-      positions.push(i + found);
-      found++;
-
     }
   }
 
