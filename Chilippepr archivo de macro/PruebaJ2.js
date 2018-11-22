@@ -179,7 +179,7 @@ var myWatchChiliPepprPause = {
 			}
 			
 		}
-	}
+	},
 	onChiliPepprPauseOnExecute: function(data) {// EVENTO QUE SE EJECUTA EN LA PAUSA DEL CHILIPEPPR
 		macro.status('onChiliPepprPauseOnExecute');
 		chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "onChiliPepprPauseOnExecute", "Nice.", 2000);
