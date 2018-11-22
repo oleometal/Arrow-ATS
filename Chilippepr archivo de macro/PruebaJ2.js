@@ -18,9 +18,9 @@ var myWatchChiliPepprPause = {
 		macro.status("Subscribing to chilipeppr_pause pubsub event");
 		// store macro in window object so we have it next time thru
 		window["myWatchChiliPepprPause"] = this;
-
-		this.setupSubscribe();
         this.getGcode();
+
+		
 
 		chilipeppr.publish("/com-chilipeppr-elem-flashmsg/flashmsg", "Initting Example of beginTransaction", "Shows how to use chilipeppr_pause Gcode command and 2nd CNC controller");
 	},
@@ -68,6 +68,7 @@ var myWatchChiliPepprPause = {
 			// hit on M30
 			if (gcodeline.match(/\bM3\b/i)) {
 				// turn laser off
+                alert("SE APRETO M3");
 				 var HttpClient = function() {
  this.get = function(aUrl, aCallback) {
  var anHttpRequest = new XMLHttpRequest();
@@ -172,10 +173,8 @@ var myWatchChiliPepprPause = {
  client.get(theurl, function(response) { 
  var response1 = JSON.parse(response);
       }); 
-			} else if (gcodeline.match(/\bM30\b/i)) {
-				macro.status("Done running our gcode. Laser off.");
-				chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-off\n");
-				this.uninit();
+			} else  {
+		this.setupSubscribe();
 			}
 			
 		}
