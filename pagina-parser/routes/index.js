@@ -17,7 +17,8 @@ const _TINYG = "_tinyg";
 router.get('/', function(req, res, next) {
  
   var data = getOffsetData();
-  if(data){
+  if(data)
+  {
     data.controls = getControls();
     return res.render('index', data);      
   }
@@ -26,7 +27,23 @@ router.get('/', function(req, res, next) {
   
 });
 
-
+router.get('/home/:id', function(req, res, next){
+	var tool = req.params.id;
+  if(tool > 0){
+    var json = JSON.parse(fs.readFileSync('offset.json').toString());
+    for (var i = 0; i < json.length; i++) {
+      if(json[i].id == tool) {
+        json.splice(i, 1);
+        break;
+      }
+    }
+    //return json;
+    json = orderDescendingJson(json);
+    json = JSON.stringify(json, null, "\t");
+    return  res.send(json);
+    fs.writeFile('offset.json', json, 'utf8');
+  }
+});
 router.get('/delete/:id', function(req, res, next){
   var tool = req.params.id;
   if(tool > 0){
@@ -37,6 +54,7 @@ router.get('/delete/:id', function(req, res, next){
         break;
       }
     }
+    //return json;
     json = orderDescendingJson(json);
     json = JSON.stringify(json, null, "\t"); 
     fs.writeFile('offset.json', json, 'utf8');
@@ -64,6 +82,23 @@ router.post('/tool', function(req, res, next){
     return res.redirect('/');
   }
   return res.send(tool);
+});
+
+
+router.post('/save-tool', function(req, res, next){
+  var tool = req.body;
+
+    var json = JSON.parse(fs.readFileSync('offset.json').toString());
+    //return res.send(json);
+    var nextId = json[json.length - 1].id + 1;
+    tool.id = nextId;
+    json.push(tool);
+    json = orderDescendingJson(json);
+    json = JSON.stringify(json, null, '\t');
+
+    fs.writeFile('offset.json', json, 'utf8');
+
+    return res.redirect('/');
 });
 
 router.post('/upload', function(req, res, next){
