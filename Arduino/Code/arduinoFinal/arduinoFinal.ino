@@ -159,6 +159,12 @@ void loop() {
       case 'g': //home del braxo
         homeB();
         break;*/
+      case 'e': //mover la herramienta a 150cm de la posición de trabajo
+        changeH(150.0);
+        break;
+      case 'g': //home del braxo
+        homeH();
+        break;
       case 'i': //mover carrusel a la herramienta seleccionado, agregar el entero de 1-18 seguido del i
         changeToolWeb();
         break;

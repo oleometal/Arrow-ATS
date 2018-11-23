@@ -19,7 +19,7 @@ var M6 = "M6";
 var M7 = "M7";
 
 var myWatchChiliPepprPause = {
-	serialPort: "COM9",
+	serialPort: "/dev/ttyUSB0",
 	init: function() {
 		if (window["myWatchChiliPepprPause"]) {
 			macro.status("This macro was run before. Cleaning up...");
@@ -190,7 +190,7 @@ var myWatchChiliPepprPause = {
                 "TODAS LAS HERRAMIENTAS ESTAN LISTAS",
                 2000
             );
-            else localStorage.removeItem('tool-error');
+            
 		  }
 		  
 		});
