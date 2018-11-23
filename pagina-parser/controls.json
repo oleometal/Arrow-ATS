@@ -1,0 +1,38 @@
+[
+  {
+    "id" : 1,
+    "name": "Herramienta en husillo",
+    "value": 1,
+    "status": ["bloqueada", "desbloqueada"]
+  },
+  {
+    "id" : 2,
+    "name": "Herramienta en husillo",
+    "value": 1,
+    "status": ["no hay", "si hay"]
+  },
+  {
+    "id" : 3,
+    "name": "Brazo",
+    "value": 1,
+    "status": ["bloqueada", "giro", "descanso"] 
+  },
+  {
+    "id" : 4,
+    "name": "Posicion del brazo",
+    "value": 1,
+    "status": ["abajo", "arriba"]
+  },
+  {
+    "id" : 5,
+    "name": "Herramienta en carusel",
+    "value": 1,
+    "status": ["no hay", "si hay"]
+  },
+  {
+    "id" : 6,
+    "name": "Herramienta en carusel",
+    "value": 1,
+    "status": ["bloqueada", "desbloqueada"]
+  }
+]
