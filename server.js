@@ -1,20 +1,20 @@
-//HTTP
-var http = require('http');
-// File System para abrir ficheros
-var fs = require('fs');
-// Creamos el servidor
-http.createServer(function (req, res) {
-    //contenido html
- var content = '';
- var type = '';
- if(req.url === '/') {
- content = fs.readFileSync('./index.html');
- type = 'text/html';
- } else if(req.url === '/styles.css') {
- content = fs.readFileSync('./styles.css');
- type = 'text/css';
- }
- res.writeHead(200, {'Content-Type': type});
- res.end(content + '\n');
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+const express = require('express');
+const http = require('http');
+const fs = require('fs');
+const nombre_maquina = '127.0.0.1';
+const puerto = 1337;
+
+const app = express();
+
+app.use(express.static(__dirname + '/jslib'));
+app.use(express.static(__dirname + '/'));
+
+app.get('/',function(req, res){
+    res.render( 'index.html');
+});
+app.get('/jslib',function(req, res){
+    res.render(  '');
+});
+
+app.listen(puerto, nombre_maquina);
+console.log(`Servidor corriendo en http://${nombre_maquina}:${puerto}/`);
