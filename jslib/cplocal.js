@@ -9,32 +9,19 @@ window.replaceToLocal = function(url){
          if(url.match(/jquery\.ui/)){
             // http://i2dcui.appspot.com/js/jquery-ui-1.10.4/ui/jquery.ui.core.js
             replaced = "jslib/jquery-ui_min/jquery-ui.min.js";
-<<<<<<< HEAD
-            console.log("--->  OVERLOAD rquirejs load routine: ", replaced);
-=======
-            console.log("---> OVERLOAD rquirejs load routine: ", replaced);
->>>>>>> master
+            console.log("--->  OVERLOAD1 requirejs load routine: ", replaced);
             return replaced;
          }
 
          // http://i2dcui.appspot.com/js/clipper/clipper_unminified.js
-<<<<<<< HEAD
-                  if(url.match(/widget\-/)){
-=======
          //replaced = url.replace(/^.+\//, "jslib/cplibs/");
          if(url.match(/widget\-/)){
->>>>>>> master
             replaced = replaced.replace(/^.+widget\-/, "widgets/widget-");
          }
          
           if(url.match(/widgets/)){
             replaced = replaced.replace(/^.+widgets/, "widgets");
          }
-<<<<<<< HEAD
-        
-    
-=======
->>>>>>> master
       }
 
       if(url.match(/githubusercontent/)){
@@ -67,11 +54,7 @@ window.replaceToLocal = function(url){
          arguments[0].url = 'data/datagetallkeys.json';
       }
 
-<<<<<<< HEAD
-      if(url.match(/js\/three/)){
-=======
         if(url.match(/js\/three/)){
->>>>>>> master
            replaced = url.replace(/^.+js\/three/, "jslib/cplibs");
        }
       
