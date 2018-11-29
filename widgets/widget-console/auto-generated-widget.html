@@ -542,7 +542,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
                 }
             });
             this.resizerSetup();
-        },
+          },
         subscribeSetup: function() {
             // We will subscribe to the port list.
             // If anything is open, we'll pick the first one
@@ -619,7 +619,7 @@ cpdefine("inline:com-chilipeppr-widget-spconsole", ["chilipeppr_ready", "jqueryc
             var loght = $('.com-chilipeppr-widget-spconsole-console-log').height();
             var newHeight = loght + delta - 13;
             // don't let newHeight go lower than 100 cuz people think window is hidden then
-            if (newHeight < 20) newHeight = 20;
+            if (newHeight < 20) newHeight = 200;
             console.log("resize: serial port console newHeight:", newHeight);
             $('.com-chilipeppr-widget-spconsole-console-log').height(newHeight);
             this.resizePtr = null;
