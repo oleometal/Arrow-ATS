@@ -1,11 +1,10 @@
 {
   "name": "cnc-controlador",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "control numerico computarizado para madera 10 ejes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "oleo",

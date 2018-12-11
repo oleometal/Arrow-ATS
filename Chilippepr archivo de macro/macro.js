@@ -9,8 +9,13 @@ const M7 = "M7";
 const serialPort = "/dev/ttyACM0";
 
 var myWatchChiliPepprPause = {
+<<<<<<< HEAD
+	serialPort: "/dev/ttyUSB0",
+	init: function() {
+=======
 
 	init: function() { // INICIO DEL MACRO
+>>>>>>> master
 		if (window["myWatchChiliPepprPause"]) {
 			macro.status("This macro was run before. Cleaning up...");
 			window["myWatchChiliPepprPause"].uninit();
@@ -297,9 +302,15 @@ var myWatchChiliPepprPause = {
                 "NO SE PUDO ESTABLECER LA CONEXION CON LA APLICACION ARROW",
                 2000
             );
+<<<<<<< HEAD
+            
+		  }
+		  
+=======
             myWatchChiliPepprPause.enableControls();
             $("#plc-console").append("<li class='list-group-item'>NO SE PUDO ESTABLECER LA CONEXION CON LA APLICACION ARROW</li>");
 
+>>>>>>> master
 		});
 	},
 	getToolPocket: function(data, id){ // OBTENER EL POCKET EN EL QUE ESTA LA HERRAMIENTA
