@@ -232,6 +232,17 @@ router.get('/update-or-get-log', function(req, res, next){
   return res.send({status: false});
 });
 
+
+router.get('/tool-change', function(req, res, next){
+    var tool = req.query.tool;
+
+    var json = JSON.parse(fs.readFileSync('offset.json').toString());
+    var result = checkSpindleTool(json);
+    var currentTool = getToolFromId(json, tool);
+    return res.send(currentTool);
+
+});
+
 router.post('/update-control', function(req, res, next){
   var data = req.body;
   console.log(data);

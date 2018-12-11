@@ -1,6 +1,7 @@
 {% if availableTools != null %}
-<!-- Modal Trigger -->
+<!-- Modal
   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Nueva Herramienta</a>
+-->
 {% endif %}
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
@@ -8,7 +9,7 @@
       <h4>Nueva Herramienta</h4>
 
       <div class="row">
-    <form class="col s12" method="POST" action="/save-tool">
+    <form class="col s12" method="POST" action="/save-tool" autocomplete="off">
       <div class="row">
         <div class="input-field col s6">
 	  <select name="pocket">
@@ -75,6 +76,7 @@
                        <tbody>
                          <tr>
                            <th><div class="input-field col s12">
+
                                <select class="pocket">
                                  {% for pocket in pockets %}
 
@@ -100,8 +102,11 @@
                             </div>
 
                            </th>
+			
                            <th><input class="diameter pull-left" type="text" value="{{item.diameter}}"><span class="pull-right">mm</span></th>
+				<!--
                            <th><a class="btn red" href="/delete/{{item.id}}">Eliminar</a></th>
+				-->
                          </tr>
                        </tbody>
                      </table>
