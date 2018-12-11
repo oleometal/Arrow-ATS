@@ -46,10 +46,12 @@ var myMacro = {
 			// hit on M30
 			if (gcodeline.match(/\bM3\b/i)) {
 				// turn laser off
+		alert("M3");
 				macro.status("Laser Off from line " + data.Id);
 				chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-off\n");
 			} else if (gcodeline.match(/\bM5\b/i)) {
 				// turn laser on
+alert("M5");
 				macro.status("Laser On from line " + data.Id);
 				chilipeppr.publish("/com-chilipeppr-widget-serialport/ws/send", "send " + this.arduinoSerialPort + " laser-on\n");
 			} else if (gcodeline.match(/\bM30\b/i)) {
