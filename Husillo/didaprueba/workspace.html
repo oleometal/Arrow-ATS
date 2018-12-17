@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>
+        <!--(auto-fill by runme.js-->
+    </title>
+
+    <!-- ChiliPeppr is based on bootstrap CSS. -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Customized version of require.js for ChiliPeppr. Please see require.js docs for how
+    ChiliPeppr's dependency system works as it's based on require.js. -->
+    <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
+
+    <!-- widget.css DON'T REMOVE -->
+    <style type='text/css'>
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <link rel="stylesheet" type="text/css" href="workspace.css">
+    <!-- DON'T REMOVE end widget.css -->
+
+    <!-- widget.js DON'T REMOVE -->
+    <script type='text/javascript'>
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript' src="workspace.js"></script>
+    <!-- DON'T REMOVE end widget.js -->
+
+</head>
+
+<body>
+
+    <div id="com-chilipeppr-widget-flash-instance"></div>
+    <!--not sure which version to keep-->
+
+    <div id="com-chilipeppr-workspace-tinyg" class="xhidden">
+        <div id="com-chilipeppr-ws-gcode-wrapper" class="dropArea">
+            <div id="com-chilipeppr-ws-gcode-dragdropoverlay" class="hidden">
+                <div class="well">Drag and Drop Gcode Files Onto Browser Window</div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-3 widgetx padrt">
+                        <!-- 3D Viewer. Must be loaded at top to get z-orders correct -->
+                        <div id="com-chilipeppr-3dviewer">Load 3D Viewport Here</div>
+                        <!-- Workspace Hdr -->
+                        <div id="com-chilipeppr-ws-gcode-hdr" class="com-chilipeppr-ws-hdr zhigh well">
+                            
+                            <span class="workspace-title">Workspace TinyG</span>
+                            
+                            <div id="com-chilipeppr-ws-menu" class="">
+                                
+                                <div class="pull-right">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                        <ul class="dropdown-menu dropdown-menu-ws" role="menu">
+                                            <li class="com-chilipeppr-ws-menu-billboard" style="width:350px;">
+                                                <!-- Billboard -->
+                                                <div class="com-chilipeppr-ws-billboard">
+                                                </div>
+                                                <!-- End Billboard -->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="com-chilipeppr-ws-gcode-dragdrop" xstyle="margin-right:6px;" class="pull-left"></div>
+                                
+                                <div class="dropdown pull-left">
+                                  <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Widgets
+                                    <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu workspace-dropdown" aria-labelledby="dropdownMenu1">
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li role="separator" class="divider"></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                    
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default zipwhip-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Get a text sent to you when your CNC job is completed." data-trigger="hover" data-delay="100"><span class="zipwhip"></span>Send Text on Job Done</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default zipwhip-recvtext-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Login to Zipwhip to receive texts and start a CNC job when the text is received." data-trigger="hover" data-delay="100"><span class="zipwhip"></span>Recv Text to Trigger</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default autolevel-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Allows you to auto-level your PCB before milling. Most raw PCB boards have a slight warpage. This widget lets you probe the warpage and then it auto-scales your Gcode to match the warpage so you get very clean/predictable z-positions in your milling job."
+                                    data-trigger="hover" data-delay="100">Auto-Level</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default macro-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Run a macro." data-trigger="hover" data-delay="100">Macro</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default jscut-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Load file from JSCut" data-trigger="hover" data-delay="100">JScut</button></li>
+                                    <!--<li><button type="button" class="btn-ws btn btn-xs btn-default lasersolder-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Laser Solderer" data-trigger="hover" data-delay="100">Laser Solder</button></li>-->
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default eagle-button" data-container="body" data-toggle="popover" data-placement="auto" xdata-content="Laser Solderer" data-trigger="hover" data-delay="100">Eagle BRD Import</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default gpio-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="GPIO Server by Ben Delarre. Allows you to control your GPIO ports on a Raspberry Pi or Beagle Bone Black to toggle on/off hardware components. For example, you could toggle a fan on/off via GPIO."
+                                    data-trigger="hover" data-delay="100">GPIO</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default shuttlexpress-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="ShuttleXpress Jog Dial." data-trigger="hover" data-delay="100">ShuttleXpress</button></li>
+    
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default touchplate-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Use a touch plate to easily figure out your Z zero of your workpiece and set it." data-trigger="hover"
+                                    data-delay="100">Touch Plate</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default superTouchplate-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="XYZ touch plate. Use a touch plate to figure out your X zero, Y zero, and Z zero of your workpiece." data-trigger="hover"
+                                    data-delay="100">Super Touch Plate</button></li>
+    
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default programmer-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Program your Arduino or Atmel chip directly from ChiliPeppr." data-trigger="hover" data-delay="100">Arduino / Atmel Firmware Uploader</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default svg2gcode-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Import an SVG file to Gcode" data-trigger="hover" data-delay="100">SVG Import</button></li>
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default font2gcode-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="Create Gcode from text" data-trigger="hover" data-delay="100">Font2Gcode</button></li>
+                                
+                                    <li><button type="button" class="btn-ws btn btn-xs btn-default cayenn-button" data-container="body" data-toggle="popover" data-placement="auto" data-content="View your Cayenn devices" data-trigger="hover" data-delay="100">Cayenn Devices</button></li>
+                                
+                                  </ul>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        
+                        <!-- SVG2Gcode -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-cayenn"></div>
+                        
+                        <!-- SVG2Gcode -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-svg2gcode"></div>
+
+                        <!-- Font2Gcode -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-font2gcode"></div>
+                        
+                        <!-- Zipwhip Text Messaging -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-zipwhip"></div>
+                        
+                        <!-- Zipwhip Text Messaging Receive Text widget -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-zipwhip-recvtext"></div>
+
+                        <!-- Auto Leveller -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-autolevel">Auto-Level Here</div>
+
+                        <!-- Macro -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-macro">Macro Here</div>
+
+                        <!-- JScut -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-jscut">Jscut Here</div>
+
+                        <!-- Laser Solder -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-lasersolder">Laser Solderer Here</div>
+
+                        <!-- Eagle BRD -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-eagle">Eagle BRD Here</div>
+
+                        <!-- GPIO -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-gpio">GPIO Here</div>
+
+                        <!-- shuttlexpress -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-shuttlexpress">ShuttleXpress Here</div>
+
+                        <!-- Touch Plate -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-touchplate">Touch Plate Here</div>
+                        
+                        <!-- Super Touch Plate -->
+                        <div class="zhigh hidden" id="com-chilipeppr-ws-superTouchplate">Super Touch Plate Here</div>
+
+                        <!-- Arduino / Atmel Firmware Programmer -->
+                        <div class="zhigh xhidden" id="com-chilipeppr-ws-programmer">Arduino / Atmel Firmware Programmer Here</div>
+
+                        <!-- Gcode List -->
+                        <div id="com-chilipeppr-gcode-list" class="zhigh">Load Gcode List Here</div>
+                         <!-- PLC WIDGET -->
+                        <div id="myPLCWidget" class="zhigh">PLC Widget</div>
+                        <!-- Serial In/Out Text Log-->
+                        <div id="com-chilipeppr-widget-console-instance" class="zhigh">Load Serial Port Console Here</div>
+                        
+                       
+                    
+                    </div>
+                    
+                    <!-- 3D Viewer -->
+                    <div class="widget col-xs-6">
+                        <div class="">
+                            <table><tr><td>
+                                <div id="com-chilipeppr-3dviewer-controlpanel" style=""></div>
+                            </td></tr>
+                            <tr><td>
+                                <div id="com-chilipeppr-ws-rpmsensor" style="padding: 10px 10px;" class="hidden"></div>
+                            </td></tr>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="col-xs-3 nopadding">
+                        <!-- XYZ -->
+                        <div id="com-chilipeppr-xyz" class="">Load XYZ Here</div>
+                        <!-- Tinyg -->
+                        <div id="com-chilipeppr-tinyg" class="">Load TinyG Here</div>
+                        <!-- WebRTC Client -->
+                        <div id="com-chilipeppr-webrtcclient" class="hidden">Load WebRTC Client Here</div>
+                        <!-- Serial Port Selector -->
+                        <div id="com-chilipeppr-widget-spjs-instance" class="">Load Serial Port Selector Here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keep this div hidden so it can be cloned and used by the Javascript -->
+    <div id="com-chilipeppr-workspace-tinyg-billboard" class="hidden">
+        <div class="billboard-content">
+            <h4 class="billboard-title" style="">TinyG Workspace</h4>
+
+            <p class="billboard-url" style=""><a href="http://chilipeppr.com/tinyg">chilipeppr.com/tinyg</a>
+
+            </p>
+            <div class="billboard-imgcontain" style="">
+                <a href="http://chilipeppr.com/tinyg">
+                    <div class="billboard-img" style="background-image: url('https://i2dcui.appspot.com/img/tinyg.jpg')" />
+                </a>
+                <div class="billboard-stats2">
+                </div>
+
+            </div>
+            <p class="billboard-desc">
+                A ChiliPeppr Workspace for TinyG CNC controllers.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>
