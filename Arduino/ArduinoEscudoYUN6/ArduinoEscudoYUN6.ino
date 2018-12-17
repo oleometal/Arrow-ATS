@@ -38,7 +38,7 @@ void setup() {
   pinMode(30, INPUT); //<-      <- AZUL (SB1S1)
   pinMode(19, INPUT); //<-      <- WG15
   pinMode(2, OUTPUT); //->      -> BLANCO ROJO (SB131)
-  pinMode(3, OUTPUT); //->      -> BLANCO NARANJA
+  pinMode(3, OUTPUT); //->      -> BLANCO NARANJA (SB132)
   pinMode(4, OUTPUT); //->      -> BLANCO CAFE
   pinMode(5, OUTPUT); //->      -> ROJO
   pinMode(6, OUTPUT); //->      -> GRIS
