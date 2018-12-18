@@ -43,7 +43,7 @@ void setup() {
   pinMode(5, OUTPUT); //->      -> ROJO (SB134)
   pinMode(6, OUTPUT); //->      -> GRIS (SB135)
   pinMode(7, OUTPUT); //->      -> AMARILLO (SB136)
-  pinMode(8, OUTPUT); //->      -> CAFE
+  pinMode(8, OUTPUT); //->      -> CAFE (SB137)
   pinMode(9, OUTPUT); //->      -> VERDE
   pinMode(10,OUTPUT); //->      -> SB148
   pinMode(11,OUTPUT); //->      -> SB146
