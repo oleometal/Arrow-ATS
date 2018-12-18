@@ -50,7 +50,7 @@ void setup() {
   pinMode(12,OUTPUT); //->      -> SB144
   pinMode(14,OUTPUT); //->      -> GRIS,NEGRO (SB143)
   pinMode(15,OUTPUT); //->      -> BLANCO,NEGRO (SB142)
-  pinMode(16,OUTPUT); //->      -> AZUL
+  pinMode(16,OUTPUT); //->      -> AZUL (SB141)
   pinMode(17,OUTPUT); //->      -> NARANJA
   pinMode(18,OUTPUT); //->      -> NEGRO
   pinMode(27,OUTPUT); //-> 1R37 -> SB145
@@ -65,7 +65,7 @@ void setup() {
 
   // Listen for incoming connection only from localhost
   // (no one from the external network could connect)
-  //server.listenOnLocalhost();
+  server.listenOnLocalhost();
   server.begin();
 }
 
