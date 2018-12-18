@@ -33,9 +33,9 @@
 BridgeServer server;
 
 void setup() {
-  // Bridge startup        Rele    Cable
-  pinMode(29, INPUT); //<-      <- AZUL (SB1S2)
-  pinMode(30, INPUT); //<-      <- AZUL (SB1S1)
+  // Bridge startup        Rele    Color  Cable   Valvula 
+  pinMode(29, INPUT); //<-      <- AZUL   (SB115) (SB1S2)
+  pinMode(30, INPUT); //<-      <- AZUL           (SB1S1)
   pinMode(19, INPUT); //<-      <- WG15
   pinMode(2, OUTPUT); //->      -> BLANCO ROJO (SB131)
   pinMode(3, OUTPUT); //->      -> BLANCO NARANJA (SB132)
