@@ -49,7 +49,7 @@ void setup() {
   pinMode(11,OUTPUT); //->      -> SB146
   pinMode(12,OUTPUT); //->      -> SB144
   pinMode(14,OUTPUT); //->      -> GRIS,NEGRO (SB143)
-  pinMode(15,OUTPUT); //->      -> BLANCO,NEGRO
+  pinMode(15,OUTPUT); //->      -> BLANCO,NEGRO (SB142)
   pinMode(16,OUTPUT); //->      -> AZUL
   pinMode(17,OUTPUT); //->      -> NARANJA
   pinMode(18,OUTPUT); //->      -> NEGRO
