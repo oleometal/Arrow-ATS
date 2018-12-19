@@ -93,6 +93,7 @@ void setup() {
   pinMode(22,OUTPUT); //-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
   pinMode(34,OUTPUT); //->      -> RUN SERVOPACKS
   pinMode(35,OUTPUT); //->      -> BA211
+  pinMode(27,OUTPUT); //-> 8R2  -> SB15
   // Bridge startup
   Bridge.begin();
   

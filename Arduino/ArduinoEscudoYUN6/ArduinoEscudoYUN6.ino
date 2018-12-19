@@ -33,26 +33,26 @@
 BridgeServer server;
 
 void setup() {
-  // Bridge startup        Rele    Cable
-  pinMode(29, INPUT); //<-      <- AZUL (SB1S2)
-  pinMode(30, INPUT); //<-      <- AZUL (SB1S1)
+  // Bridge startup        Rele    Color  Cable   Valvula 
+  pinMode(29, INPUT); //<-      <- AZUL   (SB115) (SB1S2)
+  pinMode(30, INPUT); //<-      <- AZUL           (SB1S1)
   pinMode(19, INPUT); //<-      <- WG15
-  pinMode(2, OUTPUT); //->      -> BLANCO ROJO
-  pinMode(3, OUTPUT); //->      -> BLANCO NARANJA
-  pinMode(4, OUTPUT); //->      -> BLANCO CAFE
-  pinMode(5, OUTPUT); //->      -> ROJO
-  pinMode(6, OUTPUT); //->      -> GRIS
-  pinMode(7, OUTPUT); //->      -> AMARILLO
-  pinMode(8, OUTPUT); //->      -> CAFE
-  pinMode(9, OUTPUT); //->      -> VERDE
+  pinMode(2, OUTPUT); //->      -> BLANCO ROJO (SB131)
+  pinMode(3, OUTPUT); //->      -> BLANCO NARANJA (SB132)
+  pinMode(4, OUTPUT); //->      -> BLANCO CAFE (SB133)
+  pinMode(5, OUTPUT); //->      -> ROJO (SB134)
+  pinMode(6, OUTPUT); //->      -> GRIS (SB135)
+  pinMode(7, OUTPUT); //->      -> AMARILLO (SB136)
+  pinMode(8, OUTPUT); //->      -> CAFE (SB137)
+  pinMode(9, OUTPUT); //->      -> VERDE (SB138)
   pinMode(10,OUTPUT); //->      -> SB148
   pinMode(11,OUTPUT); //->      -> SB146
   pinMode(12,OUTPUT); //->      -> SB144
-  pinMode(14,OUTPUT); //->      -> GRIS,NEGRO
-  pinMode(15,OUTPUT); //->      -> BLANCO,NEGRO
-  pinMode(16,OUTPUT); //->      -> AZUL
-  pinMode(17,OUTPUT); //->      -> NARANJA
-  pinMode(18,OUTPUT); //->      -> NEGRO
+  pinMode(14,OUTPUT); //->      -> GRIS,NEGRO (SB143)
+  pinMode(15,OUTPUT); //->      -> BLANCO,NEGRO (SB142)
+  pinMode(16,OUTPUT); //->      -> AZUL (SB141)
+  pinMode(17,OUTPUT); //->      -> NARANJA (SB140)
+  pinMode(18,OUTPUT); //->      -> NEGRO (SB139)
   pinMode(27,OUTPUT); //-> 1R37 -> SB145
   pinMode(28,OUTPUT); //-> 2R37 -> SB149
   pinMode(22,OUTPUT); //->      -> SA113
@@ -65,7 +65,7 @@ void setup() {
 
   // Listen for incoming connection only from localhost
   // (no one from the external network could connect)
-  //server.listenOnLocalhost();
+  server.listenOnLocalhost();
   server.begin();
 }
 
