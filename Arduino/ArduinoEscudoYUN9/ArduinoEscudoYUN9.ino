@@ -89,7 +89,7 @@ void setup() {
   pinMode(42, INPUT);       //<--------- ST135(ST1W4)
   pinMode(43, OUTPUT);      //-> 6R22 -> ST141(CN1W4)
   pinMode(44, OUTPUT);      //-> 5R21 -> CU141(CU1W4)
-  pinMode(45, INPUT);
+  pinMode(45, OUTPUT);      //-> TERMINAL 16 DEL VARIADOR
   pinMode(46, INPUT);       //<--------- UA133(UA1W4)
   pinMode(47, INPUT);
   pinMode(48, INPUT);
