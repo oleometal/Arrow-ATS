@@ -55,7 +55,7 @@ void setup() {
   pinMode(A11,INPUT); //<- 5R12 <- SV128(SV1W4)
   pinMode(A10,INPUT); //<- 4R12 <- SV130(SV1W4)
   pinMode(A9, INPUT); //<- 3R12 <- SV132(SV1W4)
-  pinMode(2,  INPUT);
+  pinMode(2, OUTPUT); //-> PWM -> pin 13 variador
   pinMode(3,  INPUT);
   pinMode(4,  INPUT);
   pinMode(5,  INPUT_PULLUP); //<-- UX137(UX1W4)
@@ -150,6 +150,38 @@ void process(BridgeClient client) {
   if (command == "mode") {
     modeCommand(client);
   }
+
+  // si el comando es "pwm"?
+  if (command == "pwm") {
+    pwmComando(client);
+  }
+}
+
+void pwmComando(BridgeClient client) {
+  int pin, value;
+
+  // Read pin number
+  pin = client.parseInt();
+
+  // If the next character is a '/' it means we have an URL
+  // with a value like: "/digital/13/1"
+  if (client.read() == '/') {
+    value = client.parseInt();
+    analogWrite(pin, value);
+  } else {
+    value = digitalRead(pin);
+  }
+
+  // Send feedback to client
+  client.print(F("Pin D"));
+  client.print(pin);
+  client.print(F(" set to pwm "));
+  client.println(value);
+
+  // Update datastore key with the current pin value
+  String key = "D";
+  key += pin;
+  Bridge.put(key, String(value));
 }
 
 void digitalCommand(BridgeClient client) {
