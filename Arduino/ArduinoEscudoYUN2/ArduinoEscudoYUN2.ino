@@ -91,7 +91,8 @@ void setup() {
   pinMode(14,OUTPUT); //->      -> AL136
   pinMode(15,OUTPUT); //->      -> VB14
   pinMode(22,OUTPUT); //-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
-  pinMode(23,OUTPUT); //-> 4R3  -> BA111
+  pinMode(23,OUTPUT); //-> 4R2  -> BA111
+  pinMode(24,OUTPUT); //-> 5R2  -> BB111
   pinMode(34,OUTPUT); //->      -> RUN SERVOPACKS
   pinMode(35,OUTPUT); //->      -> BA211
   pinMode(27,OUTPUT); //-> 8R2  -> SB15
