@@ -40,7 +40,7 @@ void setup() {
   pinMode(23, INPUT); //<-      <- BF26
   pinMode(24, INPUT); //<-      <- BF16
   pinMode(25, INPUT); //<-      <- BF120
-  pinMode(26, INPUT); //<-      <- BF16?
+  pinMode(26, INPUT); //<-      <- BF220
   pinMode(27, INPUT); //<-      <- BB240
   pinMode(28, INPUT); //<-      <- BB140
   pinMode(29, INPUT); //<-      <- BT112
