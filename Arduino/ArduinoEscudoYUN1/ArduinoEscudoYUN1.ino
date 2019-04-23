@@ -1,6 +1,9 @@
 /*
-  Arduino Yún Bridge example
-
+  Arduino1 Yún Bridge 
+  Ubicacion +A Armario
+  MAC:  C4:93:00:03:E6:48
+  IP: 192.168.0.81
+  
   This example for the YunShield/Yún shows how
   to use the Bridge library to access the digital and
   analog pins on the board through REST calls.
