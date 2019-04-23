@@ -65,8 +65,8 @@ void setup() {
   pinMode(12,OUTPUT); //->      -> BA14
   pinMode(11,OUTPUT); //->      -> BC14
   pinMode(10,OUTPUT); //->      -> BC13
-  pinMode(44,OUTPUT); //->      -> BH12
-  pinMode(43,OUTPUT); //->      -> BC21
+  pinMode(43,OUTPUT); //->      -> BH12
+  pinMode(44,OUTPUT); //->      -> BC21
   pinMode(35,OUTPUT); //->      -> BT211
   pinMode(34,OUTPUT); //->      -> BT210
   pinMode(33,OUTPUT); //->      -> BC11
