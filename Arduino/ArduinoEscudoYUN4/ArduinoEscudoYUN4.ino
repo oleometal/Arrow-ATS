@@ -178,6 +178,12 @@ void process(BridgeClient client) {
     analogCommand(client);
   }
 
+      if (command == "bajarstops") {
+    bajarstops(client);
+  }
+       if (command == "subirstops") {
+    subirstops(client);
+  }
   // is "mode" command?
   if (command == "mode") {
     modeCommand(client);
@@ -250,6 +256,33 @@ void analogCommand(BridgeClient client) {
     Bridge.put(key, String(value));
   }
 }
+
+
+void bajarstops(BridgeClient client) {
+    digitalWrite(7, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(45, LOW);
+    digitalWrite(9, LOW);
+    digitalWrite(8, LOW);
+        digitalWrite(46, LOW);
+        digitalWrite(44, LOW);
+
+}
+
+
+void subirstops(BridgeClient client) {
+    digitalWrite(7, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(45, HIGH);
+        digitalWrite(46, HIGH);
+        digitalWrite(44, HIGH);
+    digitalWrite(9, HIGH);
+        digitalWrite(8, HIGH);
+
+}
+
+
+
 
 void modeCommand(BridgeClient client) {
   int pin;

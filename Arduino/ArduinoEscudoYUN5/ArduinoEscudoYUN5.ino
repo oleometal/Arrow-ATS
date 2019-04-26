@@ -207,12 +207,42 @@ void process(BridgeClient client) {
   if (command == "analog") {
     analogCommand(client);
   }
+    
+      if (command == "subirstops") {
+    subirstops(client);
+  }
+       if (command == "bajarstops") {
+    bajarstops(client);
+  }
 
   // is "mode" command?
   if (command == "mode") {
     modeCommand(client);
   }
 }
+
+
+void subirstops(BridgeClient client) {
+    digitalWrite(30, HIGH);
+    digitalWrite(28, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(29, HIGH);
+    digitalWrite(31, HIGH);
+    digitalWrite(14, HIGH);
+    digitalWrite(15, HIGH);
+}
+    
+    void bajarstops(BridgeClient client) {
+        digitalWrite(30, LOW);
+        digitalWrite(28, LOW);
+        digitalWrite(12, LOW);
+        digitalWrite(29, LOW);
+        digitalWrite(33, LOW);
+        digitalWrite(14, LOW);
+        digitalWrite(15, LOW);
+    }
+
+
 
 void digitalCommand(BridgeClient client) {
   int pin, value;
