@@ -27,12 +27,42 @@
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
+#include <HttpClient.h>
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
 
 void setup() {
+    int i=0;
+    String url ="http://192.168.0.98/api/arduino6/";
+    bool I107;
+bool O96;
+bool O105;
+bool O107;
+bool O108;
+bool O109;
+bool O110;
+bool O111;
+bool I128;
+bool I129;
+bool O128;
+bool O129;
+bool O130;
+bool O131;
+bool O132;
+bool O133;
+bool O134;
+bool O135;
+bool O136;
+bool O137;
+bool O138;
+bool O139;
+bool O140;
+bool O141;
+bool O142;
+bool O143;
+
   // Bridge startup        Rele    Color  Cable   Valvula 
   pinMode(29, INPUT); //<-      <- AZUL   (SB115) (SB1S2)
   pinMode(30, INPUT); //<-      <- AZUL           (SB1S1)
@@ -70,6 +100,39 @@ void setup() {
 }
 
 void loop() {
+    I107=digitalRead(19);
+O96=digitalRead(24);
+O105=digitalRead(22);
+O107=digitalRead(26);
+O108=digitalRead(25);
+O109=digitalRead(27);
+O110=digitalRead(23);
+O111=digitalRead(28);
+I128=digitalRead(30);
+I129=digitalRead(29);
+O128=digitalRead(2);
+O129=digitalRead(3);
+O130=digitalRead(4);
+O131=digitalRead(5);
+O132=digitalRead(6);
+O133=digitalRead(7);
+O134=digitalRead(8);
+O135=digitalRead(9);
+O136=digitalRead(18);
+O137=digitalRead(17);
+O138=digitalRead(16);
+O139=digitalRead(15);
+O140=digitalRead(14);
+O141=digitalRead(13);
+O142=digitalRead(11);
+O143=digitalRead(10);
+i++;
+    if (i>=20){
+        url = url+I107+"&"+O96+"&"+O105+"&"+O107+"&"+O108+"&"+O109+"&"+O110+"&"+O111+"&"+I128+"&"+I129+"&"+O128+"&"+O129+"&"+O130+"&"+O131+"&"+O132+"&"+O133+"&"+O134+"&"+O135+"&"+O136+"&"+O137+"&"+O138+"&"+O139+"&"+O140+"&"+O141+"&"+O142+"&"+O143;
+        HttpClient client;
+        client.get(url);
+        i=0;
+    }
   // Get clients coming from server
   BridgeClient client = server.accept();
 

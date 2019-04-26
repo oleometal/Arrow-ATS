@@ -33,12 +33,62 @@
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
+#include <HttpClient.h>
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
 
 void setup() {
+        int i=0;
+    String url ="http://192.168.0.98/api/arduino8/";
+    bool I332;
+bool I333;
+bool I334;
+bool I326;
+bool I327;
+bool I328;
+bool I335;
+bool I336;
+bool I365;
+bool I364;
+bool I421;
+bool I420;
+bool I419;
+bool I384;
+bool I383;
+bool I382;
+bool I363;
+bool I402;
+bool I401;
+bool I400;
+bool I370;
+bool I369;
+bool I368;
+bool I362;
+bool I361;
+bool O341;
+bool I417;
+bool I418;
+bool I425;
+bool I424;
+bool I426;
+int I360;
+int I387;
+int I405;
+int I406;
+int I399;
+int I380;
+int O337;
+int I381;
+int I354;
+int I353;
+int I352;
+int I351;
+int I398;
+int I388;
+int I407;
+
   // Bridge startup        Rele    Cable
   pinMode(A0, INPUT); //<- 2R11 <- UC12
   pinMode(A1, INPUT); //<- 3R13 <- UC130(UA1W4)
@@ -110,6 +160,63 @@ void setup() {
 }
 
 void loop() {
+    
+    
+    I332=digitalRead(5);
+I333=digitalRead(6);
+I334=digitalRead(7);
+I326=digitalRead(8);
+I327=digitalRead(9);
+I328=digitalRead(10);
+I335=digitalRead(11);
+I336=digitalRead(12);
+I365=digitalRead(18);
+I364=digitalRead(19);
+I421=digitalRead(22);
+I420=digitalRead(23);
+I419=digitalRead(24);
+I384=digitalRead(28);
+I383=digitalRead(29);
+I382=digitalRead(30);
+I363=digitalRead(31);
+I402=digitalRead(33);
+I401=digitalRead(34);
+I400=digitalRead(35);
+I370=digitalRead(37);
+I369=digitalRead(38);
+I368=digitalRead(39);
+I362=digitalRead(40);
+I361=digitalRead(41);
+O341=digitalRead(43);
+I417=digitalRead(44);
+I418=digitalRead(45);
+I425=digitalRead(46);
+I424=digitalRead(47);
+I426=digitalRead(48);
+I360=analogRead(A0);
+I387=analogRead(A1);
+I405=analogRead(A10);
+I406=analogRead(A11);
+I399=analogRead(A12);
+I380=analogRead(A13);
+O337=analogRead(A14);
+I381=analogRead(A15);
+I354=analogRead(A2);
+I353=analogRead(A3);
+I352=analogRead(A4);
+I351=analogRead(A5);
+I398=analogRead(A7);
+I388=analogRead(A8);
+I407=analogRead(A9);
+
+    
+        i++;
+    if (i>=20){
+        url = url+I351+"&"+I352+"&"+I353+"&"+I354+"&"+I360+"&"+I326+"&"+I327+"&"+I328+"&"+I332+"&"+I333+"&"+I334+"&"+I335+"&"+I336+"&"+I361+"&"+I362+"&"+I363+"&"+I364+"&"+I365+"&"+I368+"&"+I369+"&"+I370+"&"+O337+"&"+I380+"&"+I381+"&"+I382+"&"+I383+"&"+I384+"&"+I387+"&"+I388+"&"+I398+"&"+I399+"&"+I400+"&"+I401+"&"+I402+"&"+I405+"&"+I406+"&"+I407+"&"+O341+"&"+I417+"&"+I418+"&"+I419+"&"+I420+"&"+I421+"&"+I424+"&"+I425+"&"+I426;
+        HttpClient client;
+        client.get(url);
+        i=0;
+    }
   // Get clients coming from server
   BridgeClient client = server.accept();
 
