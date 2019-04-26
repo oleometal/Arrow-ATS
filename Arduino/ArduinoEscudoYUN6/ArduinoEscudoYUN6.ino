@@ -161,6 +161,15 @@ void process(BridgeClient client) {
   if (command == "analog") {
     analogCommand(client);
   }
+    
+  if (command == "subirbrocas") {
+    subirbrocas(client);
+  }
+
+      if (command == "bajarbrocas") {
+    bajarbrocas(client);
+  }
+    
 
   // is "mode" command?
   if (command == "mode") {
@@ -194,6 +203,75 @@ void digitalCommand(BridgeClient client) {
   key += pin;
   Bridge.put(key, String(value));
 }
+
+
+
+
+
+void subirbrocas(BridgeClient client) {
+   
+    digitalWrite(2, LOW);
+    digitalWrite(3, LOW);
+    digitalWrite(4, LOW);
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(9, LOW);
+    digitalWrite(18, LOW);
+    digitalWrite(17, LOW);
+    digitalWrite(16, LOW);
+    digitalWrite(15, LOW);
+    digitalWrite(14, LOW);
+    digitalWrite(27, HIGH);
+        digitalWrite(23, HIGH);
+        digitalWrite(28, HIGH);
+
+
+    
+    delay(2000);
+    
+    digitalWrite(27, LOW);
+        digitalWrite(23, LOW);
+    digitalWrite(28, LOW);
+
+    
+
+
+  
+}
+
+
+
+void bajarbrocas(BridgeClient client) {
+   digitalWrite(2, HIGH);
+    digitalWrite(3, HIGH);
+    digitalWrite(4, HIGH);
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(7, HIGH);
+    digitalWrite(8, HIGH);
+    digitalWrite(9, HIGH);
+    digitalWrite(18, HIGH);
+    digitalWrite(17, HIGH);
+    digitalWrite(16, HIGH);
+    digitalWrite(15, HIGH);
+    digitalWrite(14, HIGH);
+    digitalWrite(12, HIGH);
+        digitalWrite(11, HIGH);
+        digitalWrite(10, HIGH);
+
+
+    
+    delay(2000);
+    
+    digitalWrite(12, LOW);
+        digitalWrite(11, LOW);
+    digitalWrite(10, LOW);
+
+
+}
+
 
 void analogCommand(BridgeClient client) {
   int pin, value;
