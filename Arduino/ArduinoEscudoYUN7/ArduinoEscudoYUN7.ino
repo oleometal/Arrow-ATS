@@ -30,9 +30,7 @@
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
-
-void setup() {
-    int i=0;
+int i=0;
     String url ="http://192.168.0.98/api/arduino7/";
     bool O32;
 bool O33;
@@ -58,6 +56,8 @@ bool I161;
 bool I164;
 bool O160;
 bool O161;
+void setup() {
+    
 
   // Bridge startup        Rele    Cable
   pinMode(24, INPUT); //<-      <- CN115
@@ -93,6 +93,7 @@ bool O161;
   server.begin();
 }
 void loop() {
+    url ="http://192.168.0.98/api/arduino7/";
     O32=digitalRead(22);
 O33=digitalRead(27);
 O40=digitalRead(19);

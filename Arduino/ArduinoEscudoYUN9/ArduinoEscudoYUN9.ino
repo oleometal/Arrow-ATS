@@ -36,8 +36,7 @@
 // will forward there all the HTTP requests you send
 BridgeServer server;
 
-void setup() {
-      int i=0;
+ int i=0;
     String url ="http://192.168.0.98/api/arduino9/";
     bool O339;
 bool I357;
@@ -80,6 +79,9 @@ int I389;
 int I428;
 int I435;
 int I434;
+
+void setup() {
+     
   // Bridge startup        Rele    Cable
   pinMode(A0, INPUT); //<- 2R10 <- UZ12(UZ1W4)
   pinMode(A1, INPUT); //<- 1R10 <- ST126(ST1W4)
@@ -149,6 +151,8 @@ int I434;
 }
 
 void loop() {
+    
+    url ="http://192.168.0.98/api/arduino9/";
     O339=digitalRead(2);
 I357=digitalRead(4);
 I358=digitalRead(5);
