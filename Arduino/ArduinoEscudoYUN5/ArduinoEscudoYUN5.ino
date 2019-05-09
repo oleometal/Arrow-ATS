@@ -239,7 +239,7 @@ void subirstops(BridgeClient client) {
         digitalWrite(28, LOW);
         digitalWrite(12, LOW);
         digitalWrite(29, LOW);
-        digitalWrite(33, LOW);
+        digitalWrite(31, LOW);
         digitalWrite(14, LOW);
         digitalWrite(15, LOW);
     }
