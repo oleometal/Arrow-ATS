@@ -119,7 +119,7 @@ I164=digitalRead(17);
 O160=digitalRead(5);
 O161=digitalRead(4);
     i++;
-    if (i>=20){
+    if (i>=4){
         url = url+O32+"/"+O33+"/"+O40+"/"+O41+"/"+I98+"/"+I99+"/"+I100+"/"+I101+"/"+I102+"/"+I103+"/"+I104+"/"+I105+"/"+O97+"/"+O98+"/"+O99+"/"+O100+"/"+O101+"/"+O102+"/"+O106+"/"+I160+"/"+I161+"/"+I164+"/"+O160+"/"+O161;
         HttpClient client;
         client.getAsynchronously(url);

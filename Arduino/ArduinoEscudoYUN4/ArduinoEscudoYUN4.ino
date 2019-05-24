@@ -139,7 +139,7 @@ I258=digitalRead(21);
 I257=digitalRead(31);
 I256=digitalRead(22);
     i++;
-    if (i>=20){
+    if (i>=4){
         url = url+O281+"/"+O280+"/"+O279+"/"+O278+"/"+O277+"/"+O276+"/"+O275+"/"+I274+"/"+I273+"/"+I272+"/"+O270+"/"+O269+"/"+O268+"/"+O267+"/"+O266+"/"+O265+"/"+O264+"/"+O263+"/"+I262+"/"+I261+"/"+I260+"/"+I259+"/"+I258+"/"+I257+"/"+I256;
         HttpClient client;
         client.getAsynchronously(url);
