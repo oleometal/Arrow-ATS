@@ -37,7 +37,7 @@ BridgeServer server;
 
 void setup() {
   
-  Bridge.put(key1, String(Estado_I85)); // imprime estado de sensor en memoria.
+  //Bridge.put(key1, String(Estado_I85)); // imprime estado de sensor en memoria.
   // declarar pines como input y output.
   pinMode(A1, INPUT); //<-      <- VC11
   pinMode(38, INPUT); //<-      <- BF29
@@ -252,19 +252,14 @@ void modeCommand(BridgeClient client) {
 }
 // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
 void Leer_Sensores(){
-  
-  
   Process p;
-  
-  
   ValorSensor_I85 = analogRead(I85);
-  
   //este evento sucede una vez, solo si el valor del sensor cambia.
   if (ValorSensor_I85 > 500 && Estado_I85 == 0) {
     //el estado del sensor cambio a HIGH
     Estado_I85 = 1;
     //comando que empuje el valor del sensor hacia el cliente (este es un ejemplo).
-    p.begin("curl");
+    /*p.begin("curl");
     p.addParameter("-X"); // use POST instead of default GET
     p.addParameter("POST");
     p.addParameter("-d");
@@ -272,15 +267,16 @@ void Leer_Sensores(){
     p.addParameter("-H"); 
     p.addParameter("Content-type: application/json");
     p.addParameter("http://192.168.0.120:3000/");
-    p.runAsynchronously();
+    p.runAsynchronously();*/
+    p.runShellCommandAsynchronously("curl -d \'{\"estado\":\"1\"}\' -H \"Content-Type: application/json\" http://192.168.10.86:3000");
     Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
-
     
   }
   else if (ValorSensor_I85 < 500 && Estado_I85 == 1){
     //el estado del sensor cambio a LOW
     Estado_I85 = 0;
     //comando que empuje el valor del sensor hacia el cliente.
+    p.runShellCommandAsynchronously("curl -d \'{\"estado\":\"0\"}\' -H \"Content-Type: application/json\" http://192.168.10.86:3000");
     Bridge.put(key1, String(Estado_I85));
       
     }
@@ -288,7 +284,7 @@ void Leer_Sensores(){
 
   
 
-  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //++++++++++++++++++Agregado++++++++++++++++++++++++++++++++++++++
 
 }
 void Activar_Sensores(){
