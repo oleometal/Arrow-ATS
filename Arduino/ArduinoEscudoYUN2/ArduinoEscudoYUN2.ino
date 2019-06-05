@@ -24,7 +24,7 @@
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
-
+#include <HttpClient.h>
 //ID de Sensores
 const int I85 = A0;  //<-      <- AR141
 int ValorSensor_I85 = 0;    //Variable para almacenar el valor del sensor.
@@ -34,9 +34,65 @@ String key1 = "I85";
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
+int i=0;
+bool O21;
+bool O16;
+bool O20;
+bool O28;
+bool O30;
+bool O31;
+bool O17;
+bool O29;
+bool O22;
+bool O19;
+bool O57;
+bool O61;
+bool O62;
+bool O60;
+bool O58;
+bool O59;
+bool O345;
+bool O344;
+bool O4;
+bool O12;
+bool O0;
+bool I14;
+bool I8;
+bool I4;
+bool O343;
+bool I21;
+bool I22;
+bool I41;
+bool I86;
+bool I80;
+bool I87;
+bool I74;
+bool I73;
+bool I78;
+bool I84;
+bool I81;
+bool I27;
+bool I18;
+bool I17;
+bool I16;
+int  I85;
+int  I83;
+int  I23;
+int  I36;
+int  I38;
+int  I37;
+int  I39;
+int  I29;
+int  I30;
+int  I31;
+int  I19;
+int  I24;
+int  I28;
+int  I79;
+String url ="http://192.168.0.98/api/arduino2/";
 
 void setup() {
-  
+    
   //Bridge.put(key1, String(Estado_I85)); // imprime estado de sensor en memoria.
   // declarar pines como input y output.
   pinMode(A1, INPUT); //<-      <- VC11
@@ -104,6 +160,69 @@ void setup() {
 }
 
 void loop() {
+   O21=digitalRead(2);
+O16=digitalRead(3);
+O20=digitalRead(4);
+O28=digitalRead(5);
+O30=digitalRead(6);
+O31=digitalRead(7);
+O17=digitalRead(8);
+O29=digitalRead(9);
+O22=digitalRead(10);
+O19=digitalRead(11);
+O57=digitalRead(12);
+O61=digitalRead(14);
+O62=digitalRead(15);
+O60=digitalRead(16);
+O58=digitalRead(17);
+O59=digitalRead(18);
+O345=digitalRead(19);
+O344=digitalRead(22);
+O4=digitalRead(27);
+O12=digitalRead(28);
+O0=digitalRead(29);
+I14=digitalRead(30);
+I8=digitalRead(31);
+I4=digitalRead(33);
+O343=digitalRead(34);
+I21=digitalRead(36);
+I22=digitalRead(37);
+I41=digitalRead(38);
+I86=digitalRead(39);
+I80=digitalRead(40);
+I87=digitalRead(41);
+I74=digitalRead(42);
+I73=digitalRead(43);
+I78=digitalRead(44);
+I84=digitalRead(45);
+I81=digitalRead(46);
+I27=digitalRead(47);
+I18=digitalRead(48);
+I17=digitalRead(49);
+I16=digitalRead(50);
+I85=analogRead(A0);
+I83=analogRead(A10);
+I23=analogRead(A11);
+I36=analogRead(A12);
+I38=analogRead(A13);
+I37=analogRead(A14);
+I39=analogRead(A15);
+I29=analogRead(A2);
+I30=analogRead(A3);
+I31=analogRead(A4);
+I19=analogRead(A5);
+I24=analogRead(A7);
+I28=analogRead(A8);
+I79=analogRead(A9);
+    
+i++;
+    if (i>=25){
+        url = url+O343+"/"+O345+"/"+O344+"/"+I4+"/"+I8+"/"+I14+"/"+O0+"/"+O4+"/"+O12+"/"+I16+"/"+I17+"/"+I18+"/"+I19+"/"+I21+"/"+I22+"/"+I23+"/"+I24+"/"+I27+"/"+I28+"/"+I29+"/"+I30+"/"+I31+"/"+O16+"/"+O17+"/"+O19+"/"+O20+"/"+O21+"/"+O22+"/"+O28+"/"+O29+"/"+O30+"/"+O31+"/"+I36+"/"+I37+"/"+I38+"/"+I39+"/"+I41+"/"+O57+"/"+O58+"/"+O59+"/"+O60+"/"+O61+"/"+O62+"/"+I73+"/"+I74+"/"+I78+"/"+I79+"/"+I80+"/"+I81+"/"+I83+"/"+I84+"/"+I85+"/"+I86+"/"+I87;
+        HttpClient client;
+        client.getAsynchronously(url);
+        i=0;
+    }
+
   // Get clients coming from server
   BridgeClient client = server.accept();
 
