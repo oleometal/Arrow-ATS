@@ -16,8 +16,26 @@ app.use(express.static(__dirname + '/jslib'));
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json())                      //json 
 
-app.get('/hola/:name',(req, res) => {
+/*app.get('/hola/:name',(req, res) => {
     res.send({message:`hola ${req.params.name}!`})
+})*/
+app.get('/api/product',(req, res)=>{
+    res.send(200,{products:[]})
+
+})
+app.get('/api/product/:productID',(req, res)=>{
+
+})
+app.post('/api/product',(req, res)=>{
+    console.log(req.body)
+    res.send(200,{message: 'el producto se ha recibido'})
+
+})
+app.put('/api/product/:productID',(req,res)=>{
+
+})
+app.delete('/api/product/productID',(req, res)=>{
+
 })
 app.get('/',function(req, res){
     res.render( 'index.html');
