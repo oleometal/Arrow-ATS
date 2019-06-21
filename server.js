@@ -16,6 +16,9 @@ app.use(express.static(__dirname + '/jslib'));
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json())                      //json 
 
+app.get('/hola/:name',(req, res) => {
+    res.send({message:`hola ${req.params.name}!`})
+})
 app.get('/',function(req, res){
     res.render( 'index.html');
 });
