@@ -1,14 +1,20 @@
-const express = require('express');
-const http = require('http');
+'use strict'
+const express = require(`express`)
+const bodyParser = require('body-parser')
+//import http from 'http';
 const fs = require('fs');
-const nombre_maquina = '127.0.0.1';
-const puerto = 1337;
+
+
+//const nombre_maquina = '127.0.0.1';
+//const puerto = 1337;
 
 const app = express();
+const port = process.env.PORT || 3131
 
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(__dirname + '/jslib'));
 app.use(express.static(__dirname + '/'));
-app.use(express.json());                      //json 
+app.use(bodyParser.json())                      //json 
 
 app.get('/',function(req, res){
     res.render( 'index.html');
@@ -21,5 +27,6 @@ app.post('/', function(request, response){
     response.send(request.body);        // manda de vuelta una respuesta
 });
 
-app.listen(puerto, nombre_maquina);
-console.log(`Servidor corriendo en http://${nombre_maquina}:${puerto}/`);
+app.listen(port,() => {
+    console.log(`Servidor API REST corriendo en http://localhost:${port}`)
+})
