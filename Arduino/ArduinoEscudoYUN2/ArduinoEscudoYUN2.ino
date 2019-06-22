@@ -42,10 +42,10 @@ const int pinI27 =  47;
 const int pinI18 =  48;
 const int pinI17 =  49;
 const int pinI21 =  36;
-const int pinI39 = A15;
-const int pinI37 = A14;
-const int pinI38 = A13;
-const int pinI36 = A12;
+//const int pinI39 = A15;
+//const int pinI37 = A14;
+//const int pinI38 = A13;
+//const int pinI36 = A12;
 const int pinI23 = A11;
 const int pinI83 = A10;
 const int pinI79 =  A9;
@@ -168,10 +168,10 @@ void setup() {
   pinMode(pinI18,  INPUT);//<-      <- AP191
   pinMode(pinI17,  INPUT);//<-      <- VC12
   pinMode(pinI21,  INPUT);//<-      <- AP140
-  pinMode(pinI39,  INPUT);//<-      <- BC25
-  pinMode(pinI37,  INPUT);//<-      <- BF25
-  pinMode(pinI38,  INPUT);//<-      <- BC15
-  pinMode(pinI36,  INPUT);//<-      <- BF15
+//  pinMode(pinI39,  INPUT);//<-      <- BC25
+//  pinMode(pinI37,  INPUT);//<-      <- BF25
+//  pinMode(pinI38,  INPUT);//<-      <- BC15
+//  pinMode(pinI36,  INPUT);//<-      <- BF15
   pinMode(pinI23,  INPUT);//<-      <- VF12
   pinMode(pinI83,  INPUT);//<-      <- AR131
   pinMode(pinI79,  INPUT);//<-      <- AR14
@@ -264,10 +264,10 @@ I16 = digitalRead(pinI16);
 I85 =  analogRead(pinI85);
 I83 =  analogRead(pinI83);
 I23 =  analogRead(pinI23);
-I36 =  analogRead(pinI36);
-I38 =  analogRead(pinI38);
-I37 =  analogRead(pinI37);
-I39 =  analogRead(pinI39);
+//I36 =  analogRead(pinI36);
+//I38 =  analogRead(pinI38);
+//I37 =  analogRead(pinI37);
+//I39 =  analogRead(pinI39);
 I29 =  analogRead(pinI29);
 I30 =  analogRead(pinI30);
 I31 =  analogRead(pinI31);
@@ -433,22 +433,30 @@ void modeCommand(BridgeClient client) {
 // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
 void Leer_Sensores(){
   Process p;
-  ValorSensor_I85 = analogRead(I85);
+  ValorSensor_I85 = analogRead(A0);
   //este evento sucede una vez, solo si el valor del sensor cambia.
   if (ValorSensor_I85 > 500 && Estado_I85 == 0) {
     //el estado del sensor cambio a HIGH
     Estado_I85 = 1;
     //comando que empuje el valor del sensor hacia el cliente (este es un ejemplo).
-    /*p.begin("curl");
+    p.begin("curl");
     p.addParameter("-X"); // use POST instead of default GET
     p.addParameter("POST");
     p.addParameter("-d");
-    p.addParameter("{\"name\":\"Nick\"}");
+    p.addParameter("{\"name\":\"Irra\"}");
     p.addParameter("-H"); 
     p.addParameter("Content-type: application/json");
-    p.addParameter("http://192.168.0.120:3000/");
-    p.runAsynchronously();*/
-    p.runShellCommandAsynchronously("curl -d \'{\"estado\":\"1\"}\' -H \"Content-Type: application/json\" http://192.168.10.86:3000");
+    p.addParameter("http://192.168.0.131:3131/api/product");
+    //p.runAsynchronously();
+    p.run();
+    //p.runShellCommandAsynchronously("curl -d \'{\"estado\":\"1\"}\' -H \"Content-Type: application/json\" http://192.168.10.86:3000");
+    // A process output can be read with the stream methods
+  while (p.available() > 0) {
+    char c = p.read();
+    SerialUSB.print(c);
+  }
+  // Ensure the last bit of data is sent.
+  SerialUSB.flush();
     Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
     
   }

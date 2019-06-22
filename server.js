@@ -20,6 +20,7 @@ app.use(bodyParser.json())                      //json
     res.send({message:`hola ${req.params.name}!`})
 })*/
 app.get('/api/product',(req, res)=>{
+    console.log('hola oleo')
     res.send(200,{products:[]})
 
 })
