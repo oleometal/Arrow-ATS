@@ -29,7 +29,7 @@ app.get('/api/product/:productID',(req, res)=>{
 })
 app.post('/api/product',(req, res)=>{
     console.log(req.body)
-    res.send(200,{message: 'el producto se ha recibido'})
+    res.status(200).send({message: 'el producto se ha recibido'})
 
 })
 app.put('/api/product/:productID',(req,res)=>{
@@ -44,10 +44,10 @@ app.get('/',function(req, res){
 app.get('/jslib',function(req, res){
     res.render(  '');
 });
-app.post('/', function(request, response){
+/*app.post('/', function(request, response){
     console.log(request.body);          //tu json
     response.send(request.body);        // manda de vuelta una respuesta
-});
+});*/
 
 app.listen(port,() => {
     console.log(`Servidor API REST corriendo en http://localhost:${port}`)
