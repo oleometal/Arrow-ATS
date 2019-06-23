@@ -5,7 +5,7 @@
   "description": "control numerico computarizado para madera 10 ejes",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "oleo",
   "license": "ISC",
