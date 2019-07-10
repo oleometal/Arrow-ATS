@@ -135,7 +135,7 @@ I262=digitalRead(27);
 I261=digitalRead(28);
 I260=digitalRead(30);
 I259=digitalRead(29);
-I258=digitalRead(21);
+I258=digitalRead(32);
 I257=digitalRead(31);
 I256=digitalRead(22);
     i++;
