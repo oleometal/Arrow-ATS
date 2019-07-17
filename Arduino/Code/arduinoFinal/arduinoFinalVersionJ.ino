@@ -150,8 +150,8 @@ void loop() {
       case 'd': //girar media vuelta
         changeB(2,0);
         break;
-      case 'e': //mover la herramienta a 150cm de la posición de trabajo
-        changeH(150.0);
+      case 'e': //mover la herramienta a 250cm de la posición de trabajo
+        changeH(250.0);
         break;
       case 'f': //home del carrusel
         homeC();
