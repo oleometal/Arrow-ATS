@@ -10,7 +10,7 @@
   El motivo Principal es porque se calienta la tarjeta.
   
   This example for the YunShield/Yún shows how 
-  to use the Bridge library to access the digital and
+  to use the Bridge library to access the digi|tal and
   analog pins on the board through REST calls.
   It demonstrates how you can create your own API when
   using REST style calls through the browser.
@@ -27,12 +27,55 @@
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
+#include <HttpClient.h>
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
+   int i=0;
+    String url ="http://192.168.0.98/api/arduino5/";
+    bool O331;
+bool O330;
+bool O317;
+bool O312;
+bool O325;
+bool O324;
+bool O322;
+bool O323;
+bool O326;
+bool O327;
+bool O306;
+bool O308;
+bool O307;
+bool O328;
+bool O313;
+bool O316;
+bool O314;
+bool O315;
+bool O310;
+bool O309;
+bool O304;
+bool O305;
+bool I309;
+bool I305;
+bool I308;
+bool I304;
+bool I307;
+bool I306;
+bool O318;
+bool O311;
+bool I310;
+bool I325;
+bool I322;
+bool I320;
+bool I323;
+bool O329;
+int I324;
+int I321;
 
 void setup() {
+     
+
   // Bridge startup        Rele    Cable
   pinMode(A0, INPUT); 
   pinMode(A1, INPUT);
@@ -65,8 +108,8 @@ void setup() {
   pinMode(12,OUTPUT); //->      -> BA14
   pinMode(11,OUTPUT); //->      -> BC14
   pinMode(10,OUTPUT); //->      -> BC13
-  pinMode(44,OUTPUT); //->      -> BH12
-  pinMode(43,OUTPUT); //->      -> BC21
+  pinMode(43,OUTPUT); //->      -> BH12
+  pinMode(44,OUTPUT); //->      -> BC21
   pinMode(35,OUTPUT); //->      -> BT211
   pinMode(34,OUTPUT); //->      -> BT210
   pinMode(33,OUTPUT); //->      -> BC11
@@ -85,6 +128,52 @@ void setup() {
 }
 
 void loop() {
+    url ="http://192.168.0.98/api/arduino5/";
+    O331=digitalRead(2);
+O330=digitalRead(3);
+O317=digitalRead(4);
+O312=digitalRead(5);
+O325=digitalRead(6);
+O324=digitalRead(7);
+O322=digitalRead(8);
+O323=digitalRead(9);
+O326=digitalRead(10);
+O327=digitalRead(11);
+O306=digitalRead(12);
+O308=digitalRead(14);
+O307=digitalRead(15);
+O328=digitalRead(16);
+O313=digitalRead(28);
+O316=digitalRead(29);
+O314=digitalRead(30);
+O315=digitalRead(31);
+O310=digitalRead(32);
+O309=digitalRead(33);
+O304=digitalRead(34);
+O305=digitalRead(35);
+I309=digitalRead(36);
+I305=digitalRead(37);
+I308=digitalRead(38);
+I304=digitalRead(39);
+I307=digitalRead(40);
+I306=digitalRead(41);
+O318=digitalRead(43);
+O311=digitalRead(44);
+I310=digitalRead(45);
+I325=digitalRead(46);
+I322=digitalRead(47);
+I320=digitalRead(48);
+I323=digitalRead(51);
+O329=digitalRead(53);
+I324=analogRead(A12);
+I321=analogRead(A15);
+i++;
+    if (i>=25){
+        url = url+I304+"/"+I305+"/"+I306+"/"+I307+"/"+I308+"/"+I309+"/"+I310+"/"+O304+"/"+O305+"/"+O306+"/"+O307+"/"+O308+"/"+O309+"/"+O310+"/"+O311+"/"+O312+"/"+O313+"/"+O314+"/"+O315+"/"+O316+"/"+O317+"/"+O318+"/"+I320+"/"+I321+"/"+I322+"/"+I323+"/"+I324+"/"+I325+"/"+O322+"/"+O323+"/"+O324+"/"+O325+"/"+O326+"/"+O327+"/"+O328+"/"+O329+"/"+O330+"/"+O331;
+        HttpClient client;
+        client.getAsynchronously(url);
+        i=0;
+    }
   // Get clients coming from server
   BridgeClient client = server.accept();
 
@@ -120,12 +209,42 @@ void process(BridgeClient client) {
   if (command == "analog") {
     analogCommand(client);
   }
+    
+      if (command == "subirstops") {
+    subirstops(client);
+  }
+       if (command == "bajarstops") {
+    bajarstops(client);
+  }
 
   // is "mode" command?
   if (command == "mode") {
     modeCommand(client);
   }
 }
+
+
+void subirstops(BridgeClient client) {
+    digitalWrite(30, HIGH);
+    digitalWrite(28, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(29, HIGH);
+    digitalWrite(31, HIGH);
+    digitalWrite(14, HIGH);
+    digitalWrite(15, HIGH);
+}
+    
+    void bajarstops(BridgeClient client) {
+        digitalWrite(30, LOW);
+        digitalWrite(28, LOW);
+        digitalWrite(12, LOW);
+        digitalWrite(29, LOW);
+        digitalWrite(31, LOW);
+        digitalWrite(14, LOW);
+        digitalWrite(15, LOW);
+    }
+
+
 
 void digitalCommand(BridgeClient client) {
   int pin, value;

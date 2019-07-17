@@ -29,12 +29,59 @@
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
+#include <HttpClient.h>
+
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
 
+ int i=0;
+    String url ="http://192.168.0.98/api/arduino9/";
+    bool O339;
+bool I357;
+bool I358;
+bool I359;
+bool O333;
+bool I345;
+bool I378;
+bool I379;
+bool O332;
+bool I375;
+bool I374;
+bool I373;
+bool O336;
+bool I392;
+bool I391;
+bool I431;
+bool I430;
+bool I429;
+bool I427;
+bool I412;
+bool I411;
+bool I410;
+bool I408;
+bool I393;
+bool O340;
+bool O342;
+bool O335;
+int I372;
+int I338;
+int I436;
+int I390;
+int I409;
+int I415;
+int I341;
+int I416;
+int I396;
+int I397;
+int I389;
+int I428;
+int I435;
+int I434;
+
 void setup() {
+     
   // Bridge startup        Rele    Cable
   pinMode(A0, INPUT); //<- 2R10 <- UZ12(UZ1W4)
   pinMode(A1, INPUT); //<- 1R10 <- ST126(ST1W4)
@@ -89,7 +136,7 @@ void setup() {
   pinMode(42, INPUT);       //<--------- ST135(ST1W4)
   pinMode(43, OUTPUT);      //-> 6R22 -> ST141(CN1W4)
   pinMode(44, OUTPUT);      //-> 5R21 -> CU141(CU1W4)
-  pinMode(45, INPUT);
+  pinMode(45, OUTPUT);      //-> TERMINAL 16 DEL VARIADOR
   pinMode(46, INPUT);       //<--------- UA133(UA1W4)
   pinMode(47, INPUT);
   pinMode(48, INPUT);
@@ -104,6 +151,56 @@ void setup() {
 }
 
 void loop() {
+    
+    url ="http://192.168.0.98/api/arduino9/";
+    O339=digitalRead(2);
+I357=digitalRead(4);
+I358=digitalRead(5);
+I359=digitalRead(6);
+O333=digitalRead(7);
+I345=digitalRead(9);
+I378=digitalRead(11);
+I379=digitalRead(12);
+O332=digitalRead(14);
+I375=digitalRead(15);
+I374=digitalRead(16);
+I373=digitalRead(17);
+O336=digitalRead(18);
+I392=digitalRead(22);
+I391=digitalRead(23);
+I431=digitalRead(26);
+I430=digitalRead(27);
+I429=digitalRead(28);
+I427=digitalRead(29);
+I412=digitalRead(33);
+I411=digitalRead(34);
+I410=digitalRead(35);
+I408=digitalRead(36);
+I393=digitalRead(41);
+O340=digitalRead(43);
+O342=digitalRead(44);
+O335=digitalRead(49);
+I372=analogRead(A0);
+I338=analogRead(A1);
+I436=analogRead(A10);
+I390=analogRead(A11);
+I409=analogRead(A12);
+I415=analogRead(A13);
+I341=analogRead(A14);
+I416=analogRead(A15);
+I396=analogRead(A3);
+I397=analogRead(A4);
+I389=analogRead(A5);
+I428=analogRead(A7);
+I435=analogRead(A8);
+I434=analogRead(A9);    
+      i++;
+    if (i>=25){
+        url = url+I338+"/"+I341+"/"+I345+"/"+I357+"/"+I358+"/"+I359+"/"+O333+"/"+O332+"/"+O335+"/"+O336+"/"+I372+"/"+I373+"/"+I374+"/"+I375+"/"+I378+"/"+I379+"/"+I389+"/"+I390+"/"+I391+"/"+I392+"/"+I393+"/"+I396+"/"+I397+"/"+O339+"/"+O340+"/"+I408+"/"+I409+"/"+I410+"/"+I411+"/"+I412+"/"+I415+"/"+I416+"/"+O342+"/"+I427+"/"+I428+"/"+I429+"/"+I430+"/"+I431+"/"+I434+"/"+I435+"/"+I436;
+        HttpClient client;
+        client.getAsynchronously(url);
+        i=0;
+    }
   // Get clients coming from server
   BridgeClient client = server.accept();
 

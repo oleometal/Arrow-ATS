@@ -27,20 +27,53 @@
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
+#include <HttpClient.h>
+
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 
 BridgeServer server;
+  int i=0;
+    String url ="http://192.168.0.98/api/arduino4/";
+    bool O281;
+bool O280;
+bool O279;
+bool O278;
+bool O277;
+bool O276;
+bool O275;
+bool I274;
+bool I273;
+bool I272;
+bool O270;
+bool O269;
+bool O268;
+bool O267;
+bool O266;
+bool O265;
+bool O264;
+bool O263;
+bool I262;
+bool I261;
+bool I260;
+bool I259;
+bool I258;
+bool I257;
+bool I256;
+
 
 void setup() {
+    
+  
+
   // Bridge startup        Rele    Cable
   pinMode(32, INPUT); //<- 2R28 <- BT19
   pinMode(22, INPUT); //<-      <- BT17
   pinMode(23, INPUT); //<-      <- BF26
   pinMode(24, INPUT); //<-      <- BF16
   pinMode(25, INPUT); //<-      <- BF120
-  pinMode(26, INPUT); //<-      <- BF16?
+  pinMode(26, INPUT); //<-      <- BF220
   pinMode(27, INPUT); //<-      <- BB240
   pinMode(28, INPUT); //<-      <- BB140
   pinMode(29, INPUT); //<-      <- BT112
@@ -80,6 +113,39 @@ void setup() {
   server.begin();
 }
 void loop() {
+ 
+    url ="http://192.168.0.98/api/arduino4/";
+
+    O278=digitalRead(17);
+O277=digitalRead(4);
+O276=digitalRead(3);
+O275=digitalRead(15);
+I274=digitalRead(25);
+I273=digitalRead(23);
+I272=digitalRead(24);
+O270=digitalRead(11);
+O269=digitalRead(10);
+O268=digitalRead(9);
+O267=digitalRead(8);
+O266=digitalRead(7);
+O265=digitalRead(6);
+O264=digitalRead(5);
+O263=digitalRead(12);
+I262=digitalRead(27);
+I261=digitalRead(28);
+I260=digitalRead(30);
+I259=digitalRead(29);
+I258=digitalRead(32);
+I257=digitalRead(31);
+I256=digitalRead(22);
+    i++;
+    if (i>=25){
+        url = url+O281+"/"+O280+"/"+O279+"/"+O278+"/"+O277+"/"+O276+"/"+O275+"/"+I274+"/"+I273+"/"+I272+"/"+O270+"/"+O269+"/"+O268+"/"+O267+"/"+O266+"/"+O265+"/"+O264+"/"+O263+"/"+I262+"/"+I261+"/"+I260+"/"+I259+"/"+I258+"/"+I257+"/"+I256;
+        HttpClient client;
+        client.getAsynchronously(url);
+        i=0;
+    }
+
   // Get clients coming from server
   BridgeClient client = server.accept();
 
@@ -116,6 +182,12 @@ void process(BridgeClient client) {
     analogCommand(client);
   }
 
+      if (command == "bajarstops") {
+    bajarstops(client);
+  }
+       if (command == "subirstops") {
+    subirstops(client);
+  }
   // is "mode" command?
   if (command == "mode") {
     modeCommand(client);
@@ -188,6 +260,33 @@ void analogCommand(BridgeClient client) {
     Bridge.put(key, String(value));
   }
 }
+
+
+void bajarstops(BridgeClient client) {
+    digitalWrite(7, LOW);
+    digitalWrite(6, LOW);
+    digitalWrite(45, LOW);
+    digitalWrite(9, LOW);
+    digitalWrite(8, LOW);
+        digitalWrite(46, LOW);
+        digitalWrite(44, LOW);
+
+}
+
+
+void subirstops(BridgeClient client) {
+    digitalWrite(7, HIGH);
+    digitalWrite(6, HIGH);
+    digitalWrite(45, HIGH);
+        digitalWrite(46, HIGH);
+        digitalWrite(44, HIGH);
+    digitalWrite(9, HIGH);
+        digitalWrite(8, HIGH);
+
+}
+
+
+
 
 void modeCommand(BridgeClient client) {
   int pin;
