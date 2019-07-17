@@ -151,7 +151,10 @@ void loop() {
         changeB(2,0);
         break;
       case 'e': //mover la herramienta a 250cm de la posición de trabajo
-        changeH(250.0);
+        changeH(5.0);
+        break;
+           case 'u': //home de brazo cambiador
+         homeB();
         break;
       case 'f': //home del carrusel
         homeC();
