@@ -215,7 +215,7 @@ void changeToolJ4(){
                           //secuencia = changeH(c); // llevar herramienta a la posición de trabajo
                           // int x = 0;
                           if(secuencia == 1){
-                          Serial.println("th");
+                          Serial.println("D");
                           }
 
 }
@@ -231,7 +231,7 @@ void changeToolJ3(){
                        
                         if(secuencia == 1){
                  
-                          Serial.println("c3");
+                          Serial.println("C");
                         }
 
 }
@@ -243,7 +243,7 @@ void changeToolJ2(){
  secuencia = changeB(2,0); // cambio de herramienta
                 if(secuencia == 1){
                   changeH(307);
-                  Serial.println("c2");
+                  Serial.println("B");
 
                    }
 
@@ -275,7 +275,7 @@ void changeToolJ1(){
               delay(tiempoEspera);
               secuencia = changeB(1,0); // enganchar las herramientas con el brazo
               if(secuencia == 1){
-                Serial.println("c1");
+                Serial.println("A");
           }
           }
           }
