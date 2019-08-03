@@ -60,6 +60,7 @@ void setup() {
     
 
   // Bridge startup        Rele    Cable
+  pinMode(18, INPUT); //<- 1R39 <- BRAZO DESCANZO
   pinMode(24, INPUT); //<-      <- CN115
   pinMode(25, INPUT); //<-      <- CU115
   pinMode(26, INPUT); //<-      <- CU114
@@ -70,7 +71,7 @@ void setup() {
   pinMode(15, INPUT); //<-      <- SC124
   pinMode(16, INPUT); //<-      <- SC125
   pinMode(17, INPUT); //<-      <- SC126
-  pinMode(18, INPUT); //<-      <- CN114
+  pinMode(29, INPUT); //<-      <- CN114
   pinMode(28,OUTPUT); //-> 6R38 -> CN121
   pinMode(23,OUTPUT); //-> 4R38 -> SA122
   pinMode(27,OUTPUT); //-> 7R38 -> CN122    
