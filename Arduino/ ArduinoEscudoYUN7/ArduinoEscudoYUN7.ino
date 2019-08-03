@@ -61,16 +61,16 @@ void setup() {
 
   // Bridge startup        Rele    Cable
   pinMode(18, INPUT); //<- 1R39 <- BRAZO DESCANZO
-  pinMode(24, INPUT); //<-      <- CN115
-  pinMode(25, INPUT); //<-      <- CU115
-  pinMode(26, INPUT); //<-      <- CU114
-  pinMode(10, INPUT); //<-      <- SA124
-  pinMode(11, INPUT); //<-      <- SA125
-  pinMode(12, INPUT); //<-      <- SA135
-  pinMode(14, INPUT); //<-      <- SA136
-  pinMode(15, INPUT); //<-      <- SC124
-  pinMode(16, INPUT); //<-      <- SC125
-  pinMode(17, INPUT); //<-      <- SC126
+  pinMode(24, INPUT); //<- 3R38 <- CN115
+  pinMode(25, INPUT); //<- 2R38 <- CU115
+  pinMode(26, INPUT); //<- 1R38 <- CU114
+  pinMode(10, INPUT); //<- 8R39 <- SA124
+  pinMode(11, INPUT); //<- 7R39 <- SA125
+  pinMode(12, INPUT); //<- 6R39 <- SA135
+  pinMode(14, INPUT); //<- 5R39 <- SA136
+  pinMode(15, INPUT); //<- 4R39 <- SC124
+  pinMode(16, INPUT); //<- 3R39 <- SC125
+  pinMode(17, INPUT); //<- 2R39 <- SC126
   pinMode(29, INPUT); //<-      <- CN114
   pinMode(28,OUTPUT); //-> 6R38 -> CN121
   pinMode(23,OUTPUT); //-> 4R38 -> SA122
@@ -78,13 +78,13 @@ void setup() {
   pinMode(22,OUTPUT); //-> 5R38 -> SA121
   pinMode(2, OUTPUT); //-> 8R40 -> CU112
   pinMode(19,OUTPUT); //-> 8R38 -> CU111
-  pinMode(3, OUTPUT); //->      -> SA132
-  pinMode(4, OUTPUT); //->      -> SC122
-  pinMode(5, OUTPUT); //->      -> SC121
-  pinMode(6, OUTPUT); //->      -> ST19
-  pinMode(7, OUTPUT); //->      -> CN111
-  pinMode(8, OUTPUT); //->      -> SA131
-  pinMode(9, OUTPUT); //->      -> SA134
+  pinMode(3, OUTPUT); //-> 7R40 -> SA132
+  pinMode(4, OUTPUT); //-> 6R40 -> SC122
+  pinMode(5, OUTPUT); //-> 5R40 -> SC121
+  pinMode(6, OUTPUT); //-> 4R40 -> ST19
+  pinMode(7, OUTPUT); //-> 3R40 -> CN111
+  pinMode(8, OUTPUT); //-> 2R40 -> SA131
+  pinMode(9, OUTPUT); //-> 1R40 -> SA134
   Bridge.begin();
   
 
