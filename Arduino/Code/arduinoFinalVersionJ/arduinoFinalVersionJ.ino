@@ -152,7 +152,7 @@ void loop() {
         changeB(2,0);
         break;
       case 'e': //mover la herramienta a 250cm de la posición de trabajo
-        changeH(50.0);
+        changeH(-20.0);
         break;
              case 'j': //mover la herramienta a 250cm de la posición de trabajo
         changeH(307);
