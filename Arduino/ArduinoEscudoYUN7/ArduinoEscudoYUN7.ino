@@ -32,6 +32,8 @@
 BridgeServer server;
 int i=0;
     String url ="http://192.168.0.98/api/arduino7/";
+        String estadoch ="N";
+
     bool O32;
 bool O33;
 bool O40;
@@ -143,6 +145,7 @@ O161=digitalRead(4);
   delay(50); // Poll every 50ms
 }
 
+
 void process(BridgeClient client) {
   // read the command
   String command = client.readStringUntil('/');
@@ -157,10 +160,129 @@ void process(BridgeClient client) {
     analogCommand(client);
   }
 
+  if (command == "ch1") {
+    ch1(client);
+  }
+
+    if (command == "ch2") {
+    ch2(client);
+  }
+ if (command == "estado") {
+    estado(client);
+  }
   // is "mode" command?
   if (command == "mode") {
     modeCommand(client);
   }
+}
+
+void estado(BridgeClient client) {
+  client.print(estadoch);
+  estadoch = "N";
+}
+
+void ch2(BridgeClient client) {
+
+//Sube brazo.
+digitalWrite(19,HIGH);
+delay(100);
+digitalWrite(19,LOW);
+delay(1000);
+
+
+//Confirma si subio brazo
+  if(digitalRead(26)){
+    //Cierra valvulas
+    digitalWrite(22,HIGH);
+    digitalWrite(28,HIGH);
+    delay(100);
+    digitalWrite(22,LOW);
+    digitalWrite(28,LOW);
+    delay(200);
+  //Revisa si valvula de husillo cerro
+    if (digitalRead(10)){
+ //Revisa si valvula de carrusel cerro
+        if (digitalRead(18)){
+
+              estadoch = "1";
+              client.print(F("1"));
+
+        }
+        else{
+               estadoch = "pcvc";
+                             client.print(F("1"));
+
+          //Problema cerrando valvula de carrusel
+        }
+    }
+    else{
+           estadoch = "pcvh";
+                         client.print(F("1"));
+
+      //Problema cerrando valvula de husillo
+    }
+    
+  }
+  else{
+    //Problema brazo subiendo
+     estadoch = "pbs";
+                   client.print(F("1"));
+
+
+  }
+}
+
+
+void ch1(BridgeClient client) {
+
+//Suelta Husillo
+digitalWrite(23,HIGH);
+//Suelta Carrusel
+digitalWrite(27,HIGH);
+
+delay(100);
+
+//FIN PULSO HUSILLO
+digitalWrite(23,LOW);
+//FIN PULSO CARRUSEL
+digitalWrite(27,LOW);
+
+delay(100);
+
+if (digitalRead(11)){
+    if (digitalRead(24)){
+
+      // Baja brazo
+      digitalWrite(2,HIGH);
+      delay(100);
+      digitalWrite(2,LOW);
+      delay(1000);
+      if(digitalRead(25)){
+        //Todo bien
+                      client.print(F("1"));
+
+       estadoch = "1";
+       
+      }
+      else{
+        //Problema Brazo Bajando
+                      client.print(F("1"));
+
+       estadoch = "pbb";
+      }
+    }else{
+      //Problema valvula carrusel
+                    client.print(F("1"));
+
+     estadoch = "pavc";
+    }
+}else{
+      //Problema valvula husillo
+                    client.print(F("1"));
+
+ estadoch = "pavh";
+}
+
 }
 
 void digitalCommand(BridgeClient client) {
