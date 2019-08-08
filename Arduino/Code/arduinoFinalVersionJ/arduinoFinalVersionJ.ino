@@ -412,7 +412,7 @@ int homeH(){
       delay(1000);
       digitalWrite(direccionH,LOW);
       analogWrite(pasoH,5);
-      delay(400); //tiempo de calibración, 740 originalmente
+      delay(740); //tiempo de calibración, 740 originalmente
       digitalWrite(pasoH, LOW);
       accionH = 0;
       flagH = 0;
