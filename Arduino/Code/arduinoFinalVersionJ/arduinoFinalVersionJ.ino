@@ -142,7 +142,7 @@ void loop() {
       case 'T':
         changeTool();
         break;
-      case 'y': //enganchar
+      case 'z': //enganchar
         changeB(1,0);
         break;
       case 'w': //desenganchar
@@ -151,7 +151,7 @@ void loop() {
       case 'o': //girar media vuelta
         changeB(2,0);
         break;
-      case 'e': //mover la herramienta a 250cm de la posición de trabajo
+      case 'p': //mover la herramienta a 250cm de la posición de trabajo
         changeH(-20.0);
         break;
              case 'j': //mover la herramienta a 250cm de la posición de trabajo
