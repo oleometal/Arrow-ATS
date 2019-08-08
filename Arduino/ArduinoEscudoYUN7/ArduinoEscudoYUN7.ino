@@ -32,7 +32,7 @@
 BridgeServer server;
 int i=0;
     String url ="http://192.168.0.98/api/arduino7/";
-        String estadoch ="N";
+        String estadoch ="1";
 
     bool O32;
 bool O33;
@@ -178,7 +178,7 @@ void process(BridgeClient client) {
 
 void estado(BridgeClient client) {
   client.print(estadoch);
-  estadoch = "N";
+  estadoch = "1";
 }
 
 void ch2(BridgeClient client) {
@@ -247,7 +247,7 @@ digitalWrite(23,LOW);
 //FIN PULSO CARRUSEL
 digitalWrite(27,LOW);
 
-delay(100);
+delay(600);
 
 if (digitalRead(11)){
     if (digitalRead(24)){
