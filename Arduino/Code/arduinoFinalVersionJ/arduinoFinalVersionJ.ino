@@ -412,7 +412,7 @@ int homeH(){
       delay(1000);
       digitalWrite(direccionH,LOW);
       analogWrite(pasoH,5);
-      delay(700); //tiempo de calibración, 740 originalmente
+      delay(680); //tiempo de calibración, 740 originalmente
       digitalWrite(pasoH, LOW);
       accionH = 0;
       flagH = 0;
@@ -592,7 +592,7 @@ int changeB(int giro, int sentido){
    giro = 810;
  
   if(muestra == 2){
-   giro = 1632;
+   giro = 1635;
   }
   digitalWrite(direccionB, sentido); //0 en sentido antihorario, 1 sentido horario 
   analogWrite(pasoB,5);
