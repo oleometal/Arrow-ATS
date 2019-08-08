@@ -202,7 +202,7 @@ delay(1000);
   //Revisa si valvula de husillo cerro
     if (digitalRead(10)){
  //Revisa si valvula de carrusel cerro
-        if (digitalRead(18)){
+        if (digitalRead(29)){
 
               estadoch = "1";
               client.print(F("1"));
