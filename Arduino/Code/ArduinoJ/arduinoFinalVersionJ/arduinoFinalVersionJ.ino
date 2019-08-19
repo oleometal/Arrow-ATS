@@ -31,7 +31,7 @@ int flagB = 0;
 int sensorC = 7; // Sensor de efecto hall del carrusel
 int sensorH = 6; // Sensor de final de carrera del mandril de herramienta
 int sensorB = 5; // Sensor del BRAZO AHORA ES A0 y SU VALOR EN POSITIVO ES MENOR A 100
-
+int sensorP = 49;
 // Paso de los servomotores (NO MODIFICAR NINGUNO DE ESTOS PINES)
 int pasoC = 4 ; // Salida al servo motor del carrusel
 int pasoH = 13; // Salida al servo motor del mandril de la herramienta
@@ -395,6 +395,8 @@ int homeC(){
 //----------------- FUNCIÓN HOME DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int homeH(){
+
+  if (digitalRead(sensorP) == 0){
   accionH = 1;
   flagH = 0;
   
@@ -424,7 +426,7 @@ int homeH(){
       return 0;
     }
   }
-}
+}}
 
 
 //------------------------- FUNCIÓN HOME DEL BRAZO -----------------------//
@@ -556,6 +558,8 @@ void changeTool(){
 //------------------------ FUNCIÓN CAMBIO DEL CARRUSEL ----------------------//
 
 int changeC(int newTool){
+
+  if (digitalRead(sensorP) == 0){
   TCCR0B = TCCR0B & 0b1111000 | 0x03;
   int distancia = abs(newTool - tool);
   
@@ -578,7 +582,7 @@ int changeC(int newTool){
   EEPROM.write(directionTool,newTool);    
   tool = newTool;
   //sendJson("Herramienta "+String(tool)+" en Home",1);
-  return 1;
+  return 1;}
 }
 
 
@@ -606,6 +610,7 @@ int changeB(int giro, int sentido){
 //--------------- FUNCIÓN CAMBIO DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int changeH(double offset){
+  if (digitalRead(sensorP) == 0){
   delay(5);
   double value = -83.5143*offset + 26024.1356;
   TCCR0B = TCCR0B & 0b1111000 | 0x02;
@@ -613,7 +618,7 @@ int changeH(double offset){
   analogWrite(pasoH,5);
   delay(value); // tiempo de espera
   digitalWrite(pasoH, LOW);
-  return 1;
+  return 1;}
 }
 
 
