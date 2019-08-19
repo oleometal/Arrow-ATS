@@ -32,6 +32,7 @@ int flagB = 0;
 int sensorC = 7; // Sensor de efecto hall del carrusel
 int sensorH = 6; // Sensor de final de carrera del mandril de herramienta
 int sensorB = 5; // Sensor de efecto hall del brazo
+int sensorP = 49; // sensor de posicion descanso brazo.
 
 // Paso de los servomotores (NO MODIFICAR NINGUNO DE ESTOS PINES)
 int pasoC = 4 ; // Salida al servo motor del carrusel
@@ -47,25 +48,7 @@ int direccionB = 11; // dirección del motor del brazo
 int tx2 = 17;  // Trasmisión de datos
 int rx2 = 16;  // recepción de ejecución
 
-/*
-UTP1
-cafe -> Ground
-azul -> 13 paso del mandril de la herramienta
-verde -> 12 Paso servo brazo
-naranja -> 11 direccion motor brazo
-azul/b -> 9 direccion motor mandril herramienta
-naranja/b -> 8 direccion motor carrusel
 
-UTP2
-Cafe -> 7 sensor de efecto hall del carrusel
-Cafe/b -> 6 sensor de final de carreradel madril
-Verde -> 5 sensor del brazo
-Verde/b -> 4 paso del carrusel 
-Azul -> tx3
-Azul/b -> rx3
-naranja -> tx2
-naranja/b -> rx2
-*/
 
 
 //---------------------- BLOQUE DE DETECCIÓN DE SENSORES --------------------//
