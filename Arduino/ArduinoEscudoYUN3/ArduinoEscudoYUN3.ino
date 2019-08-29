@@ -242,6 +242,7 @@ I34=analogRead(A9);
   // There is a new client?
   if (client) {
     // Process request
+    client.setTimeout(5);
     process(client);
 
     // Close connection and free resources.
