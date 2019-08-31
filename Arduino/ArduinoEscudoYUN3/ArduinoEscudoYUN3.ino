@@ -35,6 +35,7 @@
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
+Process p;
  String url ="http://192.168.0.98/api/arduino3/";
     bool O49;
     int i = 0;
@@ -230,9 +231,10 @@ I34=analogRead(A9);
     if (i>=25){
         url = url+I1+"/"+I2+"/"+I5+"/"+I10+"/"+I11+"/"+I32+"/"+I33+"/"+I34+"/"+I35+"/"+I40+"/"+I42+"/"+I43+"/"+O36+"/"+O37+"/"+O38+"/"+O39+"/"+O44+"/"+O45+"/"+O46+"/"+I48+"/"+I49+"/"+I50+"/"+I51+"/"+I52+"/"+I53+"/"+I54+"/"+I55+"/"+I56+"/"+I57+"/"+I58+"/"+I59+"/"+I60+"/"+I61+"/"+I62+"/"+I63+"/"+O48+"/"+O49+"/"+O50+"/"+O51+"/"+O52+"/"+O53+"/"+O54+"/"+O55+"/"+O56+"/"+I64+"/"+I65+"/"+I66+"/"+I67+"/"+I68+"/"+I69+"/"+I70+"/"+I71+"/"+I72+"/"+I82+"/"+O338;
 
-        HttpClient client;
-        client.getAsynchronously(url);
-        i=0;
+p.begin("curl");
+    p.addParameter(url);
+    p.runAsynchronously();
+    
     }
 
 
