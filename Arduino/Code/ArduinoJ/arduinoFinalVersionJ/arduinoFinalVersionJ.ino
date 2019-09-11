@@ -334,6 +334,8 @@ void homeTool(){
 //------------------------- FUNCIÓN HOME DEL CARRUSEL -----------------------//
 
 int homeC(){
+
+  if (digitalRead(sensorP) == 0){
   accionC = 1;
   TCCR0B = TCCR0B & 0b1111000 | 0x03;
   analogWrite(pasoC,5);
@@ -388,6 +390,7 @@ int homeC(){
       //sendJson("No se pudo detectar el sensor del carrusel",0);
       return 0;
     } 
+  }
   }
 }
 
