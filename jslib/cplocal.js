@@ -22,8 +22,13 @@ window.replaceToLocal = function(url){
           if(url.match(/widgets/)){
             replaced = replaced.replace(/^.+widgets/, "widgets");
          }
+        
+    
       }
 
+     
+        
+   
       if(url.match(/githubusercontent/)){
          // https://raw.githubusercontent.com/chilipeppr/widget-pubsubviewer/master/auto-generated-widget.html
          replaced = url.replace(/^.+widget\-/, "widgets/widget-");
@@ -53,8 +58,8 @@ window.replaceToLocal = function(url){
       if(url.match(/datagetallkeys/)){
          arguments[0].url = 'data/datagetallkeys.json';
       }
-
-        if(url.match(/js\/three/)){
+      
+       if(url.match(/js\/three/)){
            replaced = url.replace(/^.+js\/three/, "jslib/cplibs");
        }
       
