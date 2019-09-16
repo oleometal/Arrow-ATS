@@ -2,7 +2,7 @@
   Arduino7 Yún 
   Ubicacion carro +E parte izquierda
   MAC: C4:93:00:04:32:59
-  IP: 192.168.0.89
+  IP: 192.168.0.80
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
