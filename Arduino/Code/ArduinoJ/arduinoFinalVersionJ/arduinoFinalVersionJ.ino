@@ -139,7 +139,7 @@ void loop() {
       case 'a': // home de todas las herramientas
         homeTool();
         break;
-      case 'T':(changeTool();
+      case 'T':changeTool();
         break;
       case 'z': //enganchar
         changeB(1,0);
