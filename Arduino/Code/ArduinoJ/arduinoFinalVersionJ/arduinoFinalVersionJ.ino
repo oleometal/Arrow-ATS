@@ -139,8 +139,7 @@ void loop() {
       case 'a': // home de todas las herramientas
         homeTool();
         break;
-      case 'T':
-        changeTool();
+      case 'T':(changeTool();
         break;
       case 'z': //enganchar
         changeB(1,0);
@@ -215,7 +214,7 @@ void changeToolJ4(){
                           //secuencia = changeH(c); // llevar herramienta a la posición de trabajo
                           // int x = 0;
                           if(secuencia == 1){
-                          Serial.println("terminech");
+                          Serial.println("D");
                           }
 
 }
@@ -231,7 +230,7 @@ void changeToolJ3(){
                        
                         if(secuencia == 1){
                  
-                          Serial.println("cambio3");
+                          Serial.println("C");
                         }
 
 }
@@ -243,7 +242,7 @@ void changeToolJ2(){
  secuencia = changeB(2,0); // cambio de herramienta
                 if(secuencia == 1){
                   changeH(307);
-                  Serial.println("cambio2");
+                  Serial.println("B");
 
                    }
 
@@ -275,7 +274,7 @@ void changeToolJ1(){
               delay(tiempoEspera);
               secuencia = changeB(1,0); // enganchar las herramientas con el brazo
               if(secuencia == 1){
-                Serial.println("cambio1");
+                Serial.println("A");
           }
           }
           }
