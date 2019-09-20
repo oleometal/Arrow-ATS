@@ -187,7 +187,7 @@ void ch2(BridgeClient client) {
 digitalWrite(19,HIGH);
 delay(100);
 digitalWrite(19,LOW);
-delay(1000);
+delay(3000);
 
 
 //Confirma si subio brazo
