@@ -195,10 +195,10 @@ delay(3000);
     //Cierra valvulas
     digitalWrite(22,HIGH);
     digitalWrite(28,HIGH);
-    delay(1000);
+    delay(500);
     digitalWrite(22,LOW);
     digitalWrite(28,LOW);
-    delay(2000);
+    delay(500);
   //Revisa si valvula de husillo cerro
     if (digitalRead(10)){
  //Revisa si valvula de carrusel cerro
