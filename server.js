@@ -1,16 +1,13 @@
 'use strict'
 const express = require('express')
 const bodyParser = require('body-parser')
-//import http from 'http';
+const app = express();
 const fs = require('fs');
 
+// ajustes
+app.set('port', process.env.PORT || 3131);
 
-//const nombre_maquina = '127.0.0.1';
-//const puerto = 1337;
-
-const app = express();
-const port = process.env.PORT || 3131
-
+// archivos estaticos
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(__dirname + '/jslib'));
 app.use(express.static(__dirname + '/'));
@@ -49,6 +46,15 @@ app.get('/jslib',function(req, res){
     response.send(request.body);        // manda de vuelta una respuesta
 });*/
 
-app.listen(port,() => {
-    console.log(`Servidor API REST corriendo en http://localhost:${port}`)
+// iniciar el servidor
+const servidor = app.listen(app.get('port'),() => {
+    console.log(`Servidor API REST corriendo en http://localhost:${app.get('port')}`)
 })
+
+// websockets
+const SocketIO = require('socket.io');
+const io = SocketIO(servidor);
+
+io.on('connection',(socket) => {
+    console.log('nueva coneccion', socket.id)
+});
