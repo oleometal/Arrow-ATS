@@ -598,7 +598,7 @@ int changeB(int giro, int sentido){
    giro = 810;
  
   if(muestra == 2){
-   giro = 1632;
+   giro = 1640;
   }
   digitalWrite(direccionB, sentido); //0 en sentido antihorario, 1 sentido horario 
   analogWrite(pasoB,5);
