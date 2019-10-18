@@ -1,7 +1,7 @@
 //---------------------------- BLOQUE DE LIBRERÍAS --------------------------//
 
 #include <EEPROM.h>
-#include <ArduinoJson.h>
+
 
 
 //------------------------ BLOQUE DE CONTROL DE TIEMPO ----------------------//
@@ -13,7 +13,7 @@ unsigned long timeMaxB; // tiempo máximo para calibración del home del brazo
 
 // unsigned long timePLC; // tiempo de respuesta máxima para que el plc ejecute la acción
 
-
+float giro180 = 1635;
 int timeTool = 1956.3;//1956 tiempo entre cada herramienta
 int tiempoEspera = 500; // tiempo de espera entre cada cambio de herramienta 
 unsigned long tiempoSerial; // tiempo de espera serial para recibir la respuesta del otro PLC
@@ -54,7 +54,6 @@ verde -> 12 Paso servo brazo
 naranja -> 11 direccion motor brazo
 azul/b -> 9 direccion motor mandril herramienta
 naranja/b -> 8 direccion motor carrusel
-
 UTP2
 Cafe -> 7 sensor de efecto hall del carrusel
 Cafe/b -> 6 sensor de final de carreradel madril
@@ -89,7 +88,7 @@ int changeNumber = 0;
 //---------------------- FUNCIÓN DE CONFIGURACIÓN INICIAL -------------------//
 
 void setup(){
-  Serial.begin(9600); 
+  Serial.begin(115200); 
   //Serial3.begin(9600);
   //Serial2.begin(9600);
 
@@ -154,21 +153,37 @@ void loop() {
         changeH(-20.0);
         break;
              case 'j': //mover la herramienta a 250cm de la posición de trabajo
-        changeH(307);
+        changeH(306.8);
         break;
                      case 'x': //Paso 1 CH
-        changeToolJ1();
+        changeToolJ1(1);
         break;
                       case 'l': //Paso 2 CH
-        changeToolJ2();
+        changeToolJ2(1);
         break;
                       case 'm': //Paso 3 CH
-        changeToolJ3();
+        changeToolJ3(1);
         break;
-                      case 'n': //Paso 4 CH
-        changeToolJ4();
+                      case '#': //Paso 4 CH
+        changeToolJ4(1);
         break;
         
+
+                     case 'X': //Paso 1 CH
+        changeToolJ1(2);
+        break;
+                      case 'L': //Paso 2 CH
+        changeToolJ2(2);
+        break;
+                      case 'M': //Paso 3 CH
+        changeToolJ3(2);
+        break;
+                      case '¿': //Paso 4 CH
+        changeToolJ4(2);
+        break;
+
+
+
            case 'u': //home de brazo cambiador
          homeB();
         break;
@@ -214,40 +229,58 @@ void changeToolJ4(){
                           //secuencia = changeH(c); // llevar herramienta a la posición de trabajo
                           // int x = 0;
                           if(secuencia == 1){
-                          Serial.println("D");
+                                if (tipocambio = 1){
+                Serial.println("D");
+                }
+                else{
+                  Serial.println("d");
+                }
                           }
 
 }
 
 
-void changeToolJ3(){
+void changeToolJ3(int tipocambio){
  int secuencia = 0;
                       delay(tiempoEspera+1000);
                       secuencia = changeB(1,1); // regresar el brazo a la posicion inicial
                       if(secuencia == 1){
+                        homeH();
                         secuencia = 0;
                         delay(tiempoEspera);
                        
                         if(secuencia == 1){
                  
-                          Serial.println("C");
+                        if (tipocambio = 1){
+                Serial.println("C");
+                }
+                else{
+                  Serial.println("c");
+                }
                         }
 
 }
 }
 
-void changeToolJ2(){
+void changeToolJ2(int tipocambio){
  int secuencia = 0;
+                 
+
  delay(tiempoEspera+1500);
  secuencia = changeB(2,0); // cambio de herramienta
                 if(secuencia == 1){
-                  changeH(307);
-                  Serial.println("B");
+                    changeH(307);
+                    if (tipocambio = 1){
+                Serial.println("B");
+                }
+                else{
+                  Serial.println("b");
+                }
 
                    }
 
 }
-void changeToolJ1(){
+void changeToolJ1(int tipocambio){
  delay(5);
   int a = Serial.parseInt();
   delay(3);
@@ -274,7 +307,12 @@ void changeToolJ1(){
               delay(tiempoEspera);
               secuencia = changeB(1,0); // enganchar las herramientas con el brazo
               if(secuencia == 1){
+                if (tipocambio = 1){
                 Serial.println("A");
+                }
+                else{
+                  Serial.println("a");
+                }
           }
           }
           }
@@ -292,12 +330,7 @@ else{
 //------------------------ FUNCIÓN DE CODIFICACIÓN JSON ---------------------//
 
 void sendJson(String msg, int status){
-  StaticJsonBuffer<200> jsonBuffer;
-  JsonObject& root = jsonBuffer.createObject();
-  root["msg"] = msg;
-  root["status"] = status;
-  root.printTo(Serial);
-  Serial.println();
+ 
 }
 
 
@@ -595,14 +628,22 @@ int changeB(int giro, int sentido){
       TCCR0B = TCCR0B & 0b1111000 | 0x03;
 
    int muestra = giro;
-   giro = 810;
+   double suma = 816000;
  
-  if(muestra == 2){
-   giro = 1650;
-  }
+
   digitalWrite(direccionB, sentido); //0 en sentido antihorario, 1 sentido horario 
   analogWrite(pasoB,5);
-  delay(giro); // tiempo de espera
+  double TiempoAhora = micros();
+  //delay(giro); // tiempo de espera
+
+    if(muestra == 2){
+   while(micros() < TiempoAhora+1632000){
+    
+  }
+  }else{
+  while(micros() < TiempoAhora+816000){
+    
+  }}
   //delayMicroseconds(1000);
   digitalWrite(pasoB, LOW);
   return 1;
@@ -612,7 +653,7 @@ int changeB(int giro, int sentido){
 //--------------- FUNCIÓN CAMBIO DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int changeH(double offset){
-  if (digitalRead(sensorP) == 0){
+  if (digitalRead(sensorP) == 0 || offset == 307){
   delay(5);
   double value = -83.5143*offset + 26024.1356;
   TCCR0B = TCCR0B & 0b1111000 | 0x02;
@@ -648,6 +689,3 @@ int comunicationPLC(int function){
     }
   }
 }
-
-
-//----------------------------------- END -----------------------------------//
