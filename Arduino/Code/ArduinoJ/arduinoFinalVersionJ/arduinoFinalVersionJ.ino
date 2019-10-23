@@ -119,7 +119,7 @@ void setup(){
 //-------------------------- FUNCIÓN DE LOOP PRINCIPAL ----------------------//
 
 void loop() {
-  //Serial.println(analogRead(A0));
+  //Serial.print(analogRead(A0));
   if(Serial.available()){
     
     if(detectTinyG == 0){
@@ -164,10 +164,7 @@ void loop() {
                       case 'm': //Paso 3 CH
         changeToolJ3(1);
         break;
-                      case '#': //Paso 4 CH
-        changeToolJ4(1);
-        break;
-        
+ 
 
                      case 'X': //Paso 1 CH
         changeToolJ1(2);
@@ -178,9 +175,7 @@ void loop() {
                       case 'M': //Paso 3 CH
         changeToolJ3(2);
         break;
-                      case '¿': //Paso 4 CH
-        changeToolJ4(2);
-        break;
+          
 
 
 
@@ -224,20 +219,7 @@ void changeToolWeb(){
 }
 
 
-void changeToolJ4(){
-                         int secuencia = 1; // cambiarla a cero al habilitar herramienta.
-                          //secuencia = changeH(c); // llevar herramienta a la posición de trabajo
-                          // int x = 0;
-                          if(secuencia == 1){
-                                if (tipocambio = 1){
-                Serial.println("D");
-                }
-                else{
-                  Serial.println("d");
-                }
-                          }
 
-}
 
 
 void changeToolJ3(int tipocambio){
@@ -246,18 +228,18 @@ void changeToolJ3(int tipocambio){
                       secuencia = changeB(1,1); // regresar el brazo a la posicion inicial
                       if(secuencia == 1){
                         homeH();
-                        secuencia = 0;
+                        
                         delay(tiempoEspera);
                        
-                        if(secuencia == 1){
+                      
                  
-                        if (tipocambio = 1){
-                Serial.println("C");
+                        if (tipocambio == 1){
+                Serial.print("C");
                 }
                 else{
-                  Serial.println("c");
+                  Serial.print("c");
                 }
-                        }
+                        
 
 }
 }
@@ -270,11 +252,13 @@ void changeToolJ2(int tipocambio){
  secuencia = changeB(2,0); // cambio de herramienta
                 if(secuencia == 1){
                     changeH(307);
-                    if (tipocambio = 1){
-                Serial.println("B");
+                    delay(1000);
+                    if (tipocambio == 1){
+                Serial.print("B");
+        
                 }
                 else{
-                  Serial.println("b");
+                  Serial.print("b");
                 }
 
                    }
@@ -307,18 +291,18 @@ void changeToolJ1(int tipocambio){
               delay(tiempoEspera);
               secuencia = changeB(1,0); // enganchar las herramientas con el brazo
               if(secuencia == 1){
-                if (tipocambio = 1){
-                Serial.println("A");
+                if (tipocambio ==  1){
+                Serial.print("A");
                 }
                 else{
-                  Serial.println("a");
+                  Serial.print("a");
                 }
           }
           }
           }
           }// Error de Home
 else{
-          Serial.println("nohome");}
+          Serial.print("nohome");}
           }
           }
           }
@@ -637,11 +621,11 @@ int changeB(int giro, int sentido){
   //delay(giro); // tiempo de espera
 
     if(muestra == 2){
-   while(micros() < TiempoAhora+1632000){
+   while(micros() < TiempoAhora+1633000){
     
   }
   }else{
-  while(micros() < TiempoAhora+816000){
+  while(micros() < TiempoAhora+816500){
     
   }}
   //delayMicroseconds(1000);
@@ -670,14 +654,14 @@ int changeH(double offset){
 int comunicationPLC(int function){
   accionS = 1;
   if(function == 1){  // accionar pistones
-    Serial.println("a");
+    Serial.print("a");
   }
-  else Serial.println("b");
+  else Serial.print("b");
   tiempoSerial = millis();
   while(accionS){
     if(Serial.available()){
       char response = Serial.read();
-      //Serial.println(response);
+      //Serial.print(response);
       if(response == '1'){
         accionS = 0;
         return 1;
