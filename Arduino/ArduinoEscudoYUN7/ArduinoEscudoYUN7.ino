@@ -26,9 +26,19 @@
 #include <BridgeClient.h>
 #include <HttpClient.h>
 
-
+#define PIN_TRIGGER 20
+#define PIN_ECHO 21
+#define MEDIA_VELOCIDAD_SONIDO 0.017175 // Mitad de la velocidad del sonido a 20 °C expresada en cm/µs
+#define ESPERA_ENTRE_LECTURAS 100 // tiempo entre lecturas consecutivas en milisegundos
+#define TIMEOUT_PULSO 25000 // la espera máxima de es 30 ms o 30000 µs
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
+
+
+float distancia;
+unsigned long tiempo;
+unsigned long cronometro;
+unsigned long reloj=0;
 BridgeServer server;
 int i=0;
     String url ="http://192.168.0.98/api/arduino7/";
@@ -87,6 +97,12 @@ void setup() {
   pinMode(7, OUTPUT); //-> 3R40 -> CN111
   pinMode(8, OUTPUT); //-> 2R40 -> SA131
   pinMode(9, OUTPUT); //-> 1R40 -> SA134
+ pinMode(PIN_ECHO,INPUT);
+  pinMode(PIN_TRIGGER,OUTPUT);
+  digitalWrite(PIN_TRIGGER,LOW); // Para «limpiar» el pulso del pin trigger del módulo
+  delayMicroseconds(2);
+  // PIN 20 TRIG
+  // PIN 21 ECHO 
   Bridge.begin();
   
 
@@ -96,6 +112,17 @@ void setup() {
   server.begin();
 }
 void loop() {
+    cronometro=millis()-reloj;
+  if(cronometro>ESPERA_ENTRE_LECTURAS)
+  {
+    digitalWrite(PIN_TRIGGER,HIGH); // Un pulso a nivel alto…
+    delayMicroseconds(10); // …durante 10 µs y
+    digitalWrite(PIN_TRIGGER,LOW); // …volver al nivel bajo
+    tiempo=pulseIn(PIN_ECHO,HIGH,TIMEOUT_PULSO); // Medir el tiempo que tarda en llegar un pulso
+    distancia=MEDIA_VELOCIDAD_SONIDO*tiempo;
+  reloj=millis();
+  }
+
     url ="http://192.168.0.98/api/arduino7/";
     O32=digitalRead(22);
 O33=digitalRead(27);
@@ -155,6 +182,10 @@ void process(BridgeClient client) {
     digitalCommand(client);
   }
 
+   if (command == "distancia") {
+    dist(client);
+  }
+
   // is "analog" command?
   if (command == "analog") {
     analogCommand(client);
@@ -179,6 +210,10 @@ void process(BridgeClient client) {
 void estado(BridgeClient client) {
   client.print(estadoch);
   estadoch = "1";
+}
+
+void dist(BridgeClient client) {
+  client.print(distancia);
 }
 
 void ch2(BridgeClient client) {
