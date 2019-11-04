@@ -26,8 +26,8 @@
 #include <BridgeClient.h>
 #include <HttpClient.h>
 
-#define PIN_TRIGGER 20
-#define PIN_ECHO 21
+#define PIN_TRIGGER 31
+#define PIN_ECHO 32
 #define MEDIA_VELOCIDAD_SONIDO 0.017175 // Mitad de la velocidad del sonido a 20 °C expresada en cm/µs
 #define ESPERA_ENTRE_LECTURAS 100 // tiempo entre lecturas consecutivas en milisegundos
 #define TIMEOUT_PULSO 25000 // la espera máxima de es 30 ms o 30000 µs
