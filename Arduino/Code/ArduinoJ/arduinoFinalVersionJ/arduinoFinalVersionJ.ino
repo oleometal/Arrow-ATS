@@ -180,10 +180,10 @@ void loop() {
                      case 'q': //Paso 1 CH
         changeToolJ1(3);
         break;
-                      case 'r': //Paso 2 CH
+                      case '#': //Paso 2 CH
         changeToolJ2(3);
         break;
-                      case 's': //Paso 3 CH
+                      case '$': //Paso 3 CH
         changeToolJ3(3);
         break;
  
