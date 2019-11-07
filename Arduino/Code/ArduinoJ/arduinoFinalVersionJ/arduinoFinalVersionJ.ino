@@ -177,6 +177,26 @@ void loop() {
         break;
           
 
+                     case 'q': //Paso 1 CH
+        changeToolJ1(3);
+        break;
+                      case 'r': //Paso 2 CH
+        changeToolJ2(3);
+        break;
+                      case 's': //Paso 3 CH
+        changeToolJ3(3);
+        break;
+ 
+
+                     case 'Q': //Paso 1 CH
+        changeToolJ1(4);
+        break;
+                      case 'R': //Paso 2 CH
+        changeToolJ2(4);
+        break;
+                      case 'S': //Paso 3 CH
+        changeToolJ3(4);
+        break;
 
 
            case 'u': //home de brazo cambiador
@@ -236,8 +256,14 @@ void changeToolJ3(int tipocambio){
                         if (tipocambio == 1){
                 Serial.print("C");
                 }
-                else{
-                  Serial.print("c");
+                                if (tipocambio ==  2){
+                Serial.print("c");
+                }
+                  if (tipocambio ==  3){
+                  Serial.print("F");
+                }
+     if (tipocambio ==  4){
+                  Serial.print("f");
                 }
                         
 
@@ -257,8 +283,14 @@ void changeToolJ2(int tipocambio){
                 Serial.print("B");
         
                 }
-                else{
-                  Serial.print("b");
+                              if (tipocambio ==  2){
+                Serial.print("b");
+                }
+                  if (tipocambio ==  3){
+                  Serial.print("E");
+                }
+     if (tipocambio ==  4){
+                  Serial.print("e");
                 }
 
                    }
@@ -294,8 +326,14 @@ void changeToolJ1(int tipocambio){
                 if (tipocambio ==  1){
                 Serial.print("A");
                 }
-                else{
+                  if (tipocambio ==  2){
                   Serial.print("a");
+                }
+                                if (tipocambio ==  3){
+                Serial.print("D");
+                }
+                  if (tipocambio ==  4){
+                  Serial.print("d");
                 }
           }
           }
