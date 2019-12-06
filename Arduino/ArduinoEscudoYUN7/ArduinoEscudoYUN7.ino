@@ -169,7 +169,7 @@ O161=digitalRead(4);
     client.stop();
   }
 
-  delay(50); // Poll every 50ms
+  delay(10); // Poll every 50ms
 }
 
 

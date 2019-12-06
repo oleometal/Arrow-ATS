@@ -45,7 +45,7 @@ int direccionB = 11; // dirección del motor del brazo
 // Comunicacion con PLC
 int tx2 = 17;  // Trasmisión de datos
 int rx2 = 16;  // recepción de ejecución
-
+char ultimocorrido = "9";
 /*
 UTP1
 cafe -> Ground
@@ -156,13 +156,20 @@ void loop() {
         changeH(306.8);
         break;
                      case 'x': //Paso 1 CH
+                   
         changeToolJ1(1);
         break;
                       case 'l': //Paso 2 CH
+                         if ( ultimocorrido != "l"){
+                     ultimocorrido = "l";
         changeToolJ2(1);
+                         }
         break;
-                      case 'm': //Paso 3 CH
+                      case 'm':
+                         if ( ultimocorrido != "xm"){
+                     ultimocorrido = "m";//Paso 3 CH
         changeToolJ3(1);
+                         }
         break;
  
 
@@ -170,10 +177,16 @@ void loop() {
         changeToolJ1(2);
         break;
                       case 'L': //Paso 2 CH
+                         if ( ultimocorrido != "L"){
+                     ultimocorrido = "L";
         changeToolJ2(2);
+                         }
         break;
                       case 'M': //Paso 3 CH
+                         if ( ultimocorrido != "M"){
+                     ultimocorrido = "M";
         changeToolJ3(2);
+                         }
         break;
           
 
@@ -181,10 +194,14 @@ void loop() {
         changeToolJ1(3);
         break;
                       case '#': //Paso 2 CH
-        changeToolJ2(3);
+                         if ( ultimocorrido != "#"){
+                     ultimocorrido = "#";
+        changeToolJ2(3);}
         break;
                       case '$': //Paso 3 CH
-        changeToolJ3(3);
+                         if ( ultimocorrido != "$"){
+                     ultimocorrido = "$";
+        changeToolJ3(3);}
         break;
  
 
@@ -192,10 +209,14 @@ void loop() {
         changeToolJ1(4);
         break;
                       case 'R': //Paso 2 CH
-        changeToolJ2(4);
+                         if ( ultimocorrido != "R"){
+                     ultimocorrido = "R";
+        changeToolJ2(4);}
         break;
                       case 'S': //Paso 3 CH
-        changeToolJ3(4);
+           if ( ultimocorrido != "S"){
+                     ultimocorrido = "S";
+        changeToolJ3(4);}
         break;
 
 
@@ -308,7 +329,7 @@ void changeToolJ1(int tipocambio){
       if(c >=0 && c <=300){ // validar la longitud maxima del offset
         int secuencia = 0;
         if(validationHome == 1){ // validar que anteriormente se realizó la calibración
-          if(changeNumber >= 20){ // número máximo de cambios de herramienta que puede realizar
+          if(changeNumber >= 10){ // número máximo de cambios de herramienta que puede realizar
             homeTool();
             changeNumber = 0;
           }
@@ -536,7 +557,7 @@ void changeTool(){
       if(c >=0 && c <=300){ // validar la longitud maxima del offset
         int secuencia = 0;
         if(validationHome == 1){ // validar que anteriormente se realizó la calibración
-          if(changeNumber >= 20){ // número máximo de cambios de herramienta que puede realizar
+          if(changeNumber >= 10){ // número máximo de cambios de herramienta que puede realizar
             homeTool();
             changeNumber = 0;
           }
