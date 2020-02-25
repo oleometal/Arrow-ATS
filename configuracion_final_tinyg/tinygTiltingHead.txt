@@ -1,0 +1,189 @@
+{"P":"COM5","D":"[fb] firmware build 440.20\n"}
+{"P":"COM5","D":"[fv] firmware version 0.97\n"}
+{"P":"COM5","D":"[hp] hardware platform 1.00\n"}
+{"P":"COM5","D":"[hv] hardware version 8.00\n"}
+{"P":"COM5","D":"[id] TinyG ID 5X0850-MVC\n"}
+{"P":"COM5","D":"[ja] junction acceleration 100000 mm\n"}
+{"P":"COM5","D":"[ct] chordal tolerance 0.0100 mm\n"}
+{"P":"COM5","D":"[sl] soft limit enable 1\n"}
+{"P":"COM5","D":"[st] switch type 0 [0=NO,1=NC]\n"}
+{"P":"COM5","D":"[mt] motor idle timeout 2.00 Sec\n"}
+{"P":"COM5","D":"[ej] enable json mode 0 [0=text,1=JSON]\n"}
+{"P":"COM5","D":"[jv] json verbosity 4 [0=silent,1=footer,2=messages,3=configs,4=linenum,5=verbose]\n"}
+{"P":"COM5","D":"[js] json serialize style 1 [0=relaxed,1=strict]\n"}
+{"P":"COM5","D":"[tv] text verbosity 1 [0=silent,1=verbose]\n"}
+{"P":"COM5","D":"[qv] queue report verbosity 1 [0=off,1=single,2=triple]\n"}
+{"P":"COM5","D":"[sv] status report verbosity 1 [0=off,1=filtered,2=verbose]\n"}
+{"P":"COM5","D":"[si] status interval 250 ms\n"}
+{"P":"COM5","D":"[ec] expand LF to CRLF on TX 0 [0=off,1=on]\n"}
+{"P":"COM5","D":"[ee] enable echo 0 [0=off,1=on]\n"}
+{"P":"COM5","D":"[ex] enable flow control 1 [0=off,1=XON/XOFF, 2=RTS/CTS]\n"}
+{"P":"COM5","D":"[baud] USB baud rate 5 [1=9600,2=19200,3=38400,4=57600,5=115200,6=230400]\n"}
+{"P":"COM5","D":"[net] network mode 0 [0=master]\n"}
+{"P":"COM5","D":"[gpl] default gcode plane 0 [0=G17,1=G18,2=G19]\n"}
+{"P":"COM5","D":"[gun] default gcode units mode 1 [0=G20,1=G21]\n"}
+{"P":"COM5","D":"[gco] default gcode coord system 1 [1-6 (G54-G59)]\n"}
+{"P":"COM5","D":"[gpa] default gcode path control 2 [0=G61,1=G61.1,2=G64]\n"}
+{"P":"COM5","D":"[gdi] default gcode distance mode 0 [0=G90,1=G91]\n"}
+{"P":"COM5","D":"[1ma] m1 map to axis 0 [0=X,1=Y,2=Z...]\n"}
+{"P":"COM5","D":"[1sa] m1 step angle 3.300 deg\n"}
+{"P":"COM5","D":"[1tr] m1 travel per revolution 1.0000 mm\n"}
+{"P":"COM5","D":"[1mi] m1 microsteps 8 [1,2,4,8]\n"}
+{"P":"COM5","D":"[1po] m1 polarity 0 [0=normal,1=reverse]\n"}
+{"P":"COM5","D":"[1pm] m1 power management 2 [0=disabled,1=always on,2=in cycle,3=when moving]\n"}
+{"P":"COM5","D":"[2ma] m2 map to axis 1 [0=X,1=Y,2=Z...]\n"}
+{"P":"COM5","D":"[2sa] m2 step angle 100.000 deg\n"}
+{"P":"COM5","D":"[2tr] m2 travel per revolution 1.0000 mm\n"}
+{"P":"COM5","D":"[2mi] m2 microsteps 8 [1,2,4,8]\n"}
+{"P":"COM5","D":"[2po] m2 polarity 0 [0=normal,1=reverse]\n"}
+{"P":"COM5","D":"[2pm] m2 power management 2 [0=disabled,1=always on,2=in cycle,3=when moving]\n"}
+{"P":"COM5","D":"[3ma] m3 map to axis 1 [0=X,1=Y,2=Z...]\n"}
+{"P":"COM5","D":"[3sa] m3 step angle 100.000 deg\n"}
+{"P":"COM5","D":"[3tr] m3 travel per revolution 1.0000 mm\n"}
+{"P":"COM5","D":"[3mi] m3 microsteps 8 [1,2,4,8]\n"}
+{"P":"COM5","D":"[3po] m3 polarity 0 [0=normal,1=reverse]\n"}
+{"P":"COM5","D":"[3pm] m3 power management 2 [0=disabled,1=always on,2=in cycle,3=when moving]\n"}
+{"P":"COM5","D":"[4ma] m4 map to axis 2 [0=X,1=Y,2=Z...]\n"}
+{"P":"COM5","D":"[4sa] m4 step angle 100.000 deg\n"}
+{"P":"COM5","D":"[4tr] m4 travel per revolution 1.0000 mm\n"}
+{"P":"COM5","D":"[4mi] m4 microsteps 8 [1,2,4,8]\n"}
+{"P":"COM5","D":"[4po] m4 polarity 0 [0=normal,1=reverse]\n"}
+{"P":"COM5","D":"[4pm] m4 power management 2 [0=disabled,1=always on,2=in cycle,3=when moving]\n"}
+{"P":"COM5","D":"[xam] x axis mode 1 [standard]\n"}
+{"P":"COM5","D":"[xvm] x velocity maximum 5000 mm/min\n"}
+{"P":"COM5","D":"[xfr] x feedrate maximum 30000 mm/min\n"}
+{"P":"COM5","D":"[xtn] x travel minimum -45.000 mm\n"}
+{"P":"COM5","D":"[xtm] x travel maximum 1.000 mm\n"}
+{"P":"COM5","D":"[xjm] x jerk maximum 5000 mm/min^3 * 1 million\n"}
+{"P":"COM5","D":"[xjh] x jerk homing 6000 mm/min^3 * 1 million\n"}
+{"P":"COM5","D":"[xjd] x junction deviation 0.0500 mm (larger is faster)\n"}
+{"P":"COM5","D":"[xsn] x switch min 0 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[xsx] x switch max 1 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[xsv] x search velocity 200 mm/min\n"}
+{"P":"COM5","D":"[xlv] x latch velocity 100 mm/min\n"}
+{"P":"COM5","D":"[xlb] x latch backoff 2.000 mm\n"}
+{"P":"COM5","D":"[xzb] x zero backoff 2.000 mm\n"}
+{"P":"COM5","D":"[yam] y axis mode 1 [standard]\n"}
+{"P":"COM5","D":"[yvm] y velocity maximum 30000 mm/min\n"}
+{"P":"COM5","D":"[yfr] y feedrate maximum 30000 mm/min\n"}
+{"P":"COM5","D":"[ytn] y travel minimum 1500.000 mm\n"}
+{"P":"COM5","D":"[ytm] y travel maximum 0.000 mm\n"}
+{"P":"COM5","D":"[yjm] y jerk maximum 5000 mm/min^3 * 1 million\n"}
+{"P":"COM5","D":"[yjh] y jerk homing 6000 mm/min^3 * 1 million\n"}
+{"P":"COM5","D":"[yjd] y junction deviation 0.0500 mm (larger is faster)\n"}
+{"P":"COM5","D":"[ysn] y switch min 2 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[ysx] y switch max 1 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[ysv] y search velocity 3000 mm/min\n"}
+{"P":"COM5","D":"[ylv] y latch velocity 100 mm/min\n"}
+{"P":"COM5","D":"[ylb] y latch backoff 20.000 mm\n"}
+{"P":"COM5","D":"[yzb] y zero backoff 10.000 mm\n"}
+{"P":"COM5","D":"[zam] z axis mode 1 [standard]\n"}
+{"P":"COM5","D":"[zvm] z velocity maximum 5000 mm/min\n"}
+{"P":"COM5","D":"[zfr] z feedrate maximum 5000 mm/min\n"}
+{"P":"COM5","D":"[ztn] z travel minimum -270.000 mm\n"}
+{"P":"COM5","D":"[ztm] z travel maximum 0.000 mm\n"}
+{"P":"COM5","D":"[zjm] z jerk maximum 5000 mm/min^3 * 1 million\n"}
+{"P":"COM5","D":"[zjh] z jerk homing 6000 mm/min^3 * 1 million\n"}
+{"P":"COM5","D":"[zjd] z junction deviation 0.0500 mm (larger is faster)\n"}
+{"P":"COM5","D":"[zsn] z switch min 2 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[zsx] z switch max 3 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[zsv] z search velocity 2000 mm/min\n"}
+{"P":"COM5","D":"[zlv] z latch velocity 100 mm/min\n"}
+{"P":"COM5","D":"[zlb] z latch backoff 10.000 mm\n"}
+{"P":"COM5","D":"[zzb] z zero backoff 10.000 mm\n"}
+{"P":"COM5","D":"[aam] a axis mode 1 [standard]\n"}
+{"P":"COM5","D":"[avm] a velocity maximum 30000 deg/min\n"}
+{"P":"COM5","D":"[afr] a feedrate maximum 30000 deg/min\n"}
+{"P":"COM5","D":"[atn] a travel minimum 1500.000 deg\n"}
+{"P":"COM5","D":"[atm] a travel maximum 0.000 deg\n"}
+{"P":"COM5","D":"[ajm] a jerk maximum 5000 deg/min^3 * 1 million\n"}
+{"P":"COM5","D":"[ajh] a jerk homing 6000 deg/min^3 * 1 million\n"}
+{"P":"COM5","D":"[ajd] a junction deviation 0.0500 deg (larger is faster)\n"}
+{"P":"COM5","D":"[ara] a radius value 0.1990 deg\n"}
+{"P":"COM5","D":"[asn] a switch min 3 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[asx] a switch max 2 [0=off,1=homing,2=limit,3=limit+homing]\n"}
+{"P":"COM5","D":"[asv] a search velocity 3000 deg/min\n"}
+{"P":"COM5","D":"[alv] a latch velocity 100 deg/min\n"}
+{"P":"COM5","D":"[alb] a latch backoff 20.000 deg\n"}
+{"P":"COM5","D":"[azb] a zero backoff 10.000 deg\n"}
+{"P":"COM5","D":"[bam] b axis mode 0 [disabled]\n"}
+{"P":"COM5","D":"[bvm] b velocity maximum 3600 deg/min\n"}
+{"P":"COM5","D":"[bfr] b feedrate maximum 3600 deg/min\n"}
+{"P":"COM5","D":"[btn] b travel minimum -1.000 deg\n"}
+{"P":"COM5","D":"[btm] b travel maximum -1.000 deg\n"}
+{"P":"COM5","D":"[bjm] b jerk maximum 20 deg/min^3 * 1 million\n"}
+{"P":"COM5","D":"[bjd] b junction deviation 0.0500 deg (larger is faster)\n"}
+{"P":"COM5","D":"[bra] b radius value 1.0000 deg\n"}
+{"P":"COM5","D":"[cam] c axis mode 0 [disabled]\n"}
+{"P":"COM5","D":"[cvm] c velocity maximum 3600 deg/min\n"}
+{"P":"COM5","D":"[cfr] c feedrate maximum 3600 deg/min\n"}
+{"P":"COM5","D":"[ctn] c travel minimum -1.000 deg\n"}
+{"P":"COM5","D":"[ctm] c travel maximum -1.000 deg\n"}
+{"P":"COM5","D":"[cjm] c jerk maximum 20 deg/min^3 * 1 million\n"}
+{"P":"COM5","D":"[cjd] c junction deviation 0.0500 deg (larger is faster)\n"}
+{"P":"COM5","D":"[cra] c radius value 1.0000 deg\n"}
+{"P":"COM5","D":"[p1frq] pwm frequency 100 Hz\n"}
+{"P":"COM5","D":"[p1csl] pwm cw speed lo 1000 RPM\n"}
+{"P":"COM5","D":"[p1csh] pwm cw speed hi 2000 RPM\n"}
+{"P":"COM5","D":"[p1cpl] pwm cw phase lo 0.125 [0..1]\n"}
+{"P":"COM5","D":"[p1cph] pwm cw phase hi 0.200 [0..1]\n"}
+{"P":"COM5","D":"[p1wsl] pwm ccw speed lo 1000 RPM\n"}
+{"P":"COM5","D":"[p1wsh] pwm ccw speed hi 2000 RPM\n"}
+{"P":"COM5","D":"[p1wpl] pwm ccw phase lo 0.125 [0..1]\n"}
+{"P":"COM5","D":"[p1wph] pwm ccw phase hi 0.200 [0..1]\n"}
+{"P":"COM5","D":"[p1pof] pwm phase off 0.100 [0..1]\n"}
+{"P":"COM5","D":"[g54x] g54 x offset -1000.000 mm\n"}
+{"P":"COM5","D":"[g54y] g54 y offset 0.000 mm\n"}
+{"P":"COM5","D":"[g54z] g54 z offset 15.000 mm\n"}
+{"P":"COM5","D":"[g54a] g54 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g54b] g54 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g54c] g54 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g55x] g55 x offset 75.000 mm\n"}
+{"P":"COM5","D":"[g55y] g55 y offset 75.000 mm\n"}
+{"P":"COM5","D":"[g55z] g55 z offset 0.000 mm\n"}
+{"P":"COM5","D":"[g55a] g55 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g55b] g55 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g55c] g55 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g56x] g56 x offset 0.000 mm\n"}
+{"P":"COM5","D":"[g56y] g56 y offset 0.000 mm\n"}
+{"P":"COM5","D":"[g56z] g56 z offset 0.000 mm\n"}
+{"P":"COM5","D":"[g56a] g56 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g56b] g56 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g56c] g56 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g57x] g57 x offset 20.000 mm\n"}
+{"P":"COM5","D":"[g57y] g57 y offset 0.000 mm\n"}
+{"P":"COM5","D":"[g57z] g57 z offset 0.000 mm\n"}
+{"P":"COM5","D":"[g57a] g57 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g57b] g57 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g57c] g57 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g58x] g58 x offset 0.000 mm\n"}
+{"P":"COM5","D":"[g58y] g58 y offset 0.000 mm\n"}
+{"P":"COM5","D":"[g58z] g58 z offset 0.000 mm\n"}
+{"P":"COM5","D":"[g58a] g58 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g58b] g58 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g58c] g58 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g59x] g59 x offset 0.000 mm\n"}
+{"P":"COM5","D":"[g59y] g59 y offset 0.000 mm\n"}
+{"P":"COM5","D":"[g59z] g59 z offset 0.000 mm\n"}
+{"P":"COM5","D":"[g59a] g59 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g59b] g59 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g59c] g59 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g92x] g92 x offset 0.000 mm\n"}
+{"P":"COM5","D":"[g92y] g92 y offset 0.000 mm\n"}
+{"P":"COM5","D":"[g92z] g92 z offset 0.000 mm\n"}
+{"P":"COM5","D":"[g92a] g92 a offset 0.000 deg\n"}
+{"P":"COM5","D":"[g92b] g92 b offset 0.000 deg\n"}
+{"P":"COM5","D":"[g92c] g92 c offset 0.000 deg\n"}
+{"P":"COM5","D":"[g28x] g28 x position 0.000 mm\n"}
+{"P":"COM5","D":"[g28y] g28 y position 0.000 mm\n"}
+{"P":"COM5","D":"[g28z] g28 z position 0.000 mm\n"}
+{"P":"COM5","D":"[g28a] g28 a position 0.000 deg\n"}
+{"P":"COM5","D":"[g28b] g28 b position 0.000 deg\n"}
+{"P":"COM5","D":"[g28c] g28 c position 0.000 deg\n"}
+{"P":"COM5","D":"[g30x] g30 x position 0.000 mm\n"}
+{"P":"COM5","D":"[g30y] g30 y position 0.000 mm\n"}
+{"P":"COM5","D":"[g30z] g30 z position 0.000 mm\n"}
+{"P":"COM5","D":"[g30a] g30 a position 0.000 deg\n"}
+{"P":"COM5","D":"[g30b] g30 b position 0.000 deg\n"}
+{"P":"COM5","D":"[g30c] g30 c position 0.000 deg\n"}
+{"P":"COM5","D":"tinyg [mm] ok\u003e \n"}
