@@ -130,7 +130,7 @@ void setup() {
   pinMode(A3, INPUT); //<-      <- AP162
   pinMode(A2, INPUT); //<-      <- AP161
   pinMode(30, INPUT); //<-      <- WD36
-  pinMode(31, INPUT); //<-      <- SA11
+  pinMode(31, INPUT); //<- 2R18 <- SA11 (SENSOR DE TEMPERATURA ESTADO NORMAL = 1)
   pinMode(32, INPUT); //<-      <- WD16
   pinMode(33, INPUT); //<-      <- WD26
   pinMode(28,OUTPUT); //->      -> BB211
@@ -155,6 +155,7 @@ void setup() {
   pinMode(22,OUTPUT); //-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
   pinMode(23,OUTPUT); //-> 4R2  -> BA111
   pinMode(24,OUTPUT); //-> 5R2  -> BB111
+  pinMode(25,OUTPUT); //-> 6R3  -> SA12,AJ112 (ENCIENDE VENTILADORA DEL HUSILLO 230VAC)
   pinMode(34,OUTPUT); //->      -> RUN SERVOPACKS
   pinMode(35,OUTPUT); //->      -> BA211
   pinMode(27,OUTPUT); //-> 8R2  -> SB15
