@@ -121,7 +121,7 @@ void setup() {
   pinMode(A13,INPUT); //<-      <- BC15
   pinMode(A12,INPUT); //<-      <- BF15
   pinMode(A11,INPUT); //<-      <- VF12
-  pinMode(A10,INPUT); //<-      <- AR131
+  pinMode(A10,INPUT); //<-      <- AR131 (ELECTROSPINDLE TOOL RELEASE)
   pinMode(A9, INPUT); //<-      <- AR14
   pinMode(A8, INPUT); //<-      <- AP1318
   pinMode(A7, INPUT); //<-      <- AR13
