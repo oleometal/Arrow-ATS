@@ -2,7 +2,7 @@
   Arduino7 Yún 
   Ubicacion carro +E parte izquierda
   MAC: C4:93:00:04:32:59
-  IP: 192.168.0.89
+  IP: 192.168.0.80
 
   This example for the YunShield/Yún shows how 
   to use the Bridge library to access the digital and
@@ -26,12 +26,24 @@
 #include <BridgeClient.h>
 #include <HttpClient.h>
 
-
+#define PIN_TRIGGER 31
+#define PIN_ECHO 32
+#define MEDIA_VELOCIDAD_SONIDO 0.017175 // Mitad de la velocidad del sonido a 20 °C expresada en cm/µs
+#define ESPERA_ENTRE_LECTURAS 100 // tiempo entre lecturas consecutivas en milisegundos
+#define TIMEOUT_PULSO 25000 // la espera máxima de es 30 ms o 30000 µs
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
+
+
+float distancia;
+unsigned long tiempo;
+unsigned long cronometro;
+unsigned long reloj=0;
 BridgeServer server;
 int i=0;
     String url ="http://192.168.0.98/api/arduino7/";
+        String estadoch ="1";
+
     bool O32;
 bool O33;
 bool O40;
@@ -60,30 +72,37 @@ void setup() {
     
 
   // Bridge startup        Rele    Cable
-  pinMode(24, INPUT); //<-      <- CN115
-  pinMode(25, INPUT); //<-      <- CU115
-  pinMode(26, INPUT); //<-      <- CU114
-  pinMode(10, INPUT); //<-      <- SA124
-  pinMode(11, INPUT); //<-      <- SA125
-  pinMode(12, INPUT); //<-      <- SA135
-  pinMode(14, INPUT); //<-      <- SA136
-  pinMode(15, INPUT); //<-      <- SC124
-  pinMode(16, INPUT); //<-      <- SC125
-  pinMode(17, INPUT); //<-      <- SC126
-  pinMode(18, INPUT); //<-      <- CN114
-  pinMode(19,OUTPUT); //->      -> CN121
-  pinMode(27,OUTPUT); //-> 7R38 -> SA122
-  pinMode(28,OUTPUT); //-> 6R38 -> CN122    
-  pinMode(22,OUTPUT); //->      -> SA121
-  pinMode(23,OUTPUT); //->      -> CU112
-  pinMode(2, OUTPUT); //->      -> CU111
-  pinMode(3, OUTPUT); //->      -> SA132
-  pinMode(4, OUTPUT); //->      -> SC122
-  pinMode(5, OUTPUT); //->      -> SC121
-  pinMode(6, OUTPUT); //->      -> ST19
-  pinMode(7, OUTPUT); //->      -> CN111
-  pinMode(8, OUTPUT); //->      -> SA131
-  pinMode(9, OUTPUT); //->      -> SA134
+  pinMode(18, INPUT); //<- 1R39 <- 
+  pinMode(24, INPUT); //<- 3R38 <- CN115
+  pinMode(25, INPUT); //<- 2R38 <- CU115
+  pinMode(26, INPUT); //<- 1R38 <- CU114
+  pinMode(10, INPUT); //<- 8R39 <- SA124
+  pinMode(11, INPUT); //<- 7R39 <- SA125
+  pinMode(12, INPUT); //<- 6R39 <- SA135
+  pinMode(14, INPUT); //<- 5R39 <- SA136
+  pinMode(15, INPUT); //<- 4R39 <- SC124
+  pinMode(16, INPUT); //<- 3R39 <- SC125
+  pinMode(17, INPUT); //<- 2R39 <- SC126
+  pinMode(29, INPUT); //<-      <- CN114
+  pinMode(28,OUTPUT); //-> 6R38 -> CN121
+  pinMode(23,OUTPUT); //-> 4R38 -> SA122
+  pinMode(27,OUTPUT); //-> 7R38 -> CN122    
+  pinMode(22,OUTPUT); //-> 5R38 -> SA121
+  pinMode(2, OUTPUT); //-> 8R40 -> CU112
+  pinMode(19,OUTPUT); //-> 8R38 -> CU111
+  pinMode(3, OUTPUT); //-> 7R40 -> SA132
+  pinMode(4, OUTPUT); //-> 6R40 -> SC122
+  pinMode(5, OUTPUT); //-> 5R40 -> SC121
+  pinMode(6, OUTPUT); //-> 4R40 -> ST19
+  pinMode(7, OUTPUT); //-> 3R40 -> CN111
+  pinMode(8, OUTPUT); //-> 2R40 -> SA131
+  pinMode(9, OUTPUT); //-> 1R40 -> SA134
+ pinMode(PIN_ECHO,INPUT);
+  pinMode(PIN_TRIGGER,OUTPUT);
+  digitalWrite(PIN_TRIGGER,LOW); // Para «limpiar» el pulso del pin trigger del módulo
+  delayMicroseconds(2);
+  // PIN 20 TRIG
+  // PIN 21 ECHO 
   Bridge.begin();
   
 
@@ -93,6 +112,17 @@ void setup() {
   server.begin();
 }
 void loop() {
+    cronometro=millis()-reloj;
+  if(cronometro>ESPERA_ENTRE_LECTURAS)
+  {
+    digitalWrite(PIN_TRIGGER,HIGH); // Un pulso a nivel alto…
+    delayMicroseconds(10); // …durante 10 µs y
+    digitalWrite(PIN_TRIGGER,LOW); // …volver al nivel bajo
+    tiempo=pulseIn(PIN_ECHO,HIGH,TIMEOUT_PULSO); // Medir el tiempo que tarda en llegar un pulso
+    distancia=MEDIA_VELOCIDAD_SONIDO*tiempo;
+  reloj=millis();
+  }
+
     url ="http://192.168.0.98/api/arduino7/";
     O32=digitalRead(22);
 O33=digitalRead(27);
@@ -139,8 +169,9 @@ O161=digitalRead(4);
     client.stop();
   }
 
-  delay(50); // Poll every 50ms
+  delay(10); // Poll every 50ms
 }
+
 
 void process(BridgeClient client) {
   // read the command
@@ -151,15 +182,142 @@ void process(BridgeClient client) {
     digitalCommand(client);
   }
 
+   if (command == "distancia") {
+    dist(client);
+  }
+
   // is "analog" command?
   if (command == "analog") {
     analogCommand(client);
   }
 
+  if (command == "ch1") {
+    ch1(client);
+  }
+
+    if (command == "ch2") {
+    ch2(client);
+  }
+ if (command == "estado") {
+    estado(client);
+  }
   // is "mode" command?
   if (command == "mode") {
     modeCommand(client);
   }
+}
+
+void estado(BridgeClient client) {
+  client.print(estadoch);
+  estadoch = "1";
+}
+
+void dist(BridgeClient client) {
+  client.print(distancia);
+}
+
+void ch2(BridgeClient client) {
+
+//Sube brazo.
+digitalWrite(19,HIGH);
+delay(100);
+digitalWrite(19,LOW);
+delay(3000);
+
+
+//Confirma si subio brazo
+  if(digitalRead(26)){
+    //Cierra valvulas
+    digitalWrite(22,HIGH);
+    digitalWrite(28,HIGH);
+    delay(500);
+    digitalWrite(22,LOW);
+    digitalWrite(28,LOW);
+    delay(1000);
+  //Revisa si valvula de husillo cerro
+    if (digitalRead(10)){
+ //Revisa si valvula de carrusel cerro
+        if (digitalRead(29)){
+
+              estadoch = "1";
+              client.print(F("1"));
+
+        }
+        else{
+               estadoch = "pcvc";
+                             client.print(F("1"));
+
+          //Problema cerrando valvula de carrusel
+        }
+    }
+    else{
+           estadoch = "pcvh";
+                         client.print(F("1"));
+
+      //Problema cerrando valvula de husillo
+    }
+    
+  }
+  else{
+    //Problema brazo subiendo
+     estadoch = "pbs";
+                   client.print(F("1"));
+
+
+  }
+}
+
+
+void ch1(BridgeClient client) {
+
+//Suelta Husillo
+digitalWrite(23,HIGH);
+//Suelta Carrusel
+digitalWrite(27,HIGH);
+
+delay(100);
+
+//FIN PULSO HUSILLO
+digitalWrite(23,LOW);
+//FIN PULSO CARRUSEL
+digitalWrite(27,LOW);
+
+delay(600);
+
+if (digitalRead(11)){
+    if (digitalRead(24)){
+
+      // Baja brazo
+      digitalWrite(2,HIGH);
+      delay(100);
+      digitalWrite(2,LOW);
+      delay(1000);
+      if(digitalRead(25)){
+        //Todo bien
+                      client.print(F("1"));
+
+       estadoch = "1";
+       
+      }
+      else{
+        //Problema Brazo Bajando
+                      client.print(F("1"));
+
+       estadoch = "pbb";
+      }
+    }else{
+      //Problema valvula carrusel
+                    client.print(F("1"));
+
+     estadoch = "pavc";
+    }
+}else{
+      //Problema valvula husillo
+                    client.print(F("1"));
+
+ estadoch = "pavh";
+}
+
 }
 
 void digitalCommand(BridgeClient client) {
