@@ -25,189 +25,140 @@
 #include <BridgeServer.h>
 #include <BridgeClient.h>
 #include <HttpClient.h>
+
 //ID de Sensores
-const int pinI85 =  A0;  
-const int pinI16 =  A1;  
-const int pinI41 =  38; 
-const int pinI22 =  37;  
-const int pinI86 =  39;
-const int pinI80 =  40;
-const int pinI87 =  41;
-const int pinI74 =  42;
-const int pinI73 =  43;
-const int pinI78 =  44;
-const int pinI84 =  45;
-const int pinI81 =  46;
-const int pinI27 =  47;
-const int pinI18 =  48;
-const int pinI17 =  49;
-const int pinI21 =  36;
-//const int pinI39 = A15;
-//const int pinI37 = A14;
-//const int pinI38 = A13;
-//const int pinI36 = A12;
-const int pinI23 = A11;
-const int pinI83 = A10;
-const int pinI79 =  A9;
-const int pinI28 =  A8;
-const int pinI24 =  A7;
-const int pinI19 =  A5;
-const int pinI31 =  A4;
-const int pinI30 =  A3;
-const int pinI29 =  A2;
-const int pinI14 =  30;
-const int pinI8  =  31;
-const int pinI3  =  32;
-const int pinI4  =  33;
-const int pinO0  =  29;
-const int pinO4  =  27;
-const int pinO11 =  35;
-const int pinO12 =  28;
-const int pinO16 =   3;
-const int pinO17 =   8;
-const int pinO19 =  11;
-const int pinO20 =   4;
-const int pinO21 =   2;
-const int pinO22 =  10;
-const int pinO28 =   5;
-const int pinO29 =   9;
-const int pinO30 =   6;
-const int pinO31 =   7;
-const int pinO57 =  12;
-const int pinO58 =  17;
-const int pinO59 =  18;
-const int pinO60 =  16;
-const int pinO61 =  14;
-const int pinO62 =  15;
-const int pinO343=  34;
-const int pinO344=  22;
-const int pinO345=  19;
-int ValorSensor_I85 = 0;    //Variable para almacenar el valor del sensor.
-int Estado_I85 = 0;        // Estado Actual del Sensor
-String key1 = "I85";
+//const int I85 = A0;  //<-      <- AR141
+//int ValorSensor_I85 = 0;    //Variable para almacenar el valor del sensor.
+//int Estado_I85 = 0;        // Estado Actual del Sensor
+//String key1 = "I85";
 
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
-int i = 0;
-bool  O21;
-bool  O16;
-bool  O20;
-bool  O28;
-bool  O30;
-bool  O31;
-bool  O17;
-bool  O29;
-bool  O22;
-bool  O19;
-bool  O57;
-bool  O61;
-bool  O62;
-bool  O60;
-bool  O58;
-bool  O59;
+ int i=0;
+    bool O21;
+bool O16;
+bool O20;
+bool O28;
+bool O30;
+bool O31;
+bool O17;
+bool O29;
+bool O22;
+bool O19;
+bool O57;
+bool O61;
+bool O62;
+bool O60;
+bool O58;
+bool O59;
 bool O345;
 bool O344;
-bool   O4;
-bool  O11;
-bool  O12;
-bool   O0;
-bool  I14;
-bool   I8;
-bool   I3;
-bool   I4;
+bool O4;
+bool O12;
+bool O0;
+bool I14;
+bool I8;
+bool I4;
 bool O343;
-bool  I21;
-bool  I22;
-bool  I41;
-bool  I86;
-bool  I80;
-bool  I87;
-bool  I74;
-bool  I73;
-bool  I78;
-bool  I84;
-bool  I81;
-bool  I27;
-bool  I18;
-bool  I17;
-bool  I16;
-int   I85;
-int   I83;
-int   I23;
-int   I36;
-int   I38;
-int   I37;
-int   I39;
-int   I29;
-int   I30;
-int   I31;
-int   I19;
-int   I24;
-int   I28;
-int   I79;
+bool I21;
+bool I22;
+bool I41;
+bool I86;
+bool I80;
+bool I87;
+bool I74;
+bool I73;
+bool I78;
+bool I84;
+bool I81;
+bool I27;
+bool I18;
+bool I17;
+bool I16;
+int  I85;
+int  I83;
+int  I23;
+int  I36;
+int  I38;
+int  I37;
+int  I39;
+int  I29;
+int  I30;
+int  I31;
+int  I19;
+int  I24;
+int  I28;
+int  I79;
 String url ="http://192.168.0.98/api/arduino2/";
 
 void setup() {
+  
+   
+    
+    
+    
     
   //Bridge.put(key1, String(Estado_I85)); // imprime estado de sensor en memoria.
   // declarar pines como input y output.
-  pinMode(pinI85,  INPUT);//<-      <- AR141
-  pinMode(pinI16,  INPUT);//<-      <- VC11
-  pinMode(pinI41,  INPUT);//<-      <- BF29
-  pinMode(pinI22,  INPUT);//<-      <- AP1100
-  pinMode(pinI86,  INPUT);//<-      <- AR144
-  pinMode(pinI80,  INPUT);//<-      <- AR16
-  pinMode(pinI87,  INPUT);//<-      <- AR143
-  pinMode(pinI74,  INPUT);//<-      <- BC110
-  pinMode(pinI73,  INPUT);//<-      <- AR15
-  pinMode(pinI78,  INPUT);//<-      <- VB13
-  pinMode(pinI84,  INPUT);//<-      <- AR142
-  pinMode(pinI81,  INPUT);//<-      <- AR17
-  pinMode(pinI27,  INPUT);//<-      <- AP186
-  pinMode(pinI18,  INPUT);//<-      <- AP191
-  pinMode(pinI17,  INPUT);//<-      <- VC12
-  pinMode(pinI21,  INPUT);//<-      <- AP140
-//  pinMode(pinI39,  INPUT);//<-      <- BC25
-//  pinMode(pinI37,  INPUT);//<-      <- BF25
-//  pinMode(pinI38,  INPUT);//<-      <- BC15
-//  pinMode(pinI36,  INPUT);//<-      <- BF15
-  pinMode(pinI23,  INPUT);//<-      <- VF12
-  pinMode(pinI83,  INPUT);//<-      <- AR131
-  pinMode(pinI79,  INPUT);//<-      <- AR14
-  pinMode(pinI28,  INPUT);//<-      <- AP1318
-  pinMode(pinI24,  INPUT);//<-      <- AR13
-  pinMode(pinI19,  INPUT);//<-      <- AS18
-  pinMode(pinI31,  INPUT);//<-      <- AP163
-  pinMode(pinI30,  INPUT);//<-      <- AP162
-  pinMode(pinI29,  INPUT);//<-      <- AP161
-  pinMode(pinI14,  INPUT);//<-      <- WD36
-  pinMode(pinI8,   INPUT);//<-      <- SA11
-  pinMode(pinI3,   INPUT);//<-      <- WD16
-  pinMode(pinI4,   INPUT);//<-      <- WD26
-  pinMode(pinO12, OUTPUT);//->      -> BB211
-  pinMode(pinO0,  OUTPUT);//->      -> SA15
-  pinMode(pinO4,  OUTPUT);//->      -> SB15
-  pinMode(pinO21, OUTPUT);//->      -> BH24
-  pinMode(pinO16, OUTPUT);//->      -> VC13
-  pinMode(pinO20, OUTPUT);//->      -> BH23
-  pinMode(pinO28, OUTPUT);//->      -> WG13
-  pinMode(pinO30, OUTPUT);//->      -> BH13
-  pinMode(pinO31, OUTPUT);//->      -> BH14
-  pinMode(pinO17, OUTPUT);//->      -> AS15,AS16
-  pinMode(pinO29, OUTPUT);//->      -> VB52
-  pinMode(pinO22, OUTPUT);//->      -> SC15
-  pinMode(pinO19, OUTPUT);//->      -> AG113,AP12
-  pinMode(pinO57, OUTPUT);//->      -> AL128
-  pinMode(pinO58, OUTPUT);//->      -> AL130
-  pinMode(pinO59, OUTPUT);//->      -> AL132
-  pinMode(pinO345,OUTPUT);//->  -   -> PIN 13 DE VARIADOR Master speed frequence reference.
-  pinMode(pinO60, OUTPUT);//->      -> AL134
-  pinMode(pinO61, OUTPUT);//->      -> AL136
-  pinMode(pinO62, OUTPUT);//->      -> VB14
-  pinMode(pinO344,OUTPUT);//-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
-  pinMode(pinO343,OUTPUT);//->      -> RUN SERVOPACKS
-  pinMode(pinO11, OUTPUT);//->      -> BA211
+  pinMode(A1, INPUT); //<-      <- VC11
+  pinMode(38, INPUT); //<-      <- BF29
+  pinMode(37, INPUT); //<-      <- AP1100
+  pinMode(39, INPUT); //<-      <- AR144
+  pinMode(40, INPUT); //<-      <- AR16
+  pinMode(41, INPUT); //<-      <- AR143
+  pinMode(42, INPUT); //<-      <- BC110
+  pinMode(43, INPUT); //<-      <- AR15
+  pinMode(44, INPUT); //<-      <- VB13
+  pinMode(45, INPUT); //<-      <- AR142
+  pinMode(46, INPUT); //<-      <- AR17
+  pinMode(47, INPUT); //<-      <- AP186
+  pinMode(48, INPUT); //<-      <- AP191
+  pinMode(49, INPUT); //<-      <- VC12
+  pinMode(36, INPUT); //<-      <- AP140
+  pinMode(A15,INPUT); //<-      <- BC25
+  pinMode(A14,INPUT); //<-      <- BF25
+  pinMode(A13,INPUT); //<-      <- BC15
+  pinMode(A12,INPUT); //<-      <- BF15
+  pinMode(A11,INPUT); //<-      <- VF12
+  pinMode(A10,INPUT); //<-      <- AR131
+  pinMode(A9, INPUT); //<-      <- AR14
+  pinMode(A8, INPUT); //<-      <- AP1318
+  pinMode(A7, INPUT); //<-      <- AR13
+  pinMode(A5, INPUT); //<-      <- AS18
+  pinMode(A4, INPUT); //<-      <- AP163
+  pinMode(A3, INPUT); //<-      <- AP162
+  pinMode(A2, INPUT); //<-      <- AP161
+  pinMode(30, INPUT); //<-      <- WD36
+  pinMode(31, INPUT); //<- 2R18 <- SA11 (SENSOR DE TEMPERATURA ESTADO NORMAL = 1)
+  pinMode(32, INPUT); //<-      <- WD16
+  pinMode(33, INPUT); //<-      <- WD26
+  pinMode(28,OUTPUT); //->      -> BB211
+  pinMode(29,OUTPUT); //->      -> SA15
+  pinMode(2, OUTPUT); //->      -> BH24
+  pinMode(3, OUTPUT); //->      -> VC13
+  pinMode(4, OUTPUT); //->      -> BH23
+  pinMode(5, OUTPUT); //->      -> WG13
+  pinMode(6, OUTPUT); //->      -> BH13
+  pinMode(7, OUTPUT); //->      -> BH14
+  pinMode(8, OUTPUT); //->      -> AS15,AS16
+  pinMode(9, OUTPUT); //->      -> VB52
+  pinMode(10,OUTPUT); //->      -> SC15
+  pinMode(11,OUTPUT); //->      -> AG113,AP12
+  pinMode(12,OUTPUT); //->      -> AL128
+  pinMode(17,OUTPUT); //->      -> AL130
+  pinMode(18,OUTPUT); //->      -> AL132
+  pinMode(19,OUTPUT); //->  -   -> PIN 13 DE VARIADOR Master speed frequence reference.
+  pinMode(16,OUTPUT); //->      -> AL134
+  pinMode(14,OUTPUT); //->      -> AL136
+  pinMode(15,OUTPUT); //->      -> VB14
+  pinMode(22,OUTPUT); //-> 3R3  -> PIN 1 DE VARIADOR Forward run/stop command.
+  pinMode(23,OUTPUT); //-> 4R2  -> BA111
+  pinMode(24,OUTPUT); //-> 5R2  -> BB111
+  pinMode(25,OUTPUT); //-> 6R3  -> SA12,AJ112 (ENCIENDE VENTILADORA DEL HUSILLO 230VAC)
+  pinMode(34,OUTPUT); //->      -> RUN SERVOPACKS
+  pinMode(35,OUTPUT); //->      -> BA211
+  pinMode(27,OUTPUT); //-> 8R2  -> SB15
   // Bridge startup
   Bridge.begin();
   
@@ -219,62 +170,63 @@ void setup() {
 }
 
 void loop() {
-O21 = digitalRead(pinO21);
-O16 = digitalRead(pinO16);
-O20 = digitalRead(pinO20);
-O28 = digitalRead(pinO28);
-O30 = digitalRead(pinO30);
-O31 = digitalRead(pinO31);
-O17 = digitalRead(pinO17);
-O29 = digitalRead(pinO29);
-O22 = digitalRead(pinO22);
-O19 = digitalRead(pinO19);
-O57 = digitalRead(pinO57);
-O61 = digitalRead(pinO61);
-O62 = digitalRead(pinO62);
-O60 = digitalRead(pinO60);
-O58 = digitalRead(pinO58);
-O59 = digitalRead(pinO59);
-O345=digitalRead(pinO345);
-O344=digitalRead(pinO344);
-O4  =  digitalRead(pinO4);
-O11 = digitalRead(pinO11);
-O12 = digitalRead(pinO12);
-O0  =  digitalRead(pinO0);
-I14 = digitalRead(pinI14);
-I8  =  digitalRead(pinI8);
-I3  =  digitalRead(pinI3);
-I4  =  digitalRead(pinI4);
-O343=digitalRead(pinO343);
-I21 = digitalRead(pinI21);
-I22 = digitalRead(pinI22);
-I41 = digitalRead(pinI41);
-I86 = digitalRead(pinI86);
-I80 = digitalRead(pinI80);
-I87 = digitalRead(pinI87);
-I74 = digitalRead(pinI74);
-I73 = digitalRead(pinI73);
-I78 = digitalRead(pinI78);
-I84 = digitalRead(pinI84);
-I81 = digitalRead(pinI81);
-I27 = digitalRead(pinI27);
-I18 = digitalRead(pinI18);
-I17 = digitalRead(pinI17);
-I16 = digitalRead(pinI16);
-I85 =  analogRead(pinI85);
-I83 =  analogRead(pinI83);
-I23 =  analogRead(pinI23);
-//I36 =  analogRead(pinI36);
-//I38 =  analogRead(pinI38);
-//I37 =  analogRead(pinI37);
-//I39 =  analogRead(pinI39);
-I29 =  analogRead(pinI29);
-I30 =  analogRead(pinI30);
-I31 =  analogRead(pinI31);
-I19 =  analogRead(pinI19);
-I24 =  analogRead(pinI24);
-I28 =  analogRead(pinI28);
-I79 =  analogRead(pinI79);
+  // Get clients coming from server
+url ="http://192.168.0.98/api/arduino2/";
+
+    O21=digitalRead(2);
+O16=digitalRead(3);
+O20=digitalRead(4);
+O28=digitalRead(5);
+O30=digitalRead(6);
+O31=digitalRead(7);
+O17=digitalRead(8);
+O29=digitalRead(9);
+O22=digitalRead(10);
+O19=digitalRead(11);
+O57=digitalRead(12);
+O61=digitalRead(14);
+O62=digitalRead(15);
+O60=digitalRead(16);
+O58=digitalRead(17);
+O59=digitalRead(18);
+O345=digitalRead(19);
+O344=digitalRead(22);
+O4=digitalRead(27);
+O12=digitalRead(28);
+O0=digitalRead(29);
+I14=digitalRead(30);
+I8=digitalRead(31);
+I4=digitalRead(33);
+O343=digitalRead(34);
+I21=digitalRead(36);
+I22=digitalRead(37);
+I41=digitalRead(38);
+I86=digitalRead(39);
+I80=digitalRead(40);
+I87=digitalRead(41);
+I74=digitalRead(42);
+I73=digitalRead(43);
+I78=digitalRead(44);
+I84=digitalRead(45);
+I81=digitalRead(46);
+I27=digitalRead(47);
+I18=digitalRead(48);
+I17=digitalRead(49);
+I16=digitalRead(50);
+I85=analogRead(A0);
+I83=analogRead(A10);
+I23=analogRead(A11);
+I36=analogRead(A12);
+I38=analogRead(A13);
+I37=analogRead(A14);
+I39=analogRead(A15);
+I29=analogRead(A2);
+I30=analogRead(A3);
+I31=analogRead(A4);
+I19=analogRead(A5);
+I24=analogRead(A7);
+I28=analogRead(A8);
+I79=analogRead(A9);
     
 i++;
     if (i>=25){
@@ -284,7 +236,7 @@ i++;
         i=0;
     }
 
-  // Get clients coming from server
+    
   BridgeClient client = server.accept();
 
   // There is a new client?
@@ -295,11 +247,11 @@ i++;
     // Close connection and free resources.
     client.stop();
   }
-  Leer_Sensores();
-  Activar_Sensores();
+ // Leer_Sensores();
+  //Activar_Sensores();
   
   delay(50); // Poll every 50ms
-}//Fin de void loop()
+}
 
 void process(BridgeClient client) {
   // read the command
@@ -431,9 +383,14 @@ void modeCommand(BridgeClient client) {
   client.print(mode);
 }
 // +++++++++++++++++++++++++++leer el Sensor++++++++++++++++++++++
-void Leer_Sensores(){
+/*void Leer_Sensores(){
+  
+  
   Process p;
-  ValorSensor_I85 = analogRead(A0);
+  
+  
+  ValorSensor_I85 = analogRead(I85);
+  
   //este evento sucede una vez, solo si el valor del sensor cambia.
   if (ValorSensor_I85 > 500 && Estado_I85 == 0) {
     //el estado del sensor cambio a HIGH
@@ -443,28 +400,19 @@ void Leer_Sensores(){
     p.addParameter("-X"); // use POST instead of default GET
     p.addParameter("POST");
     p.addParameter("-d");
-    p.addParameter("{\"name\":\"Irra\"}");
+    p.addParameter("{\"name\":\"Nick\"}");
     p.addParameter("-H"); 
     p.addParameter("Content-type: application/json");
-    p.addParameter("http://192.168.0.131:3131/api/product");
-    //p.runAsynchronously();
-    p.run();
-    //p.runShellCommandAsynchronously("curl -d \'{\"estado\":\"1\"}\' -H \"Content-Type: application/json\" http://192.168.10.86:3000");
-    // A process output can be read with the stream methods
-  while (p.available() > 0) {
-    char c = p.read();
-    SerialUSB.print(c);
-  }
-  // Ensure the last bit of data is sent.
-  SerialUSB.flush();
+    p.addParameter("http://192.168.0.120:3000/");
+    p.runAsynchronously();
     Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
+
     
   }
   else if (ValorSensor_I85 < 500 && Estado_I85 == 1){
     //el estado del sensor cambio a LOW
     Estado_I85 = 0;
     //comando que empuje el valor del sensor hacia el cliente.
-    p.runShellCommandAsynchronously("curl -d \'{\"estado\":\"0\"}\' -H \"Content-Type: application/json\" http://192.168.10.86:3000");
     Bridge.put(key1, String(Estado_I85));
       
     }
@@ -472,7 +420,7 @@ void Leer_Sensores(){
 
   
 
-  //++++++++++++++++++Agregado++++++++++++++++++++++++++++++++++++++
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 }
 void Activar_Sensores(){
@@ -491,4 +439,4 @@ void Activar_Sensores(){
 
 
 
-}
+}*/

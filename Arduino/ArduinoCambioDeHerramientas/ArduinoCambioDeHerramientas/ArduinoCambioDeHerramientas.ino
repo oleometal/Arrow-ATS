@@ -1,7 +1,7 @@
 //---------------------------- BLOQUE DE LIBRERÍAS --------------------------//
 
 #include <EEPROM.h>
-#include <ArduinoJson.h>
+
 
 
 //------------------------ BLOQUE DE CONTROL DE TIEMPO ----------------------//
@@ -13,8 +13,8 @@ unsigned long timeMaxB; // tiempo máximo para calibración del home del brazo
 
 // unsigned long timePLC; // tiempo de respuesta máxima para que el plc ejecute la acción
 
-
-int timeTool = 1960; //1956 tiempo entre cada herramienta
+float giro180 = 1635;
+int timeTool = 488;//1956 tiempo entre cada herramienta
 int tiempoEspera = 500; // tiempo de espera entre cada cambio de herramienta 
 unsigned long tiempoSerial; // tiempo de espera serial para recibir la respuesta del otro PLC
 
@@ -30,10 +30,10 @@ int flagB = 0;
 // Sensores
 int sensorC = 7; // Sensor de efecto hall del carrusel
 int sensorH = 6; // Sensor de final de carrera del mandril de herramienta
-int sensorB = 5; // Sensor de efecto hall del brazo
-
+int sensorB = 5; // Sensor del BRAZO AHORA ES A0 y SU VALOR EN POSITIVO ES MENOR A 100
+int sensorP = 49;
 // Paso de los servomotores (NO MODIFICAR NINGUNO DE ESTOS PINES)
-int pasoC = 4 ; // Salida al servo motor del carrusel
+int pasoC = 10; // Salida al servo motor del carrusel
 int pasoH = 13; // Salida al servo motor del mandril de la herramienta
 int pasoB = 12; // Salida al servo motor del brazo
 
@@ -45,7 +45,7 @@ int direccionB = 11; // dirección del motor del brazo
 // Comunicacion con PLC
 int tx2 = 17;  // Trasmisión de datos
 int rx2 = 16;  // recepción de ejecución
-
+char ultimocorrido = "9";
 /*
 UTP1
 cafe -> Ground
@@ -54,7 +54,6 @@ verde -> 12 Paso servo brazo
 naranja -> 11 direccion motor brazo
 azul/b -> 9 direccion motor mandril herramienta
 naranja/b -> 8 direccion motor carrusel
-
 UTP2
 Cafe -> 7 sensor de efecto hall del carrusel
 Cafe/b -> 6 sensor de final de carreradel madril
@@ -89,7 +88,7 @@ int changeNumber = 0;
 //---------------------- FUNCIÓN DE CONFIGURACIÓN INICIAL -------------------//
 
 void setup(){
-  Serial.begin(9600); 
+  Serial.begin(115200); 
   //Serial3.begin(9600);
   //Serial2.begin(9600);
 
@@ -120,6 +119,7 @@ void setup(){
 //-------------------------- FUNCIÓN DE LOOP PRINCIPAL ----------------------//
 
 void loop() {
+  //Serial.print(analogRead(A0));
   if(Serial.available()){
     
     if(detectTinyG == 0){
@@ -138,29 +138,93 @@ void loop() {
       case 'a': // home de todas las herramientas
         homeTool();
         break;
-      case 'T':
-        changeTool();
+      case 'T':changeTool();
         break;
-      //case 'b': //enganchar
-      //  changeB(1,0);
-      //  break;
-      //case 'c': //desenganchar
-      //  changeB(1,1);
-      //  break;
-      /*case 'd': //girar media vuelta
+      case 'z': //enganchar
+        changeB(1,0);
+        break;
+      case 'w': //desenganchar
+        changeB(1,1);
+        break;
+      case 'o': //girar media vuelta
         changeB(2,0);
         break;
-      case 'e': //mover la herramienta a 150cm de la posición de trabajo
-        changeH(150.0);
+      case 'p': //mover la herramienta a 250cm de la posición de trabajo
+        changeH(-20.0);
+        break;
+             case 'j': //mover la herramienta a 250cm de la posición de trabajo
+        changeH(309);
+        break;
+                     case 'x': //Paso 1 CH
+                   
+        changeToolJ1(1);
+        break;
+                      case 'l': //Paso 2 CH
+                         if ( ultimocorrido != "l"){
+                     ultimocorrido = "l";
+        changeToolJ2(1);
+                         }
+        break;
+                      case 'm':
+                         if ( ultimocorrido != "xm"){
+                     ultimocorrido = "m";//Paso 3 CH
+        changeToolJ3(1);
+                         }
+        break;
+ 
+
+                     case 'X': //Paso 1 CH
+        changeToolJ1(2);
+        break;
+                      case 'L': //Paso 2 CH
+                         if ( ultimocorrido != "L"){
+                     ultimocorrido = "L";
+        changeToolJ2(2);
+                         }
+        break;
+                      case 'M': //Paso 3 CH
+                         if ( ultimocorrido != "M"){
+                     ultimocorrido = "M";
+        changeToolJ3(2);
+                         }
+        break;
+          
+
+                     case 'q': //Paso 1 CH
+        changeToolJ1(3);
+        break;
+                      case '#': //Paso 2 CH
+                         if ( ultimocorrido != "#"){
+                     ultimocorrido = "#";
+        changeToolJ2(3);}
+        break;
+                      case '$': //Paso 3 CH
+                         if ( ultimocorrido != "$"){
+                     ultimocorrido = "$";
+        changeToolJ3(3);}
+        break;
+ 
+
+                     case 'Q': //Paso 1 CH
+        changeToolJ1(4);
+        break;
+                      case 'R': //Paso 2 CH
+                         if ( ultimocorrido != "R"){
+                     ultimocorrido = "R";
+        changeToolJ2(4);}
+        break;
+                      case 'S': //Paso 3 CH
+           if ( ultimocorrido != "S"){
+                     ultimocorrido = "S";
+        changeToolJ3(4);}
+        break;
+
+
+           case 'u': //home de brazo cambiador
+         homeB();
         break;
       case 'f': //home del carrusel
         homeC();
-        break;
-      case 'g': //home del braxo
-        homeB();
-        break;*/
-      case 'e': //mover la herramienta a 150cm de la posición de trabajo
-        changeH(150.0);
         break;
       case 'g': //home del braxo
         homeH();
@@ -197,15 +261,119 @@ void changeToolWeb(){
 
 
 
+
+
+void changeToolJ3(int tipocambio){
+ int secuencia = 0;
+                      delay(tiempoEspera+1000);
+                      secuencia = changeB(1,1); // regresar el brazo a la posicion inicial
+                      if(secuencia == 1){
+                        homeH();
+                        
+                        delay(tiempoEspera);
+                       
+                      
+                 
+                        if (tipocambio == 1){
+                Serial.print("C");
+                }
+                                if (tipocambio ==  2){
+                Serial.print("c");
+                }
+                  if (tipocambio ==  3){
+                  Serial.print("F");
+                }
+     if (tipocambio ==  4){
+                  Serial.print("f");
+                }
+                        
+
+}
+}
+
+void changeToolJ2(int tipocambio){
+ int secuencia = 0;
+                 
+
+ delay(tiempoEspera+1500);
+ secuencia = changeB(2,0); // cambio de herramienta
+                if(secuencia == 1){
+                    changeH(307);
+                    delay(1000);
+                    if (tipocambio == 1){
+                Serial.print("B");
+        
+                }
+                              if (tipocambio ==  2){
+                Serial.print("b");
+                }
+                  if (tipocambio ==  3){
+                  Serial.print("E");
+                }
+     if (tipocambio ==  4){
+                  Serial.print("e");
+                }
+
+                   }
+
+}
+void changeToolJ1(int tipocambio){
+ delay(5);
+  int a = Serial.parseInt();
+  delay(3);
+  char b = Serial.read();
+  delay(5);
+  float c = Serial.parseFloat();
+  if(a >= 1 && a <= 18){ // validar el numero de la herramienta
+    if(b == ';'){ // validar el carácter limitador
+      if(c >=0 && c <=300){ // validar la longitud maxima del offset
+        int secuencia = 0;
+        if(validationHome == 1){ // validar que anteriormente se realizó la calibración
+          if(changeNumber >= 10){ // número máximo de cambios de herramienta que puede realizar
+            homeTool();
+            changeNumber = 0;
+          }
+          secuencia = homeH();
+          if(secuencia == 1){ 
+            secuencia = 0;
+            delay(tiempoEspera);
+            secuencia = changeC(a); 
+            if(secuencia == 1){
+              changeNumber ++;
+              secuencia = 0;
+              delay(tiempoEspera);
+              secuencia = changeB(1,0); // enganchar las herramientas con el brazo
+              if(secuencia == 1){
+                if (tipocambio ==  1){
+                Serial.print("A");
+                }
+                  if (tipocambio ==  2){
+                  Serial.print("a");
+                }
+                                if (tipocambio ==  3){
+                Serial.print("D");
+                }
+                  if (tipocambio ==  4){
+                  Serial.print("d");
+                }
+          }
+          }
+          }
+          }// Error de Home
+else{
+          Serial.print("nohome");}
+          }
+          }
+          }
+
+
+
+
+      }
 //------------------------ FUNCIÓN DE CODIFICACIÓN JSON ---------------------//
 
 void sendJson(String msg, int status){
-  StaticJsonBuffer<200> jsonBuffer;
-  JsonObject& root = jsonBuffer.createObject();
-  root["msg"] = msg;
-  root["status"] = status;
-  root.printTo(Serial);
-  Serial.println();
+ 
 }
 
 
@@ -225,23 +393,27 @@ void homeTool(){
         if(EEPROM.read(directionTool) != 1){
           EEPROM.write(directionTool,1);
         }
-        sendJson("a",1);
+        
+       // sendJson("a",1);
         validationHome = 1;
         changeNumber = 0;
       }
-      else sendJson("c",0);
+      //else sendJson("c",0);
     }
-    else sendJson("b",0);
+    //else sendJson("b",0);
   }
-  else sendJson("d",0);
+  //else sendJson("d",0);
 }
 
 
 //------------------------- FUNCIÓN HOME DEL CARRUSEL -----------------------//
 
 int homeC(){
+
+  if (digitalRead(sensorP) == 0){
   accionC = 1;
-  TCCR0B = TCCR0B & 0b1111000 | 0x03;
+  
+  TCCR2B = TCCR2B & B11111000 | B00000011;
   analogWrite(pasoC,5);
   int estadoH = 0;
   int distanciaHome = abs(1 - tool);
@@ -260,7 +432,7 @@ int homeC(){
   while(accionC){
     if(digitalRead(sensorC) == HIGH && flagC == 0){
       digitalWrite(pasoC, LOW);
-      TCCR0B = TCCR0B & 0b1111000 | 0x04;
+     TCCR2B = TCCR2B & B11111000 | B00000100; 
       delay(100);
       tiempoC = millis();
       analogWrite(pasoC, 5);
@@ -278,10 +450,10 @@ int homeC(){
       flagC = 0;
       delay(200);
       digitalWrite(pasoC, LOW);
-      TCCR0B = TCCR0B & 0b1111000 | 0x03;
+      TCCR2B = TCCR2B & B11111000 | B00000011;    
       digitalWrite(direccionC, LOW);
       analogWrite(pasoC, 5);
-      delay(2990); //2980tiempo para llegar del sensor al home con la primera herramienta
+      delay(2989); //2980tiempo para llegar del sensor al home con la primera herramienta
       digitalWrite(pasoC, LOW);
       tool = 1;
       //sendJson("Herramienta 1 en Home",1);
@@ -295,14 +467,18 @@ int homeC(){
       return 0;
     } 
   }
+  }
 }
 
 
 //----------------- FUNCIÓN HOME DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int homeH(){
+
+  if (digitalRead(sensorP) == 0){
   accionH = 1;
   flagH = 0;
+  
   TCCR0B = TCCR0B & 0b1111000 | 0x02;
   digitalWrite(direccionH,HIGH);
   analogWrite(pasoH,5);
@@ -329,7 +505,7 @@ int homeH(){
       return 0;
     }
   }
-}
+}}
 
 
 //------------------------- FUNCIÓN HOME DEL BRAZO -----------------------//
@@ -337,12 +513,13 @@ int homeH(){
 int homeB(){
   accionB = 1;
   flagB = 0;
+  
   TCCR1B = TCCR1B & 0b1111000 | 0x02;
   digitalWrite(direccionB,LOW);
   analogWrite(pasoB,5);
   timeMaxB = millis();
   while(accionB){
-    if(digitalRead(sensorB) == HIGH && flagB == 0){
+    if(analogRead(A0) < 100 && flagB == 0){
       delay(120);//encontrar el sensor en el centro
       digitalWrite(pasoB, LOW);
       flagB == 1;
@@ -381,7 +558,7 @@ void changeTool(){
       if(c >=0 && c <=300){ // validar la longitud maxima del offset
         int secuencia = 0;
         if(validationHome == 1){ // validar que anteriormente se realizó la calibración
-          if(changeNumber >= 20){ // número máximo de cambios de herramienta que puede realizar
+          if(changeNumber >= 10){ // número máximo de cambios de herramienta que puede realizar
             homeTool();
             changeNumber = 0;
           }
@@ -389,7 +566,7 @@ void changeTool(){
           if(secuencia == 1){ 
             secuencia = 0;
             delay(tiempoEspera);
-            secuencia = changeC(a); 
+            secuencia = changeC(a); // Cambia el carrusel a la herramienta deseada
             if(secuencia == 1){
               secuencia = 0;
               delay(tiempoEspera);
@@ -401,7 +578,8 @@ void changeTool(){
                 if(secuencia == 1){
                   secuencia = 0;
                   delay(tiempoEspera+1500);
-                  secuencia = changeB(2,0); // cambio de herramienta
+                  secuencia = changeB(2,0); // cambio de herramienta, gira brazo
+                   changeH(307);
                   if(secuencia == 1){ 
                     secuencia = 0;
                     delay(tiempoEspera);
@@ -416,12 +594,14 @@ void changeTool(){
                       if(secuencia == 1){
                         secuencia = 0;
                         delay(tiempoEspera);
-                        secuencia = changeH(c); // llevar herramienta a la posición de trabajo
+                        secuencia =  1;//changeH(c); // llevar herramienta a la posición de trabajo
                         if(secuencia == 1){
                           secuencia = 0;
                           // int x = 0;
-                          sendJson("e",1);
+                          //sendJson("e",1);
                           changeNumber ++;
+                        
+                        
                         }
                         else sendJson("f",0);
                       }
@@ -457,7 +637,9 @@ void changeTool(){
 //------------------------ FUNCIÓN CAMBIO DEL CARRUSEL ----------------------//
 
 int changeC(int newTool){
-  TCCR0B = TCCR0B & 0b1111000 | 0x03;
+
+  if (digitalRead(sensorP) == 0){
+  TCCR2B = TCCR2B & B11111000 | B00000010;
   int distancia = abs(newTool - tool);
   
   if(distancia <= 9){
@@ -474,25 +656,107 @@ int changeC(int newTool){
     else digitalWrite(direccionC, LOW);
   }
   analogWrite(pasoC,5);
-  delay(distancia*timeTool); // tiempo entre cada herramienta
+ for (int i = 1; i <= distancia; i++) {
+delayMicroseconds(15000);
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+delayMicroseconds(15000);
+
+// ORIGINAL 7950
+delayMicroseconds(4450);
+
+  
+ }
+  //delay(distancia*timeTool); // tiempo entre cada herramienta
   digitalWrite(pasoC, LOW);
   EEPROM.write(directionTool,newTool);    
   tool = newTool;
   //sendJson("Herramienta "+String(tool)+" en Home",1);
-  return 1;
+  return 1;}
 }
 
 
 //------------------------ FUNCIÓN CAMBIO DEL BRAZO ----------------------//
 
 int changeB(int giro, int sentido){
-  TCCR1B = TCCR1B & 0b1111000 | 0x01;
-  if(giro == 2){
-    giro *= 816;
-  }else giro = 810;
+    TCCR1B = TCCR1B & 0b1111000 | 0x01;
+      TCCR0B = TCCR0B & 0b1111000 | 0x03;
+
+   int muestra = giro;
+   double suma = 816000;
+ 
+
   digitalWrite(direccionB, sentido); //0 en sentido antihorario, 1 sentido horario 
   analogWrite(pasoB,5);
-  delay(giro); // tiempo de espera
+  double TiempoAhora = micros();
+  //delay(giro); // tiempo de espera
+
+    if(muestra == 2){
+   while(micros() < TiempoAhora+1633000){
+    
+  }
+  }else{
+  while(micros() < TiempoAhora+816500){
+    
+  }}
   //delayMicroseconds(1000);
   digitalWrite(pasoB, LOW);
   return 1;
@@ -502,6 +766,7 @@ int changeB(int giro, int sentido){
 //--------------- FUNCIÓN CAMBIO DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int changeH(double offset){
+  if (digitalRead(sensorP) == 0 || offset == 307){
   delay(5);
   double value = -83.5143*offset + 26024.1356;
   TCCR0B = TCCR0B & 0b1111000 | 0x02;
@@ -509,7 +774,7 @@ int changeH(double offset){
   analogWrite(pasoH,5);
   delay(value); // tiempo de espera
   digitalWrite(pasoH, LOW);
-  return 1;
+  return 1;}
 }
 
 
@@ -518,14 +783,14 @@ int changeH(double offset){
 int comunicationPLC(int function){
   accionS = 1;
   if(function == 1){  // accionar pistones
-    Serial.println("a");
+    Serial.print("a");
   }
-  else Serial.println("b");
+  else Serial.print("b");
   tiempoSerial = millis();
   while(accionS){
     if(Serial.available()){
       char response = Serial.read();
-      //Serial.println(response);
+      //Serial.print(response);
       if(response == '1'){
         accionS = 0;
         return 1;
@@ -537,6 +802,3 @@ int comunicationPLC(int function){
     }
   }
 }
-
-
-//----------------------------------- END -----------------------------------//
