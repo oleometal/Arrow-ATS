@@ -134,7 +134,7 @@ void setup() {
   pinMode(32, INPUT); //<-      <- WD16
   pinMode(33, INPUT); //<-      <- WD26
   pinMode(28,OUTPUT); //->      -> BB211
-  pinMode(29,OUTPUT); //->      -> SA15
+  pinMode(29,OUTPUT); //->      -> SA15 (ELECTROSPINDLE 1 ENABLING)
   pinMode(2, OUTPUT); //->      -> BH24
   pinMode(3, OUTPUT); //->      -> VC13
   pinMode(4, OUTPUT); //->      -> BH23

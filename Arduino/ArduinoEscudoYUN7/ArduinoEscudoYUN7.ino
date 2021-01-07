@@ -76,7 +76,7 @@ void setup() {
   pinMode(24, INPUT); //<- 3R38 <- CN115
   pinMode(25, INPUT); //<- 2R38 <- CU115
   pinMode(26, INPUT); //<- 1R38 <- CU114
-  pinMode(10, INPUT); //<- 8R39 <- SA124
+  pinMode(10, INPUT); //<- 8R39 <- SA124 (ELECTROSPINDLE 1 TOOL LOCKED)
   pinMode(11, INPUT); //<- 7R39 <- SA125
   pinMode(12, INPUT); //<- 6R39 <- SA135
   pinMode(14, INPUT); //<- 5R39 <- SA136
