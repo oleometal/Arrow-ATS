@@ -8,17 +8,17 @@
 // }
 
 
-console.log("hola desde app");
-import {send}from './dependencias.js'
-
-
-const indice = async (context, next) => {
-    await send(context, context.request.url.pathname, {
-    root: `${Deno.cwd()}`,
-    index: "index.html",
-
-    });
-
-}
-
-export {indice}
+// console.log("hola desde app");
+// import {send}from './dependencias.js'
+//
+//
+// const indice = async (context, next) => {
+//     await send(context, context.request.url.pathname, {
+//     root: `${Deno.cwd()}`,
+//     index: "index.html",
+//
+//     });
+//
+// }
+//
+// export {indice}
