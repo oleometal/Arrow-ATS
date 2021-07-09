@@ -9,11 +9,7 @@
   no debe permitir que se cambien desde la aplicacion web;
   El motivo Principal es porque se calienta la tarjeta.
   
-  This example for the YunShield/Yún shows how 
-  to use the Bridge library to access the digital and
-  analog pins on the board through REST calls.
-  It demonstrates how you can create your own API when
-  using REST style calls through the browser.
+
   Possible commands created in this shetch:
   "/arduino/digital/13"     -> digitalRead(13)
   "/arduino/digital/13/1"   -> digitalWrite(13, HIGH)
@@ -21,8 +17,13 @@
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
-  This example code is part of the public domain
-  http://www.arduino.cc/en/Tutorial/Bridge
+ 
+"/data" is used to access to the internal key/value storage. The available calls are:
+
+    /put/KEY/VALUE : stores a value inside the storage
+    /get/KEY : obtains the value of the requested key in JSON
+    /get : obtains the entire storage list in JSON.
+    /delete : deletes the internal storage
   
  */
 
@@ -35,9 +36,9 @@
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
- String url ="http://192.168.0.98/api/arduino3/";
-    bool O49;
-    int i = 0;
+String url ="http://192.168.0.98/api/arduino3/";
+int i = 0;
+bool O49;
 bool O50;
 bool O51;
 bool O52;
@@ -92,30 +93,18 @@ int I49;
 int I48;
 int I68;
 int I34;
-
+int pinesDigitales[] = {2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,22,23,24,25,26,27,28,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49};
+byte pinesAnalogos[] = {A0,A1,A2,A3,A4,A5,A7,A8,A9,A10,A11,A12,A13,A14,A15};
 
 void setup() {
-    
-   
-    
-
   // Bridge startup        Rele    Cable
-  pinMode(47, INPUT); //<-      <- AL123
-  pinMode(48, INPUT); //<-      <- AL119
-  pinMode(49, INPUT); //<-      <- AL121
   pinMode(A0, INPUT); //<-      <- AL111
   pinMode(A1, INPUT); //<-      <- AL117
-  pinMode(27, INPUT); //<-      <- AL138
-  pinMode(28, INPUT); //<-      <- AL137
-  pinMode(34, INPUT); //<- 5R41 <- AP170
-  pinMode(35, INPUT); //<- 4R41 <- AP180
-  pinMode(36, INPUT); //<- 3R41 <- AG113
-  pinMode(37, INPUT); //<- 2R41 <- AP1310
-  pinMode(38, INPUT); //<- 1R41 <- AP164
-  pinMode(39, INPUT); //<-      <- AR132
-  pinMode(40, INPUT); //<-      <- AL1W16 (cafe)
-  pinMode(41, INPUT); //<-      <- AL113
-  pinMode(42, INPUT); //<-      <- AL115
+  pinMode(A2, INPUT); //<-      <- AL127
+  pinMode(A3, INPUT); //<-      <- AL131
+  pinMode(A4, INPUT); //<-      <- AL129
+  pinMode(A5, INPUT); //<-      <- NEGRO (AL1W16)
+  pinMode(A7, INPUT); //<-      <- NARANJA (AL1W16)
   pinMode(A8, INPUT); //<-      <- AL144
   pinMode(A9, INPUT); //<-      <- BB210
   pinMode(A10,INPUT); //<-      <- BA110
@@ -124,25 +113,6 @@ void setup() {
   pinMode(A13,INPUT); //<-      <- BC29
   pinMode(A14,INPUT); //<-      <- BC19
   pinMode(A15,INPUT); //<-      <- BF19
-  pinMode(A7, INPUT); //<-      <- NARANJA (AL1W16)
-  pinMode(45, INPUT); //<-      <- VERDE (AL1W16)
-  pinMode(A5, INPUT); //<-      <- NEGRO (AL1W16)
-  pinMode(40, INPUT); //<-      <- CAFE (AL1W16)
-  pinMode(A4, INPUT); //<-      <- AL129
-  pinMode(A3, INPUT); //<-      <- AL131
-  pinMode(A2, INPUT); //<-      <- AL127
-  pinMode(46, INPUT); //<-      <- AL125
-  pinMode(16, INPUT); //<-      <- AL140
-  pinMode(17, INPUT); //<-      <- AL142
-  pinMode(18, INPUT); //<-      <- AL143
-  pinMode(19, INPUT); //<-      <- AL135
-  pinMode(28, INPUT); //<-      <- AL137
-  pinMode(27, INPUT); //<-      <- AL138
-  pinMode(22, INPUT); //<-      <- AL139
-  pinMode(23, INPUT); //<-      <- AL141
-  pinMode(43, INPUT); //<-      <- AL133
-  pinMode(26,OUTPUT); //->      -> AL124
-  pinMode(14,OUTPUT); //->      -> AL110
   pinMode(2, OUTPUT); //->      -> AL112
   pinMode(3, OUTPUT); //->      -> AL114
   pinMode(4, OUTPUT); //->      -> AL116
@@ -154,15 +124,70 @@ void setup() {
   pinMode(10,OUTPUT); //->      -> BT16,BT14
   pinMode(11,OUTPUT); //->      -> BT214
   pinMode(12,OUTPUT); //->      -> BT114
+  pinMode(14,OUTPUT); //->      -> AL110
+  pinMode(15,OUTPUT); //->      -> AL126
+  pinMode(16, INPUT); //<-      <- AL140
+  pinMode(17, INPUT); //<-      <- AL142
+  pinMode(18, INPUT); //<-      <- AL143
+  pinMode(19, INPUT); //<-      <- AL135
+  pinMode(22, INPUT); //<-      <- AL139
+  pinMode(23, INPUT); //<-      <- AL141
   pinMode(24,OUTPUT); //->      -> BT21
   pinMode(25,OUTPUT); //->      -> BT11
-  pinMode(15,OUTPUT); //->      -> AL126
-  pinMode(44,OUTPUT); //-> 5R9  -> ST141(ST1W5)
+  pinMode(26,OUTPUT); //->      -> AL124
+  pinMode(27, INPUT); //<-      <- AL138
+  pinMode(28, INPUT); //<-      <- AL137
+  pinMode(34, INPUT); //<- 5R41 <- AP170
+  pinMode(35, INPUT); //<- 4R41 <- AP180
+  pinMode(36, INPUT); //<- 3R41 <- AG113
+  pinMode(37, INPUT); //<- 2R41 <- AP1310
+  pinMode(38, INPUT); //<- 1R41 <- AP164
+  pinMode(39, INPUT); //<-      <- AR132
+  pinMode(40, INPUT); //<-      <- AL1W16 (cafe)
+  pinMode(41, INPUT); //<-      <- AL113
+  pinMode(42, INPUT); //<-      <- AL115
+  pinMode(43, INPUT); //<-      <- AL133
+  pinMode(44,OUTPUT); //-> 5R9  -> ST141 (ST1W5)
+  pinMode(45, INPUT); //<-      <- VERDE (AL1W16)
+  pinMode(46, INPUT); //<-      <- AL125
+  pinMode(47, INPUT); //<-      <- AL123
+  pinMode(48, INPUT); //<-      <- AL119
+  pinMode(49, INPUT); //<-      <- AL121
   Bridge.begin();
+  /*----------------------------------------------
+   *    Lectura Inicial de Sensores Digitales
+   *---------------------------------------------*/
+  for ( byte i = 0; i < (sizeof(pinesDigitales) / sizeof(pinesDigitales[0])); i++){
+    //llamar una funcion que haga post y guarde en memoria pinesDigitales[i]
+     if ( digitalRead(pinesDigitales[i] == HIGH){
+        boolean valorSensor = true; 
+        //enviar estado de sensor
+        //falta enviar el ID sel sensor relacionado
+        postDigital(valorSensor);
+      }else{
+        boolean valorSensor = false;
+        postDigital(valorSensor);
+        }
+    };
+  /*--------------------------------------------------
+   * Lectura Inicial de Sensores Análogos
+   *-------------------------------------------------*/
+  // falta terminar esta logica 
+  for ( byte i = 0; i < (sizeof(pinesAnalogos) / sizeof(pinesAnalogos[0])); i++){
+    if ( analogRead(pinesAnalogos[i] > 500){
+        boolean valorSensor = true; 
+        //enviar estado de sensor
+        postDigital(valorSensor);
+      }else{
+        boolean valorSensor = false;
+        postDigital(valorSensor);
+        }
+    };
   
-
-  // Listen for incoming connection only from localhost
-  // (no one from the external network could connect)
+  /*--------------------- ------------------------------
+   * Listen for incoming connection only from localhost
+   * (no one from the external network could connect)
+   * --------------------------------------------------*/
   server.listenOnLocalhost();
   server.begin();
 }
@@ -170,7 +195,7 @@ void setup() {
 void loop() {
   url ="http://192.168.0.98/api/arduino3/";
 
-    O49=digitalRead(2);
+O49=digitalRead(2);
 O50=digitalRead(3);
 O51=digitalRead(4);
 O52=digitalRead(5);
@@ -247,9 +272,10 @@ I34=analogRead(A9);
     // Close connection and free resources.
     client.stop();
   }
-
+//nuncio();
+  //Activar_Sensores();
   delay(50); // Poll every 50ms
-}
+}//fin de loop()
 
 void process(BridgeClient client) {
   // read the command
@@ -380,3 +406,38 @@ void modeCommand(BridgeClient client) {
   client.print(F("error: invalid mode "));
   client.print(mode);
 }
+
+/*--------------------------------------------------- 
+ *    post Sensores
+ *--------------------------------------------------*/
+void postDigital(int pinLeido){
+  
+}
+    Process p;
+    bool estadoActualSensor;
+  
+  //este evento sucede una vez, solo si el valor del sensor cambia.
+  if (lecturaSensor > 500 && estadoActualSensor == 0) {
+    //el estado del sensor cambio a HIGH
+    Estado_I85 = 1;
+    //comando que empuje el valor del sensor hacia el cliente (este es un ejemplo).
+    p.begin("curl");
+    p.addParameter("-X"); // use POST instead of default GET
+    p.addParameter("POST");
+    p.addParameter("-d");
+    p.addParameter("{\"name\":\"Nick\"}");
+    p.addParameter("-H"); 
+    p.addParameter("Content-type: application/json");
+    p.addParameter("http://192.168.0.120:3000/");
+    p.runAsynchronously();
+    Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
+
+    
+  }
+  else if (ValorSensor_I85 < 500 && Estado_I85 == 1){
+    //el estado del sensor cambio a LOW
+    Estado_I85 = 0;
+    //comando que empuje el valor del sensor hacia el cliente.
+    Bridge.put(key1, String(Estado_I85));
+      
+    }

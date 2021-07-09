@@ -35,8 +35,8 @@
 // Listen to the default port 5555, the Yún webserver
 // will forward there all the HTTP requests you send
 BridgeServer server;
- int i=0;
-    bool O21;
+int i=0;
+bool O21;
 bool O16;
 bool O20;
 bool O28;
@@ -93,12 +93,6 @@ int  I79;
 String url ="http://192.168.0.98/api/arduino2/";
 
 void setup() {
-  
-   
-    
-    
-    
-    
   //Bridge.put(key1, String(Estado_I85)); // imprime estado de sensor en memoria.
   // declarar pines como input y output.
   pinMode(A1, INPUT); //<-      <- VC11
@@ -251,7 +245,7 @@ i++;
   //Activar_Sensores();
   
   delay(50); // Poll every 50ms
-}
+}//fin de loop()
 
 void process(BridgeClient client) {
   // read the command
