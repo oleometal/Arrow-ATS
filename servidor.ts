@@ -10,9 +10,9 @@ import {
 
 //const puerto = Deno.env.get("PORT") || 80
 
-const servidor = serve({ port: 80 });
+const servidor = serve({ port: 3000 });
 
-console.log(`Servidor corriendo en  http://localhost`);
+console.log(`Servidor corriendo en  http://192.168.0.98:3000`);
 
 const descifrador = new TextDecoder();
 

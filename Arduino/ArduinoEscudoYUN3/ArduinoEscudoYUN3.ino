@@ -1,4 +1,4 @@
-/*
+/*--------------------------------------------------------------------------
   Arduino3 Yún Bridge 
   Ubicacion +A Armario
   MAC: C4:93:00:03:E9:B1
@@ -9,7 +9,6 @@
   no debe permitir que se cambien desde la aplicacion web;
   El motivo Principal es porque se calienta la tarjeta.
   
-
   Possible commands created in this shetch:
   "/arduino/digital/13"     -> digitalRead(13)
   "/arduino/digital/13/1"   -> digitalWrite(13, HIGH)
@@ -17,16 +16,12 @@
   "/arduino/analog/2"       -> analogRead(2)
   "/arduino/mode/13/input"  -> pinMode(13, INPUT)
   "/arduino/mode/13/output" -> pinMode(13, OUTPUT)
- 
-"/data" is used to access to the internal key/value storage. The available calls are:
-
-    /put/KEY/VALUE : stores a value inside the storage
-    /get/KEY : obtains the value of the requested key in JSON
-    /get : obtains the entire storage list in JSON.
-    /delete : deletes the internal storage
-  
- */
-
+  "/data" is used to access to the internal key/value storage. The available calls are:
+  "/data/put/KEY/VALUE" : stores a value inside the storage
+  "/data/get/KEY" : obtains the value of the requested key in JSON
+  "/data/get" : obtains the entire storage list in JSON.
+  "/data/delete : deletes the internal storage
+ -----------------------------------------------------------------------------------------*/
  
 #include <Bridge.h>
 #include <BridgeServer.h>
@@ -94,10 +89,10 @@ int I68;
 int I34;
 String IDsDigitales[] = {"O49","O50","O51","O52","O53","O54","O45","O46","O44","O39","O38","O48","O56","I66","I67","I69","I64","I71","I70","O37","O36","O55","I72","I65","I10","I1","I5","I2","I11","I82","I437","I438","I439","I63","O338","I50","I59","I58","I56","I57"};
 int pinesDigitales[]  = { 2,    3,    4,    5,    6,    7,    8,    9,    10,   11,   12,   14,   15,   16,   17,   18,   19,   22,   23,   24,   25,   26,   27,   28,   34,   35,  36,  37,  38,   39,   40,    41,    42,    43,   44,    45,   46,   47,   48,   49};
-//String IDsAnalogos[]= {"I52","I55","I60","I62","I61","I49","I48","I68","I34","I32","I33","I35","I43","I42","I40"};
-String IDsAnalogos[]  = {"I52","I55","I60","I62","I61","I49","I48","I68","I34","I32","I33"};
-//int pinesAnalogos[] = { A0,   A1,   A2,   A3,   A4,   A5,   A7,   A8,   A9,   A10,  A11,  A12,  A13,  A14,  A15};
-int pinesAnalogos[]   = { A0,   A1,   A2,   A3,   A4,   A5,   A7,   A8,   A9,   A10,  A11,};
+String IDsAnalogos[]= {"I52","I55","I60","I62","I61","I49","I48","I68","I34","I32","I33","I35","I43","I42","I40"};
+//String IDsAnalogos[]  = {"I52","I55","I60","I62","I61","I49","I48","I68","I34","I32","I33"};
+int pinesAnalogos[] = { A0,   A1,   A2,   A3,   A4,   A5,   A7,   A8,   A9,   A10,  A11,  A12,  A13,  A14,  A15};
+//int pinesAnalogos[]   = { A0,   A1,   A2,   A3,   A4,   A5,   A7,   A8,   A9,   A10,  A11,};
 
 void setup() {
   // Bridge startup        Rele    Cable
@@ -112,10 +107,10 @@ void setup() {
   pinMode(A9, INPUT); //<-      <- BB210
   pinMode(A10,INPUT); //<-      <- BA110
   pinMode(A11,INPUT); //<-      <- BA210
-//  pinMode(A12,INPUT); //<-      <- BB110
-//  pinMode(A13,INPUT); //<-      <- BC29
-//  pinMode(A14,INPUT); //<-      <- BC19
-//  pinMode(A15,INPUT); //<-      <- BF19
+  pinMode(A12,INPUT); //<-      <- BB110
+  pinMode(A13,INPUT); //<-      <- BC29
+  pinMode(A14,INPUT); //<-      <- BC19
+  pinMode(A15,INPUT); //<-      <- BF19
   pinMode(2, OUTPUT); //->      -> AL112
   pinMode(3, OUTPUT); //->      -> AL114
   pinMode(4, OUTPUT); //->      -> AL116
@@ -157,8 +152,8 @@ void setup() {
   pinMode(48, INPUT); //<-      <- AL119
   pinMode(49, INPUT); //<-      <- AL121
   Bridge.begin();
-  Console.begin();
-  while (!Console);    
+ // Console.begin();
+  //while (!Console);    
   /*-------------------------------------------------------------------------------
    *    Lectura Inicial de Sensores Digitales
    *-------------------------------------------------------------------------------*/
@@ -171,7 +166,12 @@ void setup() {
    *-------------------------------------------------------------------------------*/
   for ( byte i = 0; i < (sizeof(pinesAnalogos) / sizeof(pinesAnalogos[0])); i++){
     int lecturaInicial = analogRead(pinesAnalogos[i]);
-    Bridge.put(IDsAnalogos[i],String(lecturaInicial));    
+    int valorInicialConvertido;
+    int premo = constrain(lecturaInicial,0,512);
+    if (premo == lecturaInicial){
+      valorInicialConvertido = 0;
+      }else{valorInicialConvertido = 1;}
+    Bridge.put(IDsAnalogos[i],String(valorInicialConvertido));
     };
   
   /*--------------------- ------------------------------
@@ -183,8 +183,6 @@ void setup() {
 }//cierre de setup()
 
 void loop() {
- 
-  //Console.println("holaYun");
   url ="http://192.168.0.98/api/arduino3/";
   O49=digitalRead(2);
   O50=digitalRead(3);
@@ -230,10 +228,10 @@ void loop() {
   I55=analogRead(A1);
   I32=analogRead(A10);
   I33=analogRead(A11);
-  //I35=analogRead(A12);
-//  I43=analogRead(A13);
-//  I42=analogRead(A14);
-//  I40=analogRead(A15);
+  I35=analogRead(A12);
+  I43=analogRead(A13);
+  I42=analogRead(A14);
+  I40=analogRead(A15);
   I60=analogRead(A2);
   I62=analogRead(A3);
   I61=analogRead(A4);
@@ -270,7 +268,7 @@ void loop() {
    for ( byte i = 0; i < (sizeof(pinesAnalogos) / sizeof(pinesAnalogos[0])); i++){
     postAnalogo(IDsAnalogos[i], pinesAnalogos[i]);
     };
-  delay(50); // Poll every 50ms
+  //delay(50); // Poll every 50ms
   
 }//cierre de loop()
 
@@ -417,37 +415,52 @@ void modeCommand(BridgeClient client) {
   valorSensorMemoria = buf[0]; 
   if (valorSensorMemoria.toInt() != valorSensorActual){
     Bridge.put(id,String(valorSensorActual));//guardar en memo
-    //postear
     Process p;
-   
     p.begin("curl");
-    //p.addParameter("-X");
-    //p.addParameter("POST");
-    //p.addParameter("-F");
-    //p.addParameter("Content-Type: application/json");
     p.addParameter("-d");
     p.addParameter(id+"="+String(valorSensorActual));
-    //p.addParameter("=");
-    //p.addParameter(String(valorSensorActual));
-    
-    //p.addParameter("\'{\"name\": \"oleo\", \"email\": \"oleo@guinope.com\"}\'");
     p.addParameter("http://192.168.240.187/api");
     p.runAsynchronously();
-   
-    // do nothing until the process finishes, so you get the whole output:
-    while (p.running());
+   /* while (p.running());// do nothing until the process finishes, so you get the whole output:
     while (p.available()> 0) {
       int result = p.parseInt();      // look for an integer
       Console.println(result);
-      char c = p.read();
+      char c = p.read(); //hacer algo con esta respuesta
       Console.println(c);
-      }//cierre while p
-   
-    }//cierre de if buf
+      }//cierre while p */
+    }//cierre de if !=
   }//cierre de postDigital
 /*----------------------------------------------------------------
  * Función postAnanolo()
  *---------------------------------------------------------------*/  
  void postAnalogo(String id, int pin){
-  //leer datos
-  };
+  int valorSensorActual = analogRead(pin);
+  int valorSensorConvertido;
+  int premo = constrain(valorSensorActual,0,512);
+  if (premo == valorSensorActual){
+    valorSensorConvertido = 0;
+    }else{valorSensorConvertido = 1;}
+  int longitudID = id.length()+1;
+  char clave[longitudID];
+  id.toCharArray(clave,longitudID); 
+  char buf[1];
+  Bridge.get(clave,buf,1);
+  String valorSensorMemoria;
+  valorSensorMemoria = buf[0];
+  if (valorSensorMemoria.toInt() != valorSensorConvertido){
+    Bridge.put(id,String(valorSensorConvertido));//guardar en memo
+    Process p;
+    p.begin("curl");
+    p.addParameter("-d");
+    p.addParameter(id+"="+String(valorSensorConvertido));
+    p.addParameter("http://192.168.240.187/api");
+    p.runAsynchronously();
+    //while (p.running());// do nothing until the process finishes, so you get the whole output:
+    /*while (p.available()> 0) {
+      int result = p.parseInt();      // look for an integer
+      Console.println(result);
+      char c = p.read(); //hacer algo con esta respuesta
+      Console.println(c);
+      }//cierre while p   */
+    }//cierre de if !=
+  };//cierre de postAnalogo()
