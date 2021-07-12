@@ -419,7 +419,7 @@ void modeCommand(BridgeClient client) {
     p.begin("curl");
     p.addParameter("-d");
     p.addParameter(id+"="+String(valorSensorActual));
-    p.addParameter("http://192.168.240.187/api");
+    p.addParameter("http://192.168.0.98:3000/api");
     p.runAsynchronously();
    /* while (p.running());// do nothing until the process finishes, so you get the whole output:
     while (p.available()> 0) {
@@ -453,7 +453,7 @@ void modeCommand(BridgeClient client) {
     p.begin("curl");
     p.addParameter("-d");
     p.addParameter(id+"="+String(valorSensorConvertido));
-    p.addParameter("http://192.168.240.187/api");
+    p.addParameter("http://192.168.0.98:3000/api");
     p.runAsynchronously();
     //while (p.running());// do nothing until the process finishes, so you get the whole output:
     /*while (p.available()> 0) {
