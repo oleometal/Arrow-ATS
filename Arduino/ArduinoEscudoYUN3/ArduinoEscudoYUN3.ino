@@ -27,15 +27,14 @@
   
  */
 
+ 
 #include <Bridge.h>
 #include <BridgeServer.h>
 #include <BridgeClient.h>
 #include <HttpClient.h>
 
-
-// Listen to the default port 5555, the Yún webserver
-// will forward there all the HTTP requests you send
 BridgeServer server;
+String IP_DEL_SERVIDOR = "http://192.168.240.187/api";
 String url ="http://192.168.0.98/api/arduino3/";
 int i = 0;
 bool O49;
@@ -93,8 +92,12 @@ int I49;
 int I48;
 int I68;
 int I34;
-int pinesDigitales[] = {2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,22,23,24,25,26,27,28,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49};
-byte pinesAnalogos[] = {A0,A1,A2,A3,A4,A5,A7,A8,A9,A10,A11,A12,A13,A14,A15};
+String IDsDigitales[] = {"O49","O50","O51","O52","O53","O54","O45","O46","O44","O39","O38","O48","O56","I66","I67","I69","I64","I71","I70","O37","O36","O55","I72","I65","I10","I1","I5","I2","I11","I82","I437","I438","I439","I63","O338","I50","I59","I58","I56","I57"};
+int pinesDigitales[]  = { 2,    3,    4,    5,    6,    7,    8,    9,    10,   11,   12,   14,   15,   16,   17,   18,   19,   22,   23,   24,   25,   26,   27,   28,   34,   35,  36,  37,  38,   39,   40,    41,    42,    43,   44,    45,   46,   47,   48,   49};
+//String IDsAnalogos[]= {"I52","I55","I60","I62","I61","I49","I48","I68","I34","I32","I33","I35","I43","I42","I40"};
+String IDsAnalogos[]  = {"I52","I55","I60","I62","I61","I49","I48","I68","I34","I32","I33"};
+//int pinesAnalogos[] = { A0,   A1,   A2,   A3,   A4,   A5,   A7,   A8,   A9,   A10,  A11,  A12,  A13,  A14,  A15};
+int pinesAnalogos[]   = { A0,   A1,   A2,   A3,   A4,   A5,   A7,   A8,   A9,   A10,  A11,};
 
 void setup() {
   // Bridge startup        Rele    Cable
@@ -109,10 +112,10 @@ void setup() {
   pinMode(A9, INPUT); //<-      <- BB210
   pinMode(A10,INPUT); //<-      <- BA110
   pinMode(A11,INPUT); //<-      <- BA210
-  pinMode(A12,INPUT); //<-      <- BB110
-  pinMode(A13,INPUT); //<-      <- BC29
-  pinMode(A14,INPUT); //<-      <- BC19
-  pinMode(A15,INPUT); //<-      <- BF19
+//  pinMode(A12,INPUT); //<-      <- BB110
+//  pinMode(A13,INPUT); //<-      <- BC29
+//  pinMode(A14,INPUT); //<-      <- BC19
+//  pinMode(A15,INPUT); //<-      <- BF19
   pinMode(2, OUTPUT); //->      -> AL112
   pinMode(3, OUTPUT); //->      -> AL114
   pinMode(4, OUTPUT); //->      -> AL116
@@ -154,34 +157,21 @@ void setup() {
   pinMode(48, INPUT); //<-      <- AL119
   pinMode(49, INPUT); //<-      <- AL121
   Bridge.begin();
-  /*----------------------------------------------
+  Console.begin();
+  while (!Console);    
+  /*-------------------------------------------------------------------------------
    *    Lectura Inicial de Sensores Digitales
-   *---------------------------------------------*/
+   *-------------------------------------------------------------------------------*/
   for ( byte i = 0; i < (sizeof(pinesDigitales) / sizeof(pinesDigitales[0])); i++){
-    //llamar una funcion que haga post y guarde en memoria pinesDigitales[i]
-     if ( digitalRead(pinesDigitales[i] == HIGH){
-        boolean valorSensor = true; 
-        //enviar estado de sensor
-        //falta enviar el ID sel sensor relacionado
-        postDigital(valorSensor);
-      }else{
-        boolean valorSensor = false;
-        postDigital(valorSensor);
-        }
+    int lecturaInicial = digitalRead(pinesDigitales[i]);
+    Bridge.put(IDsDigitales[i],String(lecturaInicial));
     };
-  /*--------------------------------------------------
+  /*--------------------------------------------------------------------------------
    * Lectura Inicial de Sensores Análogos
-   *-------------------------------------------------*/
-  // falta terminar esta logica 
+   *-------------------------------------------------------------------------------*/
   for ( byte i = 0; i < (sizeof(pinesAnalogos) / sizeof(pinesAnalogos[0])); i++){
-    if ( analogRead(pinesAnalogos[i] > 500){
-        boolean valorSensor = true; 
-        //enviar estado de sensor
-        postDigital(valorSensor);
-      }else{
-        boolean valorSensor = false;
-        postDigital(valorSensor);
-        }
+    int lecturaInicial = analogRead(pinesAnalogos[i]);
+    Bridge.put(IDsAnalogos[i],String(lecturaInicial));    
     };
   
   /*--------------------- ------------------------------
@@ -190,80 +180,76 @@ void setup() {
    * --------------------------------------------------*/
   server.listenOnLocalhost();
   server.begin();
-}
+}//cierre de setup()
 
 void loop() {
+ 
+  //Console.println("holaYun");
   url ="http://192.168.0.98/api/arduino3/";
-
-O49=digitalRead(2);
-O50=digitalRead(3);
-O51=digitalRead(4);
-O52=digitalRead(5);
-O53=digitalRead(6);
-O54=digitalRead(7);
-O45=digitalRead(8);
-O46=digitalRead(9);
-O44=digitalRead(10);
-O39=digitalRead(11);
-O38=digitalRead(12);
-O48=digitalRead(14);
-O56=digitalRead(15);
-I66=digitalRead(16);
-I67=digitalRead(17);
-I69=digitalRead(18);
-I64=digitalRead(19);
-I71=digitalRead(22);
-I70=digitalRead(23);
-O37=digitalRead(24);
-O36=digitalRead(25);
-O55=digitalRead(26);
-I72=digitalRead(27);
-I65=digitalRead(28);
-I10=digitalRead(34);
-I1=digitalRead(35);
-I5=digitalRead(36);
-I2=digitalRead(37);
-I11=digitalRead(38);
-I82=digitalRead(39);
-I63=digitalRead(43);
-O338=digitalRead(44);
-I50=digitalRead(45);
-I59=digitalRead(46);
-I58=digitalRead(47);
-I56=digitalRead(48);
-I57=digitalRead(49);
-I54=digitalRead(51);
-I53=digitalRead(52);
-I51=digitalRead(53);
-I52=analogRead(A0);
-I55=analogRead(A1);
-I32=analogRead(A10);
-I33=analogRead(A11);
-I35=analogRead(A12);
-I43=analogRead(A13);
-I42=analogRead(A14);
-I40=analogRead(A15);
-I60=analogRead(A2);
-I62=analogRead(A3);
-I61=analogRead(A4);
-I49=analogRead(A5);
-I48=analogRead(A7);
-I68=analogRead(A8);
-I34=analogRead(A9);
-    i++;
-    
-    if (i>=25){
-        url = url+I1+"/"+I2+"/"+I5+"/"+I10+"/"+I11+"/"+I32+"/"+I33+"/"+I34+"/"+I35+"/"+I40+"/"+I42+"/"+I43+"/"+O36+"/"+O37+"/"+O38+"/"+O39+"/"+O44+"/"+O45+"/"+O46+"/"+I48+"/"+I49+"/"+I50+"/"+I51+"/"+I52+"/"+I53+"/"+I54+"/"+I55+"/"+I56+"/"+I57+"/"+I58+"/"+I59+"/"+I60+"/"+I61+"/"+I62+"/"+I63+"/"+O48+"/"+O49+"/"+O50+"/"+O51+"/"+O52+"/"+O53+"/"+O54+"/"+O55+"/"+O56+"/"+I64+"/"+I65+"/"+I66+"/"+I67+"/"+I68+"/"+I69+"/"+I70+"/"+I71+"/"+I72+"/"+I82+"/"+O338;
-
-        HttpClient client;
-        client.getAsynchronously(url);
-        i=0;
+  O49=digitalRead(2);
+  O50=digitalRead(3);
+  O51=digitalRead(4);
+  O52=digitalRead(5);
+  O53=digitalRead(6);
+  O54=digitalRead(7);
+  O45=digitalRead(8);
+  O46=digitalRead(9);
+  O44=digitalRead(10);
+  O39=digitalRead(11);
+  O38=digitalRead(12);
+  O48=digitalRead(14);
+  O56=digitalRead(15);
+  I66=digitalRead(16);
+  I67=digitalRead(17);
+  I69=digitalRead(18);
+  I64=digitalRead(19);
+  I71=digitalRead(22);
+  I70=digitalRead(23);
+  O37=digitalRead(24);
+  O36=digitalRead(25);
+  O55=digitalRead(26);
+  I72=digitalRead(27);
+  I65=digitalRead(28);
+  I10=digitalRead(34);
+  I1=digitalRead(35);
+  I5=digitalRead(36);
+  I2=digitalRead(37);
+  I11=digitalRead(38);
+  I82=digitalRead(39);
+  I63=digitalRead(43);
+  O338=digitalRead(44);
+  I50=digitalRead(45);
+  I59=digitalRead(46);
+  I58=digitalRead(47);
+  I56=digitalRead(48);
+  I57=digitalRead(49);
+  I54=digitalRead(51);
+  I53=digitalRead(52);
+  I51=digitalRead(53);
+  I52=analogRead(A0);
+  I55=analogRead(A1);
+  I32=analogRead(A10);
+  I33=analogRead(A11);
+  //I35=analogRead(A12);
+//  I43=analogRead(A13);
+//  I42=analogRead(A14);
+//  I40=analogRead(A15);
+  I60=analogRead(A2);
+  I62=analogRead(A3);
+  I61=analogRead(A4);
+  I49=analogRead(A5);
+  I48=analogRead(A7);
+  I68=analogRead(A8);
+  I34=analogRead(A9);
+  i++;
+  if (i>=25){
+    url = url+I1+"/"+I2+"/"+I5+"/"+I10+"/"+I11+"/"+I32+"/"+I33+"/"+I34+"/"+I35+"/"+I40+"/"+I42+"/"+I43+"/"+O36+"/"+O37+"/"+O38+"/"+O39+"/"+O44+"/"+O45+"/"+O46+"/"+I48+"/"+I49+"/"+I50+"/"+I51+"/"+I52+"/"+I53+"/"+I54+"/"+I55+"/"+I56+"/"+I57+"/"+I58+"/"+I59+"/"+I60+"/"+I61+"/"+I62+"/"+I63+"/"+O48+"/"+O49+"/"+O50+"/"+O51+"/"+O52+"/"+O53+"/"+O54+"/"+O55+"/"+O56+"/"+I64+"/"+I65+"/"+I66+"/"+I67+"/"+I68+"/"+I69+"/"+I70+"/"+I71+"/"+I72+"/"+I82+"/"+O338;
+    HttpClient client;
+    client.getAsynchronously(url);
+    i=0;
     }
-
-
   // Get clients coming from server
   BridgeClient client = server.accept();
-
   // There is a new client?
   if (client) {
     // Process request
@@ -272,10 +258,21 @@ I34=analogRead(A9);
     // Close connection and free resources.
     client.stop();
   }
-//nuncio();
-  //Activar_Sensores();
+  /*----------------------------------------------------------------
+   * llamar a la función postDigital()
+   * ---------------------------------------------------------------*/
+   for ( byte i = 0; i < (sizeof(pinesDigitales) / sizeof(pinesDigitales[0])); i++){
+    postDigital(IDsDigitales[i], pinesDigitales[i]);
+    };
+  /*----------------------------------------------------------------
+   * llamar a la función postAnalogo()
+   * ---------------------------------------------------------------*/  
+   for ( byte i = 0; i < (sizeof(pinesAnalogos) / sizeof(pinesAnalogos[0])); i++){
+    postAnalogo(IDsAnalogos[i], pinesAnalogos[i]);
+    };
   delay(50); // Poll every 50ms
-}//fin de loop()
+  
+}//cierre de loop()
 
 void process(BridgeClient client) {
   // read the command
@@ -406,38 +403,51 @@ void modeCommand(BridgeClient client) {
   client.print(F("error: invalid mode "));
   client.print(mode);
 }
-
-/*--------------------------------------------------- 
- *    post Sensores
- *--------------------------------------------------*/
-void postDigital(int pinLeido){
-  
-}
+/*----------------------------------------------------------------
+ * Función postDigital()
+ *---------------------------------------------------------------*/
+ void postDigital(String id, int pin ){
+  int valorSensorActual = digitalRead(pin);
+  int longitudID = id.length()+1;
+  char clave[longitudID];
+  id.toCharArray(clave,longitudID); 
+  char buf[1];
+  Bridge.get(clave,buf,1);
+  String valorSensorMemoria;
+  valorSensorMemoria = buf[0]; 
+  if (valorSensorMemoria.toInt() != valorSensorActual){
+    Bridge.put(id,String(valorSensorActual));//guardar en memo
+    //postear
     Process p;
-    bool estadoActualSensor;
-  
-  //este evento sucede una vez, solo si el valor del sensor cambia.
-  if (lecturaSensor > 500 && estadoActualSensor == 0) {
-    //el estado del sensor cambio a HIGH
-    Estado_I85 = 1;
-    //comando que empuje el valor del sensor hacia el cliente (este es un ejemplo).
+   
     p.begin("curl");
-    p.addParameter("-X"); // use POST instead of default GET
-    p.addParameter("POST");
+    //p.addParameter("-X");
+    //p.addParameter("POST");
+    //p.addParameter("-F");
+    //p.addParameter("Content-Type: application/json");
     p.addParameter("-d");
-    p.addParameter("{\"name\":\"Nick\"}");
-    p.addParameter("-H"); 
-    p.addParameter("Content-type: application/json");
-    p.addParameter("http://192.168.0.120:3000/");
-    p.runAsynchronously();
-    Bridge.put(key1, String(Estado_I85)); //actualiza los datos almacenados.
-
+    p.addParameter(id+"="+String(valorSensorActual));
+    //p.addParameter("=");
+    //p.addParameter(String(valorSensorActual));
     
-  }
-  else if (ValorSensor_I85 < 500 && Estado_I85 == 1){
-    //el estado del sensor cambio a LOW
-    Estado_I85 = 0;
-    //comando que empuje el valor del sensor hacia el cliente.
-    Bridge.put(key1, String(Estado_I85));
-      
-    }
+    //p.addParameter("\'{\"name\": \"oleo\", \"email\": \"oleo@guinope.com\"}\'");
+    p.addParameter("http://192.168.240.187/api");
+    p.runAsynchronously();
+   
+    // do nothing until the process finishes, so you get the whole output:
+    while (p.running());
+    while (p.available()> 0) {
+      int result = p.parseInt();      // look for an integer
+      Console.println(result);
+      char c = p.read();
+      Console.println(c);
+      }//cierre while p
+   
+    }//cierre de if buf
+  }//cierre de postDigital
+/*----------------------------------------------------------------
+ * Función postAnanolo()
+ *---------------------------------------------------------------*/  
+ void postAnalogo(String id, int pin){
+  //leer datos
+  };
