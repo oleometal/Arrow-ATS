@@ -10,9 +10,9 @@ import {
 
 //const puerto = Deno.env.get("PORT") || 80
 
-const servidor = serve({ port: 3000 });
+const servidor = serve({ port: 80 });
 
-console.log(`Servidor corriendo en  http://192.168.0.98:3000`);
+console.log(`Servidor corriendo en  http://localhost`);
 
 const descifrador = new TextDecoder();
 
@@ -32,7 +32,7 @@ for await (const req of servidor) {
       //const formData = await req.formData();
 
       const contentType = req.headers.get("content-type");
-      req.respond({ body: "respuesta desde server" });
+      req.respond({ body: "1" });
 
       console.log(`"${req.method} ${req.url}"`, contentType, codigo); //json
 

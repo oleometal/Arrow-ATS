@@ -29,7 +29,7 @@
 #include <HttpClient.h>
 
 BridgeServer server;
-String IP_DEL_SERVIDOR = "http://192.168.240.187/api";
+String IP_DEL_SERVIDOR = "http://192.168.0.95/api";
 String url ="http://192.168.0.98/api/arduino3/";
 int i = 0;
 bool O49;
@@ -152,7 +152,7 @@ void setup() {
   pinMode(48, INPUT); //<-      <- AL119
   pinMode(49, INPUT); //<-      <- AL121
   Bridge.begin();
- // Console.begin();
+  Console.begin();
   //while (!Console);    
   /*-------------------------------------------------------------------------------
    *    Lectura Inicial de Sensores Digitales
@@ -419,19 +419,23 @@ void modeCommand(BridgeClient client) {
     p.begin("curl");
     p.addParameter("-d");
     p.addParameter(id+"="+String(valorSensorActual));
-    p.addParameter("http://192.168.0.98:3000/api");
-    p.runAsynchronously();
-   /* while (p.running());// do nothing until the process finishes, so you get the whole output:
-    while (p.available()> 0) {
-      int result = p.parseInt();      // look for an integer
-      Console.println(result);
-      char c = p.read(); //hacer algo con esta respuesta
-      Console.println(c);
-      }//cierre while p */
+    p.addParameter(IP_DEL_SERVIDOR);
+    //p.runAsynchronously();
+    p.run();
+    //while (p.running());// do nothing until the process finishes, so you get the whole output:
+    //while (p.available()> 0) {
+      //int result = p.parseInt();      // look for an integer
+      //Console.println(result);
+      //char acuseDeRecibo = p.read(); //hacer algo con esta respuesta
+      //int acuseDeRecibo = p.read();
+      //Console.println(acuseDeRecibo);
+     // }//cierre while p
+       
+    p.close();  
     }//cierre de if !=
   }//cierre de postDigital
 /*----------------------------------------------------------------
- * Función postAnanolo()
+ * Función postAnalogo()
  *---------------------------------------------------------------*/  
  void postAnalogo(String id, int pin){
   int valorSensorActual = analogRead(pin);
@@ -453,14 +457,17 @@ void modeCommand(BridgeClient client) {
     p.begin("curl");
     p.addParameter("-d");
     p.addParameter(id+"="+String(valorSensorConvertido));
-    p.addParameter("http://192.168.0.98:3000/api");
-    p.runAsynchronously();
+    p.addParameter(IP_DEL_SERVIDOR);
+    //p.runAsynchronously();
+    p.run();
     //while (p.running());// do nothing until the process finishes, so you get the whole output:
-    /*while (p.available()> 0) {
-      int result = p.parseInt();      // look for an integer
-      Console.println(result);
-      char c = p.read(); //hacer algo con esta respuesta
-      Console.println(c);
-      }//cierre while p   */
+    //while (p.available()> 0) {
+      //int result = p.parseInt();      // look for an integer
+      //Console.println(result);
+     // char c = p.read(); //hacer algo con esta respuesta
+     // Console.println(c);
+    //  }//cierre while p   
+     
+    p.close();  
     }//cierre de if !=
   };//cierre de postAnalogo()
