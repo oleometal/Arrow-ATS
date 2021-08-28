@@ -150,10 +150,10 @@ void loop() {
         changeB(2,0);
         break;
       case 'p': //mover la herramienta a 250cm de la posición de trabajo
-        changeH(-20.0);
+        changeH(5.0);
         break;
              case 'j': //mover la herramienta a 250cm de la posición de trabajo
-        changeH(309);
+        changeH(303);
         break;
                      case 'x': //Paso 1 CH
                    
@@ -497,11 +497,13 @@ int homeH(){
       digitalWrite(pasoH, LOW);
       accionH = 0;
       flagH = 0;
+      changeH(303);
       return 1;
     }
     if((millis() - timeMaxH) > 32000){
       accionH = 0;
       digitalWrite(pasoH, LOW);
+      changeH(303);
       return 0;
     }
   }
