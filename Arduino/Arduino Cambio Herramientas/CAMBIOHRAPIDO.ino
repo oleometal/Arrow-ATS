@@ -1,10 +1,13 @@
+//VERSION SABADO 18 SEPT 21
+//VERSION MANDO VIDEO A ANGELICA.
+
 //---------------------------- BLOQUE DE LIBRERÍAS --------------------------//
 
 #include <EEPROM.h>
 
 
 
-//------------------------ BLOQUE DE CONTROL DE TIEMPO ----------------------//
+//------------------------ BLOQUE DE CONTROL DE TEMPO ----------------------//
 
 unsigned long timeMaxC; // tiempo máximo para calibración del home del carrusel
 unsigned long tiempoC; //tiempo de calibracion del sensor del carrusel
@@ -34,7 +37,7 @@ int sensorB = 5; // Sensor del BRAZO AHORA ES A0 y SU VALOR EN POSITIVO ES MENOR
 int sensorP = 49;
 // Paso de los servomotores (NO MODIFICAR NINGUNO DE ESTOS PINES)
 int pasoC = 10; // Salida al servo motor del carrusel
-int pasoH = 13; // Salida al servo motor del mandril de la herramienta
+int pasoH = 4; // Salida al servo motor del mandril de la herramienta
 int pasoB = 12; // Salida al servo motor del brazo
 
 // Dirección de los servomotores
@@ -150,7 +153,7 @@ void loop() {
         changeB(2,0);
         break;
       case 'p': //mover la herramienta a 250cm de la posición de trabajo
-        changeH(5.0);
+        changeH(9.0);
         break;
              case 'j': //mover la herramienta a 250cm de la posición de trabajo
         changeH(303);
@@ -409,7 +412,7 @@ void homeTool(){
 //------------------------- FUNCIÓN HOME DEL CARRUSEL -----------------------//
 
 int homeC(){
-
+TCCR0B = TCCR0B & B11111000 | B00000011;
   if (digitalRead(sensorP) == 0){
   accionC = 1;
   
@@ -453,7 +456,7 @@ int homeC(){
       TCCR2B = TCCR2B & B11111000 | B00000011;    
       digitalWrite(direccionC, LOW);
       analogWrite(pasoC, 5);
-      delay(2989); //2980tiempo para llegar del sensor al home con la primera herramienta
+      delay(2978); //2980tiempo para llegar del sensor al home con la primera herramienta
       digitalWrite(pasoC, LOW);
       tool = 1;
       //sendJson("Herramienta 1 en Home",1);
@@ -474,7 +477,6 @@ int homeC(){
 //----------------- FUNCIÓN HOME DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int homeH(){
-
   if (digitalRead(sensorP) == 0){
   accionH = 1;
   flagH = 0;
@@ -497,13 +499,20 @@ int homeH(){
       digitalWrite(pasoH, LOW);
       accionH = 0;
       flagH = 0;
-      changeH(303);
+      changeH(298);
+     TCCR0B = TCCR0B & B11111000 | B00000011; 
+           digitalWrite(pasoH, LOW);
+
       return 1;
     }
     if((millis() - timeMaxH) > 32000){
       accionH = 0;
       digitalWrite(pasoH, LOW);
-      changeH(303);
+      changeH(296);
+      TCCR0B = TCCR0B & B11111000 | B00000011; 
+            digitalWrite(pasoH, LOW);
+
+
       return 0;
     }
   }
@@ -513,6 +522,7 @@ int homeH(){
 //------------------------- FUNCIÓN HOME DEL BRAZO -----------------------//
 
 int homeB(){
+  TCCR0B = TCCR0B & B11111000 | B00000011;
   accionB = 1;
   flagB = 0;
   
@@ -538,7 +548,7 @@ int homeB(){
   delay(1000);
   digitalWrite(direccionB,HIGH);
   analogWrite(pasoB,5);
-  delay(680); //650
+  delay(665); //680
   digitalWrite(pasoB, LOW);
   digitalWrite(direccionB, LOW);
   return 1;
@@ -722,8 +732,8 @@ delayMicroseconds(15000);
 
 delayMicroseconds(15000);
 
-// ORIGINAL 7950
-delayMicroseconds(4450);
+// ORIGINAL 1450
+delayMicroseconds(4500);
 
   
  }
@@ -752,11 +762,12 @@ int changeB(int giro, int sentido){
   //delay(giro); // tiempo de espera
 
     if(muestra == 2){
-   while(micros() < TiempoAhora+1633000){
+   while(micros() < TiempoAhora+1632000){
     
   }
   }else{
-  while(micros() < TiempoAhora+816500){
+    //816500 original
+  while(micros() < TiempoAhora+816000){
     
   }}
   //delayMicroseconds(1000);
