@@ -36,6 +36,7 @@
 BridgeServer server;
   int i=0;
     String url ="http://192.168.0.98/api/arduino4/";
+    unsigned long oldTime = 0;
     bool O281;
 bool O280;
 bool O279;
@@ -139,7 +140,8 @@ I258=digitalRead(32);
 I257=digitalRead(31);
 I256=digitalRead(22);
     i++;
-    if (i>=25){
+    if (millis() > oldTime+1000){
+        oldTime = millis();
         url = url+O281+"/"+O280+"/"+O279+"/"+O278+"/"+O277+"/"+O276+"/"+O275+"/"+I274+"/"+I273+"/"+I272+"/"+O270+"/"+O269+"/"+O268+"/"+O267+"/"+O266+"/"+O265+"/"+O264+"/"+O263+"/"+I262+"/"+I261+"/"+I260+"/"+I259+"/"+I258+"/"+I257+"/"+I256;
         HttpClient client;
         client.getAsynchronously(url);

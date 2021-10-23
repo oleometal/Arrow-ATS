@@ -44,6 +44,7 @@ BridgeServer server;
     bool I332;
 bool I333;
 bool I334;
+unsigned long oldTime = 0;
 bool I326;
 bool I327;
 bool I328;
@@ -213,7 +214,8 @@ I407=analogRead(A9);
 
     
         i++;
-    if (i>=25){
+           if (millis() > oldTime+1000){
+        oldTime = millis();
         url = url+I351+"/"+I352+"/"+I353+"/"+I354+"/"+I360+"/"+I326+"/"+I327+"/"+I328+"/"+I332+"/"+I333+"/"+I334+"/"+I335+"/"+I336+"/"+I361+"/"+I362+"/"+I363+"/"+I364+"/"+I365+"/"+I368+"/"+I369+"/"+I370+"/"+O337+"/"+I380+"/"+I381+"/"+I382+"/"+I383+"/"+I384+"/"+I387+"/"+I388+"/"+I398+"/"+I399+"/"+I400+"/"+I401+"/"+I402+"/"+I405+"/"+I406+"/"+I407+"/"+O341+"/"+I417+"/"+I418+"/"+I419+"/"+I420+"/"+I421+"/"+I424+"/"+I425+"/"+I426;
         HttpClient client;
         client.getAsynchronously(url);

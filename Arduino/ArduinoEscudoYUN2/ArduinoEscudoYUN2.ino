@@ -37,6 +37,8 @@
 BridgeServer server;
  int i=0;
     bool O21;
+            unsigned long oldTime = 0;
+
 bool O16;
 bool O20;
 bool O28;
@@ -229,8 +231,9 @@ I28=analogRead(A8);
 I79=analogRead(A9);
     
 i++;
-    if (i>=25){
         url = url+O343+"/"+O345+"/"+O344+"/"+I4+"/"+I8+"/"+I14+"/"+O0+"/"+O4+"/"+O12+"/"+I16+"/"+I17+"/"+I18+"/"+I19+"/"+I21+"/"+I22+"/"+I23+"/"+I24+"/"+I27+"/"+I28+"/"+I29+"/"+I30+"/"+I31+"/"+O16+"/"+O17+"/"+O19+"/"+O20+"/"+O21+"/"+O22+"/"+O28+"/"+O29+"/"+O30+"/"+O31+"/"+I36+"/"+I37+"/"+I38+"/"+I39+"/"+I41+"/"+O57+"/"+O58+"/"+O59+"/"+O60+"/"+O61+"/"+O62+"/"+I73+"/"+I74+"/"+I78+"/"+I79+"/"+I80+"/"+I81+"/"+I83+"/"+I84+"/"+I85+"/"+I86+"/"+I87;
+       if (millis() > oldTime+1000){
+        oldTime = millis();
         HttpClient client;
         client.getAsynchronously(url);
         i=0;
@@ -440,4 +443,3 @@ void Activar_Sensores(){
 
 
 }*/
-

@@ -43,6 +43,7 @@ BridgeServer server;
 int i=0;
     String url ="http://192.168.0.98/api/arduino7/";
         String estadoch ="1";
+        unsigned long oldTime = 0;
 
     bool O32;
 bool O33;
@@ -149,7 +150,8 @@ I164=digitalRead(17);
 O160=digitalRead(5);
 O161=digitalRead(4);
     i++;
-    if (i>=25){
+       if (millis() > oldTime+1000){
+        oldTime = millis();
         url = url+O32+"/"+O33+"/"+O40+"/"+O41+"/"+I98+"/"+I99+"/"+I100+"/"+I101+"/"+I102+"/"+I103+"/"+I104+"/"+I105+"/"+O97+"/"+O98+"/"+O99+"/"+O100+"/"+O101+"/"+O102+"/"+O106+"/"+I160+"/"+I161+"/"+I164+"/"+O160+"/"+O161;
         HttpClient client;
         client.getAsynchronously(url);
@@ -422,4 +424,3 @@ void modeCommand(BridgeClient client) {
   client.print(F("error: invalid mode "));
   client.print(mode);
 }
-
