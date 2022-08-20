@@ -1,5 +1,5 @@
-//VERSION SABADO 18 SEPT 21
-//VERSION MANDO VIDEO A ANGELICA.
+//VERSION 20 Agosto 2022
+//COM4 -> conectado a servidor front end
 
 //---------------------------- BLOQUE DE LIBRERÍAS --------------------------//
 
