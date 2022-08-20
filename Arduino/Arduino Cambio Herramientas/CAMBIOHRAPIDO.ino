@@ -36,13 +36,13 @@ int sensorH = 6; // Sensor de final de carrera del mandril de herramienta
 int sensorB = 5; // Sensor del BRAZO AHORA ES A0 y SU VALOR EN POSITIVO ES MENOR A 100
 int sensorP = 49;
 // Paso de los servomotores (NO MODIFICAR NINGUNO DE ESTOS PINES)
-int pasoC = 10; // Salida al servo motor del carrusel
-int pasoH = 4; // Salida al servo motor del mandril de la herramienta
+int pasoC = 9; // Salida al servo motor del carrusel
+int pasoH = 13; // Salida al servo motor del mandril de la herramienta
 int pasoB = 12; // Salida al servo motor del brazo
 
 // Dirección de los servomotores
 int direccionC = 8 ; // dirección del motor del carrusel
-int direccionH = 9 ; // dirección del motor del mandril de la herramienta
+int direccionH = 10 ; // dirección del motor del mandril de la herramienta
 int direccionB = 11; // dirección del motor del brazo
 
 // Comunicacion con PLC
@@ -480,7 +480,8 @@ int homeH(){
   if (digitalRead(sensorP) == 0){
   accionH = 1;
   flagH = 0;
-  
+  Serial.println("Entre");
+  Serial.println(digitalRead(sensorH));
   TCCR0B = TCCR0B & 0b1111000 | 0x02;
   digitalWrite(direccionH,HIGH);
   analogWrite(pasoH,5);
@@ -506,6 +507,7 @@ int homeH(){
       return 1;
     }
     if((millis() - timeMaxH) > 32000){
+      Serial.println("ACA ENTRE TAMBIEN");
       accionH = 0;
       digitalWrite(pasoH, LOW);
       changeH(296);
@@ -516,7 +518,9 @@ int homeH(){
       return 0;
     }
   }
-}}
+}else{
+  Serial.println("NO Entre");
+  }}
 
 
 //------------------------- FUNCIÓN HOME DEL BRAZO -----------------------//
@@ -779,6 +783,10 @@ int changeB(int giro, int sentido){
 //--------------- FUNCIÓN CAMBIO DEL MANDRIL DE LA HERRAMIENTA --------------//
 
 int changeH(double offset){
+
+  Serial.println("SENSORES");
+  Serial.println(offset);
+  Serial.println(digitalRead(sensorP));
   if (digitalRead(sensorP) == 0 || offset == 307){
   delay(5);
   double value = -83.5143*offset + 26024.1356;
