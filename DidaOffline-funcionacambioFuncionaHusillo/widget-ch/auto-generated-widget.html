@@ -183,6 +183,14 @@
                         client.get(theurl, function(response) {
                             var obj = JSON.parse(response);
 
+                            for (var i = 0; i < 17; i++) {
+                            if (parseInt(obj[i]['enhusillo']) == 1) {
+                                // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                document.getElementById("herramientaenhusillo").selectedIndex = (i + 1);
+
+                            }
+                        }
+
                             document.getElementById("herramientah1").selectedIndex = (parseInt(obj[0]['herramienta']) - 1);
                             document.getElementById("longitudh1").value = obj[0]['longitud'];
                             document.getElementById("modoh").checked = obj[0]['modoh'];
@@ -2618,6 +2626,14 @@
                         var client = new HttpClient();
                         client.get(theurl, function(response) {
                             var obj = JSON.parse(response);
+
+                            for (var i = 0; i < 17; i++) {
+                            if (parseInt(obj[i]['enhusillo']) == 1) {
+                                // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
+                                document.getElementById("herramientaenhusillo").selectedIndex = (i + 1);
+
+                            }
+                        }
 
                             document.getElementById("herramientah1").selectedIndex = (parseInt(obj[0]['herramienta']) - 1);
                             document.getElementById("longitudh1").value = obj[0]['longitud'];
