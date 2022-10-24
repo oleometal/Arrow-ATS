@@ -2630,7 +2630,11 @@
                             for (var i = 0; i < 17; i++) {
                             if (parseInt(obj[i]['enhusillo']) == 1) {
                                 // NUMERO DE INDEX DEL POCKET A COPIAR DATOS DE LONGITUD.
-                                document.getElementById("herramientaenhusillo").selectedIndex = (i + 1);
+                                if(!obj[0]['modoh']){
+                                document.getElementById("herramientaenhusillo").selectedIndex = (i + 1);}
+                                else{
+                                    document.getElementById("herramientaenhusillo").selectedIndex = (parseInt(obj[i]['herramienta']));
+                                }
 
                             }
                         }
